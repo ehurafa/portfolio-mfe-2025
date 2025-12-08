@@ -1,0 +1,30 @@
+// ====================================
+// MAIN STYLESHEET
+// Design System - Static Portfolio 2025
+// ====================================
+
+// 1. Tokens (Design Tokens - Variables)
+@use './tokens/colors' as *;
+@use './tokens/spacing' as *;
+@use './tokens/typography' as *;
+@use './tokens/breakpoints' as *;
+@use './tokens/shadows' as *;
+
+// 2. Utilities (Mixins & Functions)
+@use './utilities/mixins' as *;
+
+// 3. Base (Reset & Global Styles)
+@use './base/reset';
+@use './base/global';
+
+// 4. Layouts
+@use './layouts/layout';
+
+// 5. Components
+@use './components/sidebar';
+@use './components/nav';
+@use './components/card';
+@use './components/button';
+@use './components/spinner';
+@use './components/title';
+@use './components/pages';

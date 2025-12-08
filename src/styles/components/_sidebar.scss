@@ -1,0 +1,98 @@
+// ====================================
+// SIDEBAR COMPONENT
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+@use '../utilities/mixins' as *;
+
+.sidebar {
+  background: $color-bg-dark;
+  color: $color-text-light;
+  padding: $space-10;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  min-height: 100vh;
+  width: 280px;
+  flex-shrink: 0;
+
+  @include media-lg {
+    width: 100%;
+    position: relative;
+    min-height: auto;
+  }
+
+  .avatar {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid $color-border-white;
+    overflow: hidden;
+    margin: 0 auto $space-3 auto;
+
+    @include media-lg {
+      max-width: 150px;
+    }
+  }
+
+  .brand {
+    margin: 2.5rem 0 0 0;
+    text-align: center;
+
+    @include media-lg {
+      img {
+        display: inline-block;
+      }
+    }
+
+    strong {
+      color: $color-brand;
+      font-weight: $font-weight-extrabold;
+    }
+  }
+
+  .role {
+    display: block;
+    color: $color-white;
+    font-size: $font-size-sm;
+    margin-top: $space-1;
+    font-style: italic;
+
+    @include media-lg {
+      text-align: center;
+    }
+  }
+
+  .social {
+    display: flex;
+    gap: 15px;
+    margin: $space-4 0 $space-6 0;
+
+    @include media-lg {
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    span {
+      display: inline-block;
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 50%;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      color: $color-white;
+      border: 1px solid $color-white;
+      @include transition(background, 0.3s);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}

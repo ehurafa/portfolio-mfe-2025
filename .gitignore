@@ -1,0 +1,13 @@
+node_modules/
+.env
+dist/
+.env
+.env.development
+.env.production
+
+# Compiled CSS (generated from SCSS, not source files)
+src/styles.css
+src/styles.css.map
+apps/*/src/styles.css
+apps/*/src/styles.css.map
+*.css.map

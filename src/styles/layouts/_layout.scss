@@ -1,0 +1,27 @@
+// ====================================
+// LAYOUT
+// ====================================
+
+@use '../tokens/spacing' as *;
+@use '../tokens/breakpoints' as *;
+
+.layout {
+  display: flex;
+  gap: $space-6;
+  min-height: 100vh;
+  
+  @include media-lg {
+    flex-direction: column;
+    gap: $space-0;
+  }
+}
+
+.content {
+  padding: $space-10;
+  flex-grow: 1;
+  min-width: 0;
+  
+  @include media-md {
+    padding: $space-6;
+  }
+}

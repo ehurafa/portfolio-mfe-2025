@@ -1,0 +1,29 @@
+// ====================================
+// NAV COMPONENT
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../utilities/mixins' as *;
+
+.nav {
+  a {
+    display: block;
+    padding: $space-2 $space-3;
+    border-radius: 10px;
+    color: #e8e8e8;
+    margin: $space-1 0;
+    font-weight: $font-weight-medium;
+    @include transition(all);
+
+    &:hover {
+      background: $color-bg-hover;
+      transform: translateX(2px);
+    }
+
+    &.active {
+      background: $color-bg-active;
+    }
+  }
+}

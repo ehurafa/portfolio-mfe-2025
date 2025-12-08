@@ -1,0 +1,111 @@
+// ====================================
+// CARD COMPONENT
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/shadows' as *;
+@use '../tokens/breakpoints' as *;
+@use '../utilities/mixins' as *;
+
+.card {
+  box-shadow: $shadow-sm;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: $space-4;
+  background: $color-bg-card;
+
+  .thumb {
+    @include aspect-ratio(16, 9);
+    background: $color-border-light;
+    overflow: hidden;
+    position: relative;
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .tag {
+      position: absolute;
+      padding: 3px 5px;
+      margin: 3px;
+      font-size: 0.5rem;
+      background: $color-border-light;
+      color: $color-text-primary;
+      z-index: 10;
+
+      &.school {
+        text-transform: capitalize;
+      }
+
+      &.purple {
+        background: $color-tag-purple;
+        color: $color-white;
+      }
+
+      &.red {
+        background: $color-tag-red;
+        color: $color-white;
+      }
+
+      &.orange {
+        background: $color-tag-orange;
+        color: $color-text-primary;
+      }
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+      @include transition(transform, 1s);
+    }
+  }
+
+  .body {
+    text-align: center;
+  }
+
+  .title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    margin: $space-4 0;
+    padding: 0 $space-4;
+
+    @include media-xl {
+      font-size: $font-size-sm;
+    }
+  }
+
+  .description {
+    font-weight: $font-weight-medium;
+    font-size: 0.6rem;
+    padding: 0 $space-4;
+    margin-bottom: $space-3;
+    color: $color-gray-500;
+    text-align: left;
+  }
+}
+
+// Grid for Cards
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: $space-4;
+
+  @include media-xl {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-2;
+  }
+
+  @include media-lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-sm {
+    grid-template-columns: 1fr;
+  }
+}

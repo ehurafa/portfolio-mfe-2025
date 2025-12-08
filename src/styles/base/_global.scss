@@ -1,0 +1,16 @@
+// ====================================
+// GLOBAL STYLES
+// ====================================
+
+@use '../tokens/typography' as *;
+@use '../tokens/colors' as *;
+
+body {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  font-style: normal;
+  background: $color-bg-primary;
+  color: $color-text-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+}

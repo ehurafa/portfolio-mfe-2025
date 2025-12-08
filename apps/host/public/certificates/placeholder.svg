@@ -1,0 +1,13 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f1f1f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a2a2a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad)"/>
+  <circle cx="200" cy="100" r="40" fill="none" stroke="#00ffeb" stroke-width="2"/>
+  <path d="M 180 100 L 195 115 L 220 85" stroke="#00ffeb" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">Certificado</text>
+  <text x="200" y="210" font-family="Arial, sans-serif" font-size="14" fill="#999999" text-anchor="middle">Thumbnail Placeholder</text>
+</svg>

@@ -1,0 +1,11 @@
+# Permitir WordPress REST API no subdiretório
+RewriteEngine On
+
+RewriteRule ^postsapi/wp-json/(.*)$ /postsapi/wp-json/$1 [L]
+RewriteRule ^postsapi/(.*)$ - [L]
+
+# Regras SPA do React
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+

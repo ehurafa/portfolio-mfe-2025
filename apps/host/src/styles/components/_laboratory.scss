@@ -1,0 +1,315 @@
+// ====================================
+// LABORATORY PAGE STYLES  
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+@use '../tokens/shadows' as *;
+
+.laboratory {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $space-8 $space-6;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $space-6 $space-4;
+  }
+}
+
+.laboratory-header {
+  margin-bottom: $space-8;
+
+  h1 {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+    max-width: 800px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+// Category Filter
+.category-filter {
+  display: flex;
+  gap: $space-3;
+  margin-bottom: $space-6;
+  flex-wrap: wrap;
+
+  .filter-btn {
+    padding: $space-2 $space-4;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+    background: $color-white;
+    border: 2px solid $color-border-light;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $color-brand;
+      color: $color-brand;
+    }
+
+    &.active {
+      background: $color-brand;
+      color: $color-dark;
+      border-color: $color-brand;
+    }
+  }
+}
+
+// Projects Grid
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $space-6;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.project-card {
+  background: $color-bg-card;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid $color-border-light;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-4px);
+
+    .project-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.project-screenshot {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: $color-gray-100;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  .view-btn {
+    padding: $space-3 $space-6;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-dark;
+    background: $color-brand;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.project-info {
+  padding: $space-5;
+
+  h3 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $space-2;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    line-height: $line-height-normal;
+    margin-bottom: $space-4;
+  }
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+
+  .tech-tag {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    padding: $space-1 $space-3;
+    background: $color-gray-200;
+    color: $color-text-primary;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $color-brand;
+      color: $color-dark;
+    }
+  }
+}
+
+// Project Viewer Modal
+.project-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-4 $space-6;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (max-width: $breakpoint-md) {
+    padding: $space-3 $space-4;
+  }
+}
+
+.viewer-title {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+
+  h2 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin: 0;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  svg {
+    font-size: $font-size-lg;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    span {
+      display: none;
+    }
+  }
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: $color-white;
+  font-size: $font-size-xl;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.4);
+  }
+}
+
+.viewer-content {
+  flex: 1;
+  overflow: hidden;
+  padding: $space-4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Iframe styling
+.project-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 80vh;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  box-shadow: $shadow-2xl;
+}

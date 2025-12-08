@@ -1,0 +1,66 @@
+// ====================================
+// BREAKPOINTS & MEDIA QUERIES
+// ====================================
+
+// Breakpoint Values
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 960px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Media Query Mixins
+@mixin media-sm {
+  @media (max-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media (max-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media (max-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media (max-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin media-2xl {
+  @media (max-width: #{$breakpoint-2xl}) {
+    @content;
+  }
+}
+
+// Min-width variants
+@mixin media-sm-up {
+  @media (min-width: #{$breakpoint-sm + 1}) {
+    @content;
+  }
+}
+
+@mixin media-md-up {
+  @media (min-width: #{$breakpoint-md + 1}) {
+    @content;
+  }
+}
+
+@mixin media-lg-up {
+  @media (min-width: #{$breakpoint-lg + 1}) {
+    @content;
+  }
+}
+
+@mixin media-xl-up {
+  @media (min-width: #{$breakpoint-xl + 1}) {
+    @content;
+  }
+}

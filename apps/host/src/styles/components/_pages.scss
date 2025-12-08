@@ -1,0 +1,39 @@
+// ====================================
+// PROJECT-SPECIFIC COMPONENTS
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+
+.project-details {
+  .tags {
+    list-style: none;
+    display: flex;
+    gap: $space-3;
+    padding: 0;
+    margin: $space-6 0;
+
+    li {
+      font-size: $font-size-xs;
+      padding: $space-1 $space-2;
+      background: $color-gray-200;
+      border-radius: 4px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    margin-bottom: $space-6;
+    border-radius: 8px;
+  }
+
+  h1 {
+    margin-bottom: $space-4;
+  }
+}
+
+.about {
+  max-width: 1024px;
+  line-height: $line-height-relaxed;
+}

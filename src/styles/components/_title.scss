@@ -1,0 +1,58 @@
+// ====================================
+// TITLE COMPONENT
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.title-wapper {
+  margin-bottom: $space-4;
+}
+
+.title {
+  align-items: center;
+  display: flex;
+
+  h1 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-black;
+    font-style: normal;
+    float: left;
+    margin: 0;
+    padding: 0;
+
+    @include media-lg {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      font-size: $font-size-lg;
+    }
+
+    svg {
+      width: 35px;
+      height: 35px;
+      color: $color-text-primary;
+      margin-top: 5px;
+      display: none;
+    }
+
+    span {
+      float: right;
+      margin: 8px 0 0 0;
+      color: $color-text-secondary;
+
+      @include media-lg {
+        float: none;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  p {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-light;
+    color: $color-text-muted;
+  }
+}

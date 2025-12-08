@@ -1,0 +1,31 @@
+// ====================================
+// BUTTON COMPONENT
+// ====================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../utilities/mixins' as *;
+
+.btn {
+  border: 0;
+  font-size: $font-size-xs;
+  padding: $space-2;
+  background: $color-bg-dark;
+  color: $color-white;
+  cursor: pointer;
+  @include transition(all, 0.2s);
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+
+  &:hover {
+    background: $color-brand;
+    color: $color-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

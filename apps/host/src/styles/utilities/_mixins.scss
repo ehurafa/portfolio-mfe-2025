@@ -1,0 +1,54 @@
+// ====================================
+// UTILITY MIXINS
+// ====================================
+
+// Flexbox Center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Truncate Text
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Transition
+@mixin transition($properties: all, $duration: 0.12s, $timing: ease) {
+  transition: $properties $duration $timing;
+}
+
+// Hover Scale Effect
+@mixin hover-scale($scale: 1.02) {
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Aspect Ratio (for older browsers)
+@mixin aspect-ratio($width, $height) {
+  aspect-ratio: calc($width / $height);
+  
+  @supports not (aspect-ratio: 1) {
+    position: relative;
+    
+    &::before {
+      content: '';
+      display: block;
+      padding-top: calc(($height / $width) * 100%);
+    }
+  }
+}
+
+// Focus Visible
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid $color-brand;
+    outline-offset: 2px;
+  }
+}

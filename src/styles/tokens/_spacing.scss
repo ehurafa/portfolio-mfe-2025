@@ -1,0 +1,45 @@
+// ====================================
+// SPACING TOKENS (múltiplos de 4px)
+// ====================================
+
+$space-0: 0;
+$space-1: 4px;    // 4
+$space-2: 8px;    // 8
+$space-3: 12px;   // 12
+$space-4: 16px;   // 16
+$space-5: 20px;   // 20
+$space-6: 24px;   // 24
+$space-7: 28px;   // 28
+$space-8: 32px;   // 32
+$space-10: 40px;  // 40
+$space-12: 48px;  // 48
+$space-14: 56px;  // 56
+$space-16: 64px;  // 64
+$space-20: 80px;  // 80
+$space-24: 96px;  // 96
+
+// Spacing Map (útil para loops)
+$spacing: (
+  '0': $space-0,
+  '1': $space-1,
+  '2': $space-2,
+  '3': $space-3,
+  '4': $space-4,
+  '5': $space-5,
+  '6': $space-6,
+  '7': $space-7,
+  '8': $space-8,
+  '10': $space-10,
+  '12': $space-12,
+  '14': $space-14,
+  '16': $space-16,
+  '20': $space-20,
+  '24': $space-24,
+);
+
+// Aliases semânticos
+$spacing-xs: $space-2;   // 8px
+$spacing-sm: $space-4;   // 16px
+$spacing-md: $space-6;   // 24px
+$spacing-lg: $space-10;  // 40px
+$spacing-xl: $space-16;  // 64px
