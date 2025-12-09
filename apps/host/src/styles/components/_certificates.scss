@@ -1,0 +1,102 @@
+@use '../tokens/spacing' as *;
+@use '../tokens/breakpoints' as *;
+@use '../tokens/colors' as *;
+@use '../tokens/shadows' as *;
+@use '../tokens/typography' as *;
+@use '../utilities/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-6;
+  margin-top: $space-8;
+
+  @include media-md {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: $space-4;
+  }
+}
+
+// Ensure .card styling within the grid context works as expected
+// (Since Certificates.tsx uses "card" class manually on an anchor tag)
+.grid .card {
+  text-decoration: none;
+  background-color: $color-bg-card;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  @include transition(all, 0.3s);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid $color-border-light;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  .thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 65%; // Aspect ratio for certificate
+    overflow: hidden;
+    background-color: $color-gray-100;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @include transition(transform, 0.5s);
+    }
+  }
+
+  &:hover .thumb img {
+    transform: scale(1.05);
+  }
+
+  .tag {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    z-index: 2;
+    text-transform: uppercase;
+    
+    &.purple, &.udemy { background-color: $color-tag-purple; }
+    &.red, &.coder { background-color: $color-tag-red; }
+    &.orange { background-color: $color-tag-orange; }
+    &.white, &.alura { 
+      background-color: $color-white; 
+      color: $color-dark;
+    }
+  }
+
+  .body {
+    padding: $space-4;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin-bottom: $space-2;
+  }
+
+  .description {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+  }
+}

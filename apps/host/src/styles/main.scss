@@ -18,15 +18,16 @@
 @use './base/global';
 
 // 4. Layouts (using shared styles from src/styles)
-@use '../../../src/styles/layouts/layout';
+@use './layouts/layout';
 
 // 5. Components
 @use './components/sidebar';
 @use './components/nav';
-@use '../../../src/styles/components/card';
+@use './components/card';
 @use './components/button';
 @use './components/spinner';
-@use '../../../src/styles/components/title';
+@use './components/title';
 @use './components/pages';
 @use './components/laboratory';
 @use './components/home';
+@use './components/certificates';

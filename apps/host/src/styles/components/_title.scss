@@ -1,0 +1,57 @@
+@use '../tokens/colors' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/breakpoints' as *;
+
+// General Title Styles
+h1, .h1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  color: $color-text-primary;
+  margin-bottom: $space-6;
+  line-height: $line-height-tight;
+
+  @include media-md {
+    font-size: $font-size-2xl;
+  }
+}
+
+h2, .h2 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $space-5;
+  
+  @include media-md {
+    font-size: $font-size-xl;
+  }
+}
+
+h3, .h3 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $space-4;
+
+  @include media-md {
+    font-size: $font-size-lg;
+  }
+}
+
+// Section Titles
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: $space-8;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background-color: $color-brand;
+    border-radius: 2px;
+  }
+}

@@ -1,0 +1,101 @@
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/shadows' as *;
+@use '../tokens/typography' as *;
+@use '../utilities/mixins' as *;
+
+.card {
+  background-color: $color-bg-card;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  @include transition(all, 0.3s);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-border-light;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  // Variants
+  &--project {
+    .card__body {
+      padding: $space-4;
+    }
+  }
+
+  &--info {
+    // Info cards might have different styling
+  }
+
+  // Elements
+  &__thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; // 16:9
+    overflow: hidden;
+    background-color: $color-gray-100;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @include transition(transform, 0.5s);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    z-index: 2;
+    background-color: $color-dark; // fallback
+
+    &.purple { background-color: $color-tag-purple; }
+    &.red { background-color: $color-tag-red; }
+    &.orange { background-color: $color-tag-orange; }
+  }
+
+  &__body {
+    padding: $space-6;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin-bottom: $space-3;
+    
+    &--bordered {
+      border-bottom: 2px solid $color-brand;
+      padding-bottom: $space-2;
+      display: inline-block;
+      margin-bottom: $space-4;
+    }
+  }
+
+  &__content {
+    color: $color-text-secondary;
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    flex: 1;
+  }
+}

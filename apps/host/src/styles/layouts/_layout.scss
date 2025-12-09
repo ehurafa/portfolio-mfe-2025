@@ -1,0 +1,54 @@
+@use '../tokens/breakpoints' as *;
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+
+.layout {
+  display: flex;
+  flex-direction: row; // Desktop default: Side by side
+  height: 100vh; // Full viewport height for sticky sidebar effect
+  background-color: $color-bg-primary;
+  overflow: hidden;
+
+  @include media-lg {
+    flex-direction: column; // Mobile: Stacked
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: $space-8;
+  width: 100%;
+  max-width: 1600px; // Reasonable limit for very large screens
+  margin: 0 auto;
+  overflow-y: auto; // Independent scroll
+  height: 100%;
+
+  @include media-lg {
+    padding: $space-4;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  // Smooth scrolling for the content area
+  scroll-behavior: smooth;
+  
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-gray-300;
+    border-radius: 4px;
+    
+    &:hover {
+      background-color: $color-gray-400;
+    }
+  }
+}
