@@ -4,11 +4,13 @@
 
 @use '../tokens/spacing' as *;
 @use '../tokens/breakpoints' as *;
+@use '../tokens/colors' as *;
 
 .layout {
   display: flex;
   gap: $space-6;
   min-height: 100vh;
+  background: $color-bg-hover;
   
   @include media-lg {
     flex-direction: column;

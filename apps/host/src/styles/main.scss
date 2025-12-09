@@ -23,10 +23,10 @@
 // 5. Components
 @use './components/sidebar';
 @use './components/nav';
-@use './components/card';
+@use '../../../src/styles/components/card';
 @use './components/button';
 @use './components/spinner';
-@use './components/title';
+@use '../../../src/styles/components/title';
 @use './components/pages';
 @use './components/laboratory';
 @use './components/home';

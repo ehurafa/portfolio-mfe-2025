@@ -222,7 +222,7 @@ export default function Certificates() {
 
   return (
     <>
-      <div className="title-warpper">
+      <div className="title-wrapper">
         <div className="title">
           <h1>
             {' '}

@@ -1,5 +1,5 @@
 // ====================================
-// CARD COMPONENT
+// CARD COMPONENT (Unified & Reusable)
 // ====================================
 
 @use '../tokens/colors' as *;
@@ -9,13 +9,160 @@
 @use '../tokens/breakpoints' as *;
 @use '../utilities/mixins' as *;
 
+// Base Card Styles
 .card {
-  box-shadow: $shadow-sm;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: $space-4;
   background: $color-bg-card;
+  border: 1px solid $color-border-light;
+  border-radius: 8px;
+  box-shadow: $shadow-sm;
+  margin-bottom: $space-4;
+  @include transition(all, 0.3s);
 
+  // Card Body
+  &__body {
+    padding: $space-4;
+    text-align: center;
+  }
+
+  // Card Title (default)
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    margin: $space-4 0;
+    color: $color-text-primary;
+
+    @include media-xl {
+      font-size: $font-size-sm;
+    }
+
+    // Info variant: title with bottom border
+    &--bordered {
+      font-size: $font-size-xl;
+      margin-bottom: $space-5;
+      padding-bottom: $space-3;
+      border-bottom: 2px solid $color-brand;
+
+      @include media-md {
+        font-size: $font-size-lg;
+      }
+    }
+  }
+
+  // Card Content
+  &__content {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  // Thumbnail (for project variant)
+  &__thumb {
+    @include aspect-ratio(16, 9);
+    background: $color-border-light;
+    overflow: hidden;
+    position: relative;
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      line-height: 1;
+      @include transition(transform, 1s);
+    }
+  }
+
+  // Tags (for project variant)
+  &__tag {
+    position: absolute;
+    padding: 3px 5px;
+    margin: 3px;
+    font-size: 0.5rem;
+    background: $color-border-light;
+    color: $color-text-primary;
+    z-index: 10;
+
+    &.school {
+      text-transform: capitalize;
+    }
+
+    &.purple {
+      background: $color-tag-purple;
+      color: $color-white;
+    }
+
+    &.red {
+      background: $color-tag-red;
+      color: $color-white;
+    }
+
+    &.orange {
+      background: $color-tag-orange;
+      color: $color-text-primary;
+    }
+  }
+
+  // Description (for project variant)
+  .description {
+    font-weight: $font-weight-medium;
+    font-size: 0.6rem;
+    padding: 0 $space-4;
+    margin-bottom: $space-3;
+    color: $color-gray-500;
+    text-align: left;
+  }
+
+  // ============================================
+  // VARIANTS
+  // ============================================
+
+  // Info Variant (Home page cards)
+  &--info {
+    padding: $space-6;
+    box-shadow: $shadow-md;
+
+    &:hover {
+      box-shadow: $shadow-lg;
+      transform: translateY(-2px);
+    }
+
+    @include media-md {
+      padding: $space-5;
+    }
+
+    .card__body {
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  // Project Variant (Projects page cards)
+  &--project {
+    .card__body {
+      text-align: center;
+    }
+  }
+
+  // Interactive Variant (with hover effects)
+  &--interactive {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $shadow-lg;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ============================================
+// LEGACY CLASS SUPPORT (for Certificates page)
+// ============================================
+// Keep these for backwards compatibility with pages still using old class names
+
+.card {
+  // Legacy: .thumb (same as card__thumb)
   .thumb {
     @include aspect-ratio(16, 9);
     background: $color-border-light;
@@ -26,6 +173,15 @@
       transform: scale(1.05);
     }
 
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      line-height: 1;
+      @include transition(transform, 1s);
+    }
+
+    // Tags within thumb
     .tag {
       position: absolute;
       padding: 3px 5px;
@@ -53,38 +209,39 @@
         background: $color-tag-orange;
         color: $color-text-primary;
       }
-    }
 
-    img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 0.5rem;
-      line-height: 1;
-      @include transition(transform, 1s);
+      &.white {
+        background: $color-white;
+        color: $color-text-primary;
+      }
     }
   }
 
+  // Legacy: .body (same as card__body)
   .body {
+    padding: $space-4;
     text-align: center;
   }
 
-  .title {
+  // Legacy: .title (when inside .body)
+  .body .title {
     font-weight: $font-weight-bold;
     font-size: $font-size-base;
-    margin: $space-4 0;
-    padding: 0 $space-4;
+    margin: $space-2 0 $space-1 0; // Reduced vertical spacing
+    padding: 0; // Removed horizontal padding
+    color: $color-text-primary;
 
     @include media-xl {
       font-size: $font-size-sm;
     }
   }
 
+  // Legacy: .description
   .description {
     font-weight: $font-weight-medium;
     font-size: 0.6rem;
-    padding: 0 $space-4;
-    margin-bottom: $space-3;
+    padding: 0; // Removed horizontal padding
+    margin: 0 0 $space-2 0; // Reduced bottom margin
     color: $color-gray-500;
     text-align: left;
   }

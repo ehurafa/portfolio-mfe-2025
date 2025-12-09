@@ -18,7 +18,7 @@ export default function About() {
 
   return (
     <>
-      <div className="title-warpper">
+      <div className="title-wrapper">
         <div className="title">
           <h1>
             {' '}
