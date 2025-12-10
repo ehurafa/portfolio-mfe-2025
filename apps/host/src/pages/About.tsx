@@ -18,7 +18,7 @@ export default function About() {
 
   return (
     <>
-      <div className="title-wrapper">
+      <header className="title-wrapper">
         <div className="title">
           <h1>
             <VscPreview />{' '}
@@ -28,7 +28,7 @@ export default function About() {
             </span>
           </h1>
         </div>
-      </div>
+      </header>
 
       <article className="about">
         <p>

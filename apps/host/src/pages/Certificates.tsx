@@ -222,7 +222,7 @@ export default function Certificates() {
 
   return (
     <>
-      <div className="title-wrapper">
+      <header className="title-wrapper">
         <div className="title">
           <h1>
             <VscMortarBoard />{' '}
@@ -234,7 +234,7 @@ export default function Certificates() {
           </h1>
         </div>
         <p>Os meus certificados mais relevantes</p>
-      </div>
+      </header>
 
       {!certificates ? (
         <Spinner />

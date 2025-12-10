@@ -61,12 +61,16 @@ export default function Laboratory() {
 
   return (
     <div className="laboratory">
-      <header className="laboratory-header">
-        <h1>Laboratório</h1>
-        <p>
-          Explore meus projetos desenvolvidos durante cursos e estudos. Cada projeto é uma aplicação
-          funcional que você pode interagir.
-        </p>
+      <header className="title-wrapper">
+        <div className="title">
+          <h1>
+            <span>Laboratório</span>
+          </h1>
+          <p>
+            Explore meus projetos desenvolvidos durante cursos e estudos. Cada projeto é uma
+            aplicação funcional que você pode interagir.
+          </p>
+        </div>
       </header>
 
       {!selectedProject ? (
