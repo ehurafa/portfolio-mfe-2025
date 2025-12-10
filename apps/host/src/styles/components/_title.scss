@@ -71,7 +71,6 @@ h3, .h3 {
       font-family: 'Poppins', sans-serif;
       font-weight: 900;
       font-size: $font-size-3xl;
-      text-transform: uppercase;
       letter-spacing: -2px;
       line-height: $font-size-3xl;
       color: $color-text-light;
@@ -81,7 +80,7 @@ h3, .h3 {
         width: 100%;
         display: flex;
         font-size: $font-size-lg;
-        line-height: $font-size-lg;
+        line-height: $font-size-2xl;
       }
 
     svg {
@@ -95,17 +94,21 @@ h3, .h3 {
     & > span {
       float: right;
       margin: 8px 0 0 0;
+      font-family: 'Kaushan Script', cursive;
+      font-weight: 500;
 
       @include media-lg {
         float: none;
         margin-top: 5px;
-        font-weight: 800;
+        font-size: $font-size-xl;
       }
 
        span {
         color: $color-brand;
         font-size: $font-size-giant;
         text-transform: uppercase;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 900;
 
         @include media-lg {
           font-size:  $font-size-3xl;
