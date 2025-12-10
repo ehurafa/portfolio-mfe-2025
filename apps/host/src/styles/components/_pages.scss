@@ -36,4 +36,10 @@
 .about {
   max-width: 1024px;
   line-height: $line-height-relaxed;
+  
+  p {
+    font-size: $font-size-lg;
+    font-style: italic;
+    color: $color-gray-50;
+  }
 }

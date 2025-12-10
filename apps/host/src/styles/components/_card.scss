@@ -79,8 +79,9 @@
   }
 
   &__title {
+    font-family: 'Poppins', sans-serif;
     font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-semibold;
     color: $color-text-primary;
     margin-bottom: $space-3;
     

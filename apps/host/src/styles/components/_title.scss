@@ -70,17 +70,18 @@ h3, .h3 {
 
       font-family: 'Poppins', sans-serif;
       font-weight: 900;
-      font-size: $font-size-giant;
+      font-size: $font-size-3xl;
       text-transform: uppercase;
       letter-spacing: -2px;
-      line-height: $font-size-giant;
+      line-height: $font-size-3xl;
+      color: $color-text-light;
 
       @include media-lg {
         margin: 0;
         width: 100%;
         display: flex;
-        font-size: $font-size-3xl;
-        line-height: $font-size-3xl;
+        font-size: $font-size-lg;
+        line-height: $font-size-lg;
       }
 
     svg {
@@ -91,14 +92,24 @@ h3, .h3 {
       display: none;
     }
 
-    span {
+    & > span {
       float: right;
       margin: 8px 0 0 0;
-      color: $color-text-light;
 
       @include media-lg {
         float: none;
         margin-top: 5px;
+        font-weight: 800;
+      }
+
+       span {
+        color: $color-brand;
+        font-size: $font-size-giant;
+        text-transform: uppercase;
+
+        @include media-lg {
+          font-size:  $font-size-3xl;
+        }
       }
     }
   }

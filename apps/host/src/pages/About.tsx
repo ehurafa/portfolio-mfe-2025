@@ -24,13 +24,13 @@ export default function About() {
             <VscPreview />{' '}
             <span>
               Minha História
-              <br /> no Front-End
+              <br /> <span>no Front-End</span>
             </span>
           </h1>
         </div>
       </div>
 
-      <div className="about">
+      <article className="about">
         <p>
           Sou Rafael Gomes, Desenvolvedor Front-end especializado no ecossistema JavaScript há mais
           de 14 anos, atuando na construção de interfaces escaláveis, performáticas e sustentáveis
@@ -65,7 +65,7 @@ export default function About() {
           nível técnico dos produtos em que atuo — sempre com o objetivo de construir aplicações
           mais rápidas, seguras, modulares e com uma base bem estruturada em JavaScript.
         </p>
-      </div>
+      </article>
     </>
   )
 }

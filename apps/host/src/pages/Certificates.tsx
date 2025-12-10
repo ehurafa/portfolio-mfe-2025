@@ -1,5 +1,5 @@
-import { VscMortarBoard } from 'react-icons/vsc';
-import Spinner from '../components/Spinner';
+import { VscMortarBoard } from 'react-icons/vsc'
+import Spinner from '../components/Spinner'
 
 export default function Certificates() {
   const mappedTags: Record<string, string> = {
@@ -7,7 +7,7 @@ export default function Certificates() {
     alura: 'white',
     coder: 'red',
     'internet innovation': 'orange'
-  };
+  }
 
   const certificates = [
     {
@@ -218,15 +218,19 @@ export default function Certificates() {
       thumb: '/certificates/pipelines.png',
       tags: ['udemy']
     }
-  ];
+  ]
 
   return (
     <>
       <div className="title-wrapper">
         <div className="title">
           <h1>
-            {' '}
-            <VscMortarBoard /> <span>Certificados</span>
+            <VscMortarBoard />{' '}
+            <span>
+              Alguns
+              <br />
+              <span>Certificados</span>
+            </span>
           </h1>
         </div>
         <p>Os meus certificados mais relevantes</p>
@@ -254,11 +258,11 @@ export default function Certificates() {
                         {cert.tags[0]}
                       </span>
                     ))}
-                  <img 
-                    src={cert.thumb} 
+                  <img
+                    src={cert.thumb}
                     alt={cert.title}
-                    onError={(e) => {
-                      e.currentTarget.src = '/certificates/placeholder.svg';
+                    onError={e => {
+                      e.currentTarget.src = '/certificates/placeholder.svg'
                     }}
                   />
                 </div>
@@ -272,5 +276,5 @@ export default function Certificates() {
         </div>
       )}
     </>
-  );
+  )
 }
