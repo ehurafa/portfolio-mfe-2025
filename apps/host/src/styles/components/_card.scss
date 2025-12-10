@@ -5,7 +5,7 @@
 @use '../utilities/mixins' as *;
 
 .card {
-  background-color: $color-bg-card;
+  background-color: $color-bg-dark;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: $shadow-sm;
