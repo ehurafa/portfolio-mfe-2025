@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Certificates from './pages/Certificates'
 import About from './pages/About'
@@ -15,8 +14,7 @@ export default function App() {
       </aside>
       <main className="content">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projetos" element={<Projects />} />
+          <Route path="/" element={<Projects />} />
           <Route path="/certificados" element={<Certificates />} />
           <Route path="/sobre-mim" element={<About />} />
           <Route path="/laboratorio" element={<Laboratory />} />

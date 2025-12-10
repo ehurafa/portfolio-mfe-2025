@@ -57,10 +57,7 @@ export default function Sidebar() {
       </div>
 
       <nav className={`nav ${isOpen ? 'open' : ''}`}>
-        <NavLink to="/" end onClick={() => setIsOpen(false)}>
-          Inicial
-        </NavLink>
-        <NavLink to="/projetos" onClick={() => setIsOpen(false)}>
+        <NavLink to="/" onClick={() => setIsOpen(false)}>
           Projetos
         </NavLink>
         <NavLink to="/sobre-mim" onClick={() => setIsOpen(false)}>
