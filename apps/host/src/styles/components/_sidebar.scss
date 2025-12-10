@@ -18,11 +18,20 @@
   min-height: 100vh;
   width: 280px;
   flex-shrink: 0;
+  z-index: 100;
 
   @include media-lg {
     width: 100%;
     position: relative;
     min-height: auto;
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & > div {
+    width: 100%;
   }
 
   .avatar {
@@ -34,7 +43,7 @@
     margin: 0 auto $space-3 auto;
 
     @include media-lg {
-      max-width: 150px;
+      max-width: 120px;
     }
   }
 
@@ -43,8 +52,11 @@
     text-align: center;
 
     @include media-lg {
+      margin-top: $space-4;
+      
       img {
         display: inline-block;
+        max-width: 180px;
       }
     }
 
@@ -63,6 +75,7 @@
 
     @include media-lg {
       text-align: center;
+      margin-bottom: $space-4;
     }
   }
 
@@ -73,7 +86,9 @@
 
     @include media-lg {
       justify-content: center;
-      margin-bottom: 0;
+      margin-bottom: $space-4;
+      position: relative;
+      width: 100%;
     }
 
     span {
@@ -92,6 +107,60 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: $color-white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include transition(background, 0.2s);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @include media-lg {
+      display: flex;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .nav {
+    @include media-lg {
+      @include transition(max-height, 0.4s, ease-in-out);
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &.open {
+        max-height: 500px;
+        padding-bottom: $space-4;
+      }
+
+      a {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        &:last-child {
+          border-bottom: none;
+        }
       }
     }
   }
