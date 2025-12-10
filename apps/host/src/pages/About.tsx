@@ -21,8 +21,11 @@ export default function About() {
       <div className="title-wrapper">
         <div className="title">
           <h1>
-            {' '}
-            <VscPreview /> <span>Minha História no Front-End</span>
+            <VscPreview />{' '}
+            <span>
+              Minha História
+              <br /> no Front-End
+            </span>
           </h1>
         </div>
       </div>
