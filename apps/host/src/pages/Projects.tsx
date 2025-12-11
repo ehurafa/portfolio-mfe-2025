@@ -8,9 +8,17 @@ export default function Projects() {
   const [posts, setPosts] = useState<WPPost[] | null>(null)
 
   useEffect(() => {
+    let mounted = true
     fetchPosts()
-      .then(setPosts)
-      .catch(() => setPosts([]))
+      .then(data => {
+        if (mounted) setPosts(data)
+      })
+      .catch(() => {
+        if (mounted) setPosts([])
+      })
+    return () => {
+      mounted = false
+    }
   }, [])
 
   const filtered = useMemo(() => {

@@ -35,6 +35,9 @@ Este projeto é um portfólio profissional que demonstra boas práticas de desen
 - **Advanced Custom Fields** (ACF v3)
 
 ### Quality & Tooling
+- **Vitest** - Framework de testes unitários (substituto rápido do Jest)
+- **React Testing Library** - Testes de componentes centrados no usuário
+- **Happy-DOM** - Ambiente de simulação de browser leve (substituto do JSDOM)
 - **ESLint** - Linting JavaScript/TypeScript
 - **Prettier** - Formatação de código
 - **Husky** - Git hooks
@@ -414,6 +417,8 @@ npm run clean
 | `npm run lint:fix` | Corrige problemas automaticamente |
 | `npm run format` | Formata código com Prettier |
 | `npm run clean` | Lint + Format |
+| `npm run test` | Executa testes unitários (Vitest) |
+| `npm run test:ui` | Abre interface gráfica de testes |
 
 ### Scripts por Workspace
 
@@ -566,3 +571,37 @@ Breakpoints definidos:
 - **lg**: 960px
 - **xl**: 1280px
 - **2xl**: 1536px
+
+## 🧪 Testes Automatizados
+
+O projeto conta com uma suíte de testes unitários robusta utilizando **Vitest** e **React Testing Library**.
+
+### Stack de Testes
+- **Vitest**: Test Runner rápido e compatível com Vite.
+- **Happy-DOM**: Ambiente DOM simulado para execução rápida.
+- **React Testing Library**: Testes de interação focados no usuário.
+
+### Cobertura
+Os testes cobrem os principais aspectos da aplicação `host`:
+
+1. **Componentes Core**:
+   - `Card`, `ProjectCard`, `Spinner`, `Sidebar`, `MFEErrorBoundary`.
+   - Validação de renderização, variantes, interatividade e error handling.
+
+2. **Páginas**:
+   - `Home`, `About`, `Projects`.
+   - Mocks de APIs externas (GitHub, WordPress) para testes isolados.
+   - Validação de estados de loading e exibição de dados.
+
+### Executando Testes
+
+```bash
+# Rodar todos os testes (watch mode padrão)
+npm run test
+
+# Rodar testes apenas uma vez (CI/CD)
+npm run test -- --run
+
+# Rodar testes com interface gráfica
+npm run test:ui
+```
