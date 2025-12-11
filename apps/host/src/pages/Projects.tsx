@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { VscBeaker } from 'react-icons/vsc'
-import { fetchPosts, WPPost } from '../api/wp'
+import { type WPPost, fetchPosts } from '../api/wp'
 import ProjectCard from '../components/ProjectCard'
 import Spinner from '../components/Spinner'
 

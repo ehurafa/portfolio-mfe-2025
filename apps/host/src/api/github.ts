@@ -68,14 +68,14 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
     )
 
     // Agregar
-    results.forEach(langs => {
+    for (const langs of results) {
       if (langs) {
-        Object.entries(langs).forEach(([lang, bytes]) => {
+        for (const [lang, bytes] of Object.entries(langs)) {
           languageTotals[lang] = (languageTotals[lang] || 0) + (bytes as number)
           totalBytes += bytes as number
-        })
+        }
       }
-    })
+    }
 
     // Calcular percentuais
     const languagesArray: GithubLanguage[] = Object.entries(languageTotals)
@@ -146,10 +146,10 @@ export async function fetchGithubContributions(): Promise<{
     // Contar contribuições por dia
     const contributionsByDate: Record<string, number> = {}
 
-    events.forEach((event: { created_at: string }) => {
+    for (const event of events as Array<{ created_at: string }>) {
       const date = new Date(event.created_at).toISOString().split('T')[0]
       contributionsByDate[date] = (contributionsByDate[date] || 0) + 1
-    })
+    }
 
     // Gerar últimas 52 semanas (364 dias)
     const contributions: GithubContribution[] = []

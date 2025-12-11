@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
-import Projects from './pages/Projects'
-import Certificates from './pages/Certificates'
-import About from './pages/About'
-import ProjectDetails from './pages/ProjectDetails'
-import Laboratory from './pages/Laboratory'
 import Sidebar from './components/Sidebar'
+import About from './pages/About'
+import Certificates from './pages/Certificates'
+import Laboratory from './pages/Laboratory'
+import ProjectDetails from './pages/ProjectDetails'
+import Projects from './pages/Projects'
 
 export default function App() {
   return (

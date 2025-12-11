@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import TimerDisplay from './TimerDisplay'
-import TimerControls from './TimerControls'
 import LapList from './LapList'
+import TimerControls from './TimerControls'
+import TimerDisplay from './TimerDisplay'
 
 import './Timer.css'
 
@@ -12,22 +12,11 @@ const Timer = () => {
   const [laps, setLaps] = useState([])
 
   const formatTime = () => {
-    const minutes = ('0' + (Math.floor(millisenconds / 60000) % 60)).slice(-2)
-    const seconds = ('0' + (Math.floor(millisenconds / 1000) % 60)).slice(-2)
-    const centiseconds = ('0' + (Math.floor(millisenconds / 10) % 100)).slice(-2)
+    const minutes = `0${Math.floor(millisenconds / 60000) % 60}`.slice(-2)
+    const seconds = `0${Math.floor(millisenconds / 1000) % 60}`.slice(-2)
+    const centiseconds = `0${Math.floor(millisenconds / 10) % 100}`.slice(-2)
 
     return `${minutes}:${seconds}:${centiseconds}`
-  }
-
-  const startTimer = interval => {
-    return setInterval(() => {
-      setMilliseconds(prevMilliseconds => prevMilliseconds + 10)
-    }, 10)
-  }
-
-  const stopTimer = interval => {
-    clearInterval(interval)
-    return interval
   }
 
   const resetTimer = () => {
@@ -46,12 +35,16 @@ const Timer = () => {
     let interval = null
 
     if (timerOn) {
-      interval = startTimer(interval)
-    } else {
-      interval = stopTimer(interval)
+      interval = setInterval(() => {
+        setMilliseconds(prevMilliseconds => prevMilliseconds + 10)
+      }, 10)
     }
 
-    return () => stopTimer(interval)
+    return () => {
+      if (interval !== null) {
+        clearInterval(interval)
+      }
+    }
   }, [timerOn])
 
   return (

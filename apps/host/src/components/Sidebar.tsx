@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { TiSocialLinkedin } from 'react-icons/ti'
 import { BiLogoPinterestAlt } from 'react-icons/bi'
 import { FaGithubAlt } from 'react-icons/fa6'
 import { IoIosMenu, IoMdClose } from 'react-icons/io'
-import profileImage from '../assets/profile.jpg'
+import { TiSocialLinkedin } from 'react-icons/ti'
+import { NavLink } from 'react-router-dom'
 import brandImage from '../assets/brand.png'
+import profileImage from '../assets/profile.jpg'
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,6 +24,7 @@ export default function Sidebar() {
       <div className="social">
         <button
           className="menu-toggle"
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation"
         >

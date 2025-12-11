@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 interface CardProps {
   variant?: 'default' | 'project' | 'info' | 'interactive'
@@ -22,18 +22,36 @@ export default function Card({
   const baseClass = 'card'
   const variantClass = variant !== 'default' ? `card--${variant}` : ''
   const classes = [baseClass, variantClass, className].filter(Boolean).join(' ')
+  const isInteractive = typeof onClick === 'function'
 
   return (
-    <div className={classes} onClick={onClick}>
+    <div
+      className={classes}
+      onClick={onClick}
+      role={isInteractive ? 'button' : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      onKeyDown={
+        isInteractive
+          ? (event: React.KeyboardEvent<HTMLDivElement>) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                onClick?.()
+              }
+            }
+          : undefined
+      }
+    >
       {/* Project variant: thumbnail with tags */}
       {variant === 'project' && thumbnail && (
         <div className="card__thumb">
-          {tags &&
-            tags.map((tag, i) => (
-              <span key={i} className={`card__tag ${tag.color || ''}`}>
-                {tag.name}
-              </span>
-            ))}
+          {tags?.map(tag => (
+            <span
+              key={`${tag.name}-${tag.color ?? 'default'}`}
+              className={`card__tag ${tag.color || ''}`}
+            >
+              {tag.name}
+            </span>
+          ))}
           <img src={thumbnail} alt={title || ''} loading="lazy" />
         </div>
       )}

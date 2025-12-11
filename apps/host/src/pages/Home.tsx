@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import { fetchGithubContributions, fetchGithubLanguages } from '../api/github'
 import Card from '../components/Card'
 import Spinner from '../components/Spinner'
-import { fetchGithubLanguages, fetchGithubContributions } from '../api/github'
 
 interface GithubLanguage {
   name: string
@@ -63,7 +63,7 @@ export default function Home() {
                   backgroundColor: lang.color
                 }}
                 title={`${lang.name}: ${lang.percentage.toFixed(2)}%`}
-              ></div>
+              />
             ))}
           </div>
 
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="languages-grid">
             {languages.map(lang => (
               <div key={lang.name} className="language-item">
-                <span className="language-dot" style={{ backgroundColor: lang.color }}></span>
+                <span className="language-dot" style={{ backgroundColor: lang.color }} />
                 <span className="language-name">{lang.name}</span>
                 <span className="language-percent">{lang.percentage.toFixed(2)}%</span>
               </div>
@@ -99,13 +99,16 @@ export default function Home() {
                   (weekIndex + 1) * 7
                 )
                 return (
-                  <div key={weekIndex} className="contribution-week">
-                    {weekContribs.map((contrib, dayIndex) => (
+                  <div
+                    key={weekContribs[0]?.date ?? `week-${weekIndex}`}
+                    className="contribution-week"
+                  >
+                    {weekContribs.map(contrib => (
                       <div
-                        key={`${weekIndex}-${dayIndex}`}
+                        key={contrib.date}
                         className={`contribution-day level-${contrib.level}`}
                         title={`${contrib.date}: ${contrib.count} contribuições`}
-                      ></div>
+                      />
                     ))}
                   </div>
                 )
@@ -114,11 +117,11 @@ export default function Home() {
           </div>
           <div className="contribution-legend">
             <span>Menos</span>
-            <div className="contribution-day level-0"></div>
-            <div className="contribution-day level-1"></div>
-            <div className="contribution-day level-2"></div>
-            <div className="contribution-day level-3"></div>
-            <div className="contribution-day level-4"></div>
+            <div className="contribution-day level-0" />
+            <div className="contribution-day level-1" />
+            <div className="contribution-day level-2" />
+            <div className="contribution-day level-3" />
+            <div className="contribution-day level-4" />
             <span>Mais</span>
           </div>
         </Card>

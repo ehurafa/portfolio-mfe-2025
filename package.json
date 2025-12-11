@@ -21,7 +21,10 @@
     "format": "prettier --write \"apps/*/src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "clean": "npm run lint:fix && npm run format",
     "test": "npm run test --workspaces",
-    "prepare": "husky"
+    "prepare": "husky",
+    "biome:check": "biome check apps --diagnostic-level=warn",
+    "biome:format": "biome format apps --write",
+    "biome:ci": "biome check apps"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
@@ -30,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@eslint/eslintrc": "^3.3.1",
     "@originjs/vite-plugin-federation": "^1.4.1",
     "@typescript-eslint/eslint-plugin": "^8.46.4",

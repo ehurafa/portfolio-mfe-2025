@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import './styles.css';
+import { useState } from 'react'
+import './styles.css'
 
 interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
+  id: number
+  text: string
+  completed: boolean
 }
 
 export default function TodoApp() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [todos, setTodos] = useState<Todo[]>([])
+  const [inputValue, setInputValue] = useState('')
 
   const addTodo = () => {
     if (inputValue.trim()) {
@@ -17,27 +17,25 @@ export default function TodoApp() {
         id: Date.now(),
         text: inputValue,
         completed: false
-      };
-      setTodos([...todos, newTodo]);
-      setInputValue('');
+      }
+      setTodos([...todos, newTodo])
+      setInputValue('')
     }
-  };
+  }
 
   const toggleTodo = (id: number) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
-  };
+    setTodos(todos.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)))
+  }
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      addTodo();
+      addTodo()
     }
-  };
+  }
 
   return (
     <div className="todo-app">
@@ -47,12 +45,12 @@ export default function TodoApp() {
           <input
             type="text"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={e => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="What needs to be done?"
             className="todo-input"
           />
-          <button onClick={addTodo} className="add-btn">
+          <button type="button" onClick={addTodo} className="add-btn">
             Add
           </button>
         </div>
@@ -61,7 +59,7 @@ export default function TodoApp() {
           <p className="empty-state">No tasks yet. Add one above! 👆</p>
         ) : (
           <ul className="todo-list">
-            {todos.map((todo) => (
+            {todos.map(todo => (
               <li key={todo.id} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
                 <input
                   type="checkbox"
@@ -70,7 +68,7 @@ export default function TodoApp() {
                   className="todo-checkbox"
                 />
                 <span className="todo-text">{todo.text}</span>
-                <button onClick={() => deleteTodo(todo.id)} className="delete-btn">
+                <button type="button" onClick={() => deleteTodo(todo.id)} className="delete-btn">
                   ×
                 </button>
               </li>
@@ -84,5 +82,5 @@ export default function TodoApp() {
         </div>
       </div>
     </div>
-  );
+  )
 }

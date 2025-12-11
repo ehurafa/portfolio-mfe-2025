@@ -1,4 +1,4 @@
-type EventCallback = (data: any) => void
+type EventCallback = (data: unknown) => void
 
 class EventBus {
   private events: Map<string, EventCallback[]> = new Map()
@@ -7,21 +7,21 @@ class EventBus {
     if (!this.events.has(event)) {
       this.events.set(event, [])
     }
-    this.events.get(event)!.push(callback)
+    this.events.get(event)?.push(callback)
 
     // Return unsubscribe function
     return () => this.unsubscribe(event, callback)
   }
 
-  publish(event: string, data?: any): void {
+  publish(event: string, data?: unknown): void {
     const callbacks = this.events.get(event) || []
-    callbacks.forEach(callback => {
+    for (const callback of callbacks) {
       try {
         callback(data)
       } catch (error) {
         console.error(`Error in event callback for "${event}":`, error)
       }
-    })
+    }
   }
 
   unsubscribe(event: string, callback: EventCallback): void {
@@ -48,7 +48,7 @@ export const eventBus = new EventBus()
 
 // Make it globally accessible for MFEs
 if (typeof window !== 'undefined') {
-  ;(window as any).__eventBus__ = eventBus
+  window.__eventBus__ = eventBus
 }
 
 // Event types for type safety

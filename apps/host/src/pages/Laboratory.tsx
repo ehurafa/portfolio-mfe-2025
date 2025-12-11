@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FaGithub, FaTimes } from 'react-icons/fa'
-import Spinner from '../components/Spinner'
 import { MFEErrorBoundary } from '../components/MFEErrorBoundary'
-import { eventBus, MFEEvents } from '../utils/eventBus'
-import { projects, type Project } from './projectsData'
+import Spinner from '../components/Spinner'
+import { MFEEvents, eventBus } from '../utils/eventBus'
+import { type Project, projects } from './projectsData'
 
 export default function Laboratory() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -81,6 +81,7 @@ export default function Laboratory() {
               <button
                 key={category}
                 className={`filter-btn ${filter === category ? 'active' : ''}`}
+                type="button"
                 onClick={() => setFilter(category)}
               >
                 {category === 'all' ? 'Todos' : category}
@@ -91,15 +92,18 @@ export default function Laboratory() {
           {/* Projects Grid */}
           <div className="projects-grid">
             {filteredProjects.map(project => (
-              <article
+              <button
                 key={project.id}
                 className="project-card"
+                type="button"
                 onClick={() => handleProjectSelect(project)}
               >
                 <div className="project-screenshot">
                   <img src={project.screenshot} alt={project.name} loading="lazy" />
                   <div className="project-overlay">
-                    <button className="view-btn">Ver Projeto</button>
+                    <button type="button" className="view-btn">
+                      Ver Projeto
+                    </button>
                   </div>
                 </div>
                 <div className="project-info">
@@ -113,7 +117,7 @@ export default function Laboratory() {
                     ))}
                   </div>
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </>
@@ -138,6 +142,7 @@ export default function Laboratory() {
             </div>
             <button
               className="close-btn"
+              type="button"
               onClick={() => setSelectedProject(null)}
               aria-label="Fechar"
             >
@@ -155,7 +160,7 @@ export default function Laboratory() {
               {iframeError && (
                 <div className="iframe-error">
                   <p>{iframeError}</p>
-                  <button onClick={() => handleProjectSelect(selectedProject)}>
+                  <button type="button" onClick={() => handleProjectSelect(selectedProject)}>
                     Tentar Novamente
                   </button>
                 </div>

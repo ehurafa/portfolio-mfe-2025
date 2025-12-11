@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { getPostImage, WPPost } from '../api/wp'
+import { type WPPost, getPostImage } from '../api/wp'
 import Card from './Card'
 
 export default function ProjectCard({ post }: { post: WPPost }) {

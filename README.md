@@ -40,6 +40,7 @@ Este projeto é um portfólio profissional que demonstra boas práticas de desen
 - **Happy-DOM** - Ambiente de simulação de browser leve (substituto do JSDOM)
 - **ESLint** - Linting JavaScript/TypeScript
 - **Prettier** - Formatação de código
+- **Biome** - Lint + Formatter unificado (opcional, focado em performance)
 - **Husky** - Git hooks
 - **Lint-Staged** - Pre-commit validation
 
@@ -385,17 +386,28 @@ npm run preview:projects # Preview apenas do MFE
 ### 4. Linting & Formatação
 
 ```bash
-# Verifica problemas de lint
+# Verifica problemas de lint (ESLint)
 npm run lint
 
-# Auto-corrige problemas
+# Auto-corrige problemas (ESLint)
 npm run lint:fix
 
-# Formata código
+# Formata código (Prettier)
 npm run format
 
-# Executa lint + format de uma vez
+# Executa lint + format de uma vez (ESLint + Prettier)
 npm run clean
+
+# Lint e format com Biome (opcional)
+
+# Checa todos os apps com Biome (regras recomendadas)
+npm run biome:check
+
+# Formata código dos apps usando o formatter do Biome
+npm run biome:format
+
+# Comando de verificação para CI/CD (equivalente ao biome:check sem warnings suavizados)
+npm run biome:ci
 ```
 
 ## 📝 Scripts Disponíveis
@@ -417,6 +429,9 @@ npm run clean
 | `npm run lint:fix` | Corrige problemas automaticamente |
 | `npm run format` | Formata código com Prettier |
 | `npm run clean` | Lint + Format |
+| `npm run biome:check` | Verifica código dos apps com Biome (lint + sugestões de estilo) |
+| `npm run biome:format` | Formata código dos apps usando o formatter do Biome |
+| `npm run biome:ci` | Checagem de Biome para pipelines de CI/CD |
 | `npm run test` | Executa testes unitários (Vitest) |
 | `npm run test:ui` | Abre interface gráfica de testes |
 

@@ -35,7 +35,7 @@ declare module 'projects/TimerApp' {
 // Augment Window interface for Event Bus
 declare global {
   interface Window {
-    __eventBus__?: any
+    __eventBus__?: unknown
   }
 }
 

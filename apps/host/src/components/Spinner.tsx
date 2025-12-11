@@ -1,7 +1,7 @@
 export default function Spinner() {
   return (
     <div className="wrapper">
-      <div className="spinner"></div>
+      <div className="spinner" />
     </div>
-  );
+  )
 }

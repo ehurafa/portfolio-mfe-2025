@@ -252,12 +252,11 @@ export default function Certificates() {
                 className="card"
               >
                 <div className="thumb">
-                  {cert.tags &&
-                    cert.tags.map(t => (
-                      <span key={t} className={`tag school ${mappedTags[t]}`}>
-                        {cert.tags[0]}
-                      </span>
-                    ))}
+                  {cert.tags?.map(t => (
+                    <span key={t} className={`tag school ${mappedTags[t]}`}>
+                      {cert.tags[0]}
+                    </span>
+                  ))}
                   <img
                     src={cert.thumb}
                     alt={cert.title}

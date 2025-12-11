@@ -6,7 +6,7 @@ const LapList = ({ laps }) => {
       <h3>Voltas:</h3>
       <ul>
         {laps.map((lap, index) => (
-          <li key={index}>
+          <li key={lap}>
             Volta {index + 1}: {lap}
           </li>
         ))}
