@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaGithub, FaTimes } from 'react-icons/fa'
+import Card from '../components/Card'
 import { MFEErrorBoundary } from '../components/MFEErrorBoundary'
 import Spinner from '../components/Spinner'
 import { MFEEvents, eventBus } from '../utils/eventBus'
@@ -92,32 +93,14 @@ export default function Laboratory() {
           {/* Projects Grid */}
           <div className="projects-grid">
             {filteredProjects.map(project => (
-              <button
+              <Card
                 key={project.id}
-                className="project-card"
-                type="button"
+                thumbnail={project.screenshot}
+                title={project.name}
+                description={project.description}
+                technologies={project.technologies}
                 onClick={() => handleProjectSelect(project)}
-              >
-                <div className="project-screenshot">
-                  <img src={project.screenshot} alt={project.name} loading="lazy" />
-                  <div className="project-overlay">
-                    <button type="button" className="view-btn">
-                      Ver Projeto
-                    </button>
-                  </div>
-                </div>
-                <div className="project-info">
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                  <div className="tech-tags">
-                    {project.technologies.map(tech => (
-                      <span key={tech} className="tech-tag">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </button>
+              />
             ))}
           </div>
         </>

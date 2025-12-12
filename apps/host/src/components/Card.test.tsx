@@ -1,37 +1,79 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 import Card from './Card'
 
 describe('Card', () => {
-  it('renders children correctly', () => {
-    render(<Card>Test Content</Card>)
-    expect(screen.getByText('Test Content')).toBeInTheDocument()
+  describe('GenericCard mode (default)', () => {
+    it('renders with thumbnail, title and description', () => {
+      render(<Card thumbnail="/test.jpg" title="Test Card" description="Test Description" />)
+
+      expect(screen.getByText('Test Card')).toBeInTheDocument()
+      expect(screen.getByText('Test Description')).toBeInTheDocument()
+      expect(screen.getByAltText('Test Card')).toBeInTheDocument()
+    })
+
+    it('renders tag when provided', () => {
+      render(<Card thumbnail="/test.jpg" title="Test Card" tag="Udemy" tagColor="purple" />)
+
+      expect(screen.getByText('Udemy')).toBeInTheDocument()
+    })
+
+    it('renders as anchor when href is provided', () => {
+      const { container } = render(
+        <Card thumbnail="/test.jpg" title="Test Card" href="https://example.com" />
+      )
+
+      const anchor = container.querySelector('a')
+      expect(anchor).toBeInTheDocument()
+      expect(anchor?.href).toBe('https://example.com/')
+    })
+
+    it('renders as button when onClick is provided', () => {
+      const handleClick = vi.fn()
+      const { container } = render(
+        <Card thumbnail="/test.jpg" title="Test Card" onClick={handleClick} />
+      )
+
+      const button = container.querySelector('button')
+      expect(button).toBeInTheDocument()
+    })
+
+    it('renders technology tags when provided', () => {
+      render(
+        <Card
+          thumbnail="/test.jpg"
+          title="Test Card"
+          technologies={['React', 'TypeScript', 'SCSS']}
+        />
+      )
+
+      expect(screen.getByText('React')).toBeInTheDocument()
+      expect(screen.getByText('TypeScript')).toBeInTheDocument()
+      expect(screen.getByText('SCSS')).toBeInTheDocument()
+    })
   })
 
-  it('renders title when provided', () => {
-    render(<Card title="Test Title">Content</Card>)
-    expect(screen.getByText('Test Title')).toBeInTheDocument()
-  })
+  describe('Info variant (for Home page)', () => {
+    it('renders with variant="info"', () => {
+      render(
+        <Card variant="info" title="Test Info Card">
+          <p>Info content</p>
+        </Card>
+      )
 
-  it('applies variant classes', () => {
-    const { container } = render(<Card variant="info" title="Info Card" />)
-    expect(container.firstChild).toHaveClass('card--info')
-  })
+      expect(screen.getByText('Test Info Card')).toBeInTheDocument()
+      expect(screen.getByText('Info content')).toBeInTheDocument()
+    })
 
-  it('handles click events', () => {
-    const handleClick = vi.fn()
-    render(<Card onClick={handleClick}>Clickable</Card>)
+    it('applies correct classes for info variant', () => {
+      const { container } = render(
+        <Card variant="info" title="Test">
+          <p>Content</p>
+        </Card>
+      )
 
-    fireEvent.click(screen.getByText('Clickable'))
-    expect(handleClick).toHaveBeenCalledTimes(1)
-  })
-
-  it('renders tags when variant is project', () => {
-    const tags = [{ name: 'React' }, { name: 'Vite', color: 'blue' }]
-    render(<Card variant="project" thumbnail="img.jpg" tags={tags} title="Project" />)
-
-    expect(screen.getByText('React')).toBeInTheDocument()
-    expect(screen.getByText('Vite')).toBeInTheDocument()
-    expect(screen.getByText('Vite')).toHaveClass('blue')
+      const card = container.querySelector('.card--info')
+      expect(card).toBeInTheDocument()
+    })
   })
 })

@@ -1,4 +1,5 @@
 import { VscMortarBoard } from 'react-icons/vsc'
+import Card from '../components/Card'
 import Spinner from '../components/Spinner'
 
 export default function Certificates() {
@@ -244,33 +245,15 @@ export default function Certificates() {
             .slice()
             .sort((a, b) => a.id - b.id)
             .map(cert => (
-              <a
+              <Card
                 key={cert.id}
+                thumbnail={cert.thumb}
+                title={cert.title}
+                description={cert.description}
+                tag={cert.tags[0]}
+                tagColor={mappedTags[cert.tags[0]] as 'purple' | 'red' | 'orange' | 'white'}
                 href={cert.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card"
-              >
-                <div className="thumb">
-                  {cert.tags?.map(t => (
-                    <span key={t} className={`tag school ${mappedTags[t]}`}>
-                      {cert.tags[0]}
-                    </span>
-                  ))}
-                  <img
-                    src={cert.thumb}
-                    alt={cert.title}
-                    onError={e => {
-                      e.currentTarget.src = '/certificates/placeholder.svg'
-                    }}
-                  />
-                </div>
-
-                <div className="body">
-                  <h3 className="title">{cert.title}</h3>
-                  {cert.description && <p className="description">{cert.description}</p>}
-                </div>
-              </a>
+              />
             ))}
         </div>
       )}
