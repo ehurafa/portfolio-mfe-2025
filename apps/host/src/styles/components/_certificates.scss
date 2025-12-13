@@ -17,8 +17,6 @@
   }
 }
 
-// Ensure .card styling within the grid context works as expected
-// (Since Certificates.tsx uses "card" class manually on an anchor tag)
 .grid .card {
   text-decoration: none;
   background-color: $color-bg-card;
@@ -40,7 +38,7 @@
   .thumb {
     position: relative;
     width: 100%;
-    padding-top: 65%; // Aspect ratio for certificate
+    padding-top: 65%;
     overflow: hidden;
     background-color: $color-gray-100;
 

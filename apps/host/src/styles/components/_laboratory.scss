@@ -1,3 +1,4 @@
+
 // ====================================
 // LABORATORY PAGE STYLES  
 // ====================================
@@ -44,7 +45,6 @@
   }
 }
 
-// Category Filter
 .category-filter {
   display: flex;
   gap: $space-3;
@@ -75,7 +75,6 @@
   }
 }
 
-// Projects Grid
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -190,7 +189,6 @@
   }
 }
 
-// Project Viewer Modal
 .project-viewer {
   position: fixed;
   top: 0;
@@ -303,7 +301,6 @@
   justify-content: center;
 }
 
-// Iframe styling
 .project-iframe {
   width: 100%;
   height: 100%;

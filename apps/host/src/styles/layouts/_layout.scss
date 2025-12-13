@@ -4,15 +4,14 @@
 
 .layout {
   display: flex;
-  flex-direction: row; // Desktop default: Side by side
-  height: 100vh; // Full viewport height for sticky sidebar effect
+  flex-direction: row;
+  height: 100vh;
   background-color: $color-bg-hover;
   overflow: hidden;
 
   @include media-lg {
-    flex-direction: column; // Mobile: Stacked
+    flex-direction: column;
     height: auto;
-    min-height: 100vh;
     overflow: visible;
   }
 }
@@ -21,9 +20,9 @@
   flex: 1;
   padding: $space-8;
   width: 100%;
-  max-width: 1600px; // Reasonable limit for very large screens
+  max-width: 1600px;
   margin: 0 auto;
-  overflow-y: auto; // Independent scroll
+  overflow-y: auto;
   height: 100%;
 
   @include media-lg {
@@ -32,7 +31,6 @@
     overflow-y: visible;
   }
 
-  // Smooth scrolling for the content area
   scroll-behavior: smooth;
   
   &::-webkit-scrollbar {

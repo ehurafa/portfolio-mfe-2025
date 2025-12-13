@@ -20,22 +20,16 @@
     box-shadow: $shadow-lg;
   }
 
-  // Variants
   &--project {
     .card__body {
       padding: $space-4;
     }
   }
 
-  &--info {
-    // Info cards might have different styling
-  }
-
-  // Elements
   &__thumb {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; // 16:9
+    padding-top: 56.25%;
     overflow: hidden;
     background-color: $color-gray-100;
 
@@ -64,7 +58,7 @@
     font-weight: $font-weight-bold;
     color: $color-white;
     z-index: 2;
-    background-color: $color-dark; // fallback
+    background-color: $color-dark;
 
     &.purple { background-color: $color-tag-purple; }
     &.red { background-color: $color-tag-red; }
