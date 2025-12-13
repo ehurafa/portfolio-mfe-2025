@@ -1,3 +1,5 @@
+import { mockProjects } from './mockData'
+
 export interface ImageSizes {
   large: string
   medium?: string
@@ -32,11 +34,17 @@ export interface WPPost {
 }
 
 const WP_API_BASE = import.meta.env.VITE_WP_API_BASE
-const _WP_BASE = import.meta.env.VITE_WP_BASE
-const _WP_POSTS_PATH = import.meta.env.VITE_WP_POSTS_PATH
-const _WP_ACF_POSTS_PATH = import.meta.env.VITE_WP_ACF_POSTS_PATH
+
+// Enable mock data by setting VITE_USE_MOCK_DATA=true in your .env file
+const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK_DATA === 'true'
 
 export async function fetchPosts(): Promise<WPPost[]> {
+  // Use mock data if enabled
+  if (USE_MOCK_DATA) {
+    console.log('🎭 Using mock data for projects')
+    return Promise.resolve(mockProjects)
+  }
+
   const res = await fetch(`${WP_API_BASE}/posts?per_page=100&_embed&acf_format=standard`)
   if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`)
   return res.json() as Promise<WPPost[]>
@@ -55,6 +63,14 @@ export function getPostImage(p: WPPost): string | null {
 }
 
 export async function fetchPostBySlug(slug: string): Promise<WPPost> {
+  // Use mock data if enabled
+  if (USE_MOCK_DATA) {
+    console.log('🎭 Using mock data for post by slug:', slug)
+    const post = mockProjects.find(p => p.slug === slug)
+    if (!post) throw new Error(`Post with slug "${slug}" not found in mock data`)
+    return Promise.resolve(post)
+  }
+
   const res = await fetch(
     `${WP_API_BASE}/posts?slug=${slug}&per_page=100&_embed&acf_format=standard`
   )
@@ -64,6 +80,14 @@ export async function fetchPostBySlug(slug: string): Promise<WPPost> {
 }
 
 export async function fetchPostById(id: string | number): Promise<WPPost[]> {
+  // Use mock data if enabled
+  if (USE_MOCK_DATA) {
+    console.log('🎭 Using mock data for post by id:', id)
+    const post = mockProjects.find(p => p.id === Number(id))
+    if (!post) throw new Error(`Post with id "${id}" not found in mock data`)
+    return Promise.resolve([post])
+  }
+
   const res = await fetch(`${WP_API_BASE}/posts/${id}?_embed&acf_format=standard`)
   if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`)
   const data: unknown = await res.json()
