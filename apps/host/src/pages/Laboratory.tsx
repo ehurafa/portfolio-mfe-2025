@@ -67,11 +67,11 @@ export default function Laboratory() {
           <h1>
             <span>Laboratório</span>
           </h1>
-          <p>
-            Explore meus projetos desenvolvidos durante cursos e estudos. Cada projeto é uma
-            aplicação funcional que você pode interagir.
-          </p>
         </div>
+        <p>
+          Explore meus projetos desenvolvidos durante cursos e estudos. Cada projeto é uma aplicação
+          funcional que você pode interagir.
+        </p>
       </header>
 
       {!selectedProject ? (
