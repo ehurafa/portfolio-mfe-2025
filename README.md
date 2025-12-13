@@ -525,9 +525,62 @@ export default defineConfig({
 ### Variáveis de Ambiente (apps/host/.env)
 
 ```env
-VITE_WP_API_URL=
-VITE_WP_ACF_URL=
+# WordPress API (usado apenas quando mock está desabilitado)
+VITE_WP_API_BASE=https://your-wordpress-site.com/wp-json/wp/v2
+
+# Mock data (defina como 'true' para evitar problemas de CORS no desenvolvimento)
+VITE_USE_MOCK_DATA=true
 ```
+
+> **💡 Dica**: Use dados mockados durante o desenvolvimento para evitar problemas de CORS. Defina `VITE_USE_MOCK_DATA=false` apenas quando estiver pronto para conectar à API WordPress real.
+
+### 🎭 Sistema de Mock
+
+O projeto inclui um sistema simples de mock para evitar problemas de CORS durante o desenvolvimento local.
+
+**Arquivos:**
+- `apps/host/src/api/mockData.ts` - Dados de exemplo para projetos
+- `apps/host/src/api/wp.ts` - Cliente API com suporte a mock
+- `apps/host/MOCK_SYSTEM.md` - Documentação detalhada
+- `ENV_CLEANUP.md` - Guia de limpeza de variáveis de ambiente
+
+**Como usar:**
+
+1. **Habilitar modo mock** (edite `apps/host/.env`):
+   ```env
+   VITE_USE_MOCK_DATA=true
+   ```
+
+2. **Reiniciar servidor de desenvolvimento**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Verificar no console** - Você verá:
+   ```
+   🎭 Using mock data for projects
+   ```
+
+**Personalizando dados mockados:**
+
+Edite `apps/host/src/api/mockData.ts` para adicionar, remover ou modificar projetos mockados:
+
+```typescript
+export const mockProjects: WPPost[] = [
+  {
+    id: 7,
+    slug: 'meu-novo-projeto',
+    acf: {
+      title_post: 'Meu Novo Projeto',
+      // ... resto dos dados
+    }
+  }
+]
+```
+
+**Variáveis ativas:**
+- ✅ `VITE_WP_API_BASE` - URL da API WordPress (apenas quando `USE_MOCK_DATA=false`)
+- ✅ `VITE_USE_MOCK_DATA` - Alterna modo mock (padrão: `false`)
 
 ### Campos ACF Esperados
 
