@@ -1,6 +1,32 @@
 import { VscMortarBoard } from 'react-icons/vsc'
+import { motion } from 'motion/react'
 import Card from '../components/Card'
 import Spinner from '../components/Spinner'
+
+// Animation variants for the grid
+const gridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut' as const
+    }
+  }
+}
 
 export default function Certificates() {
   const mappedTags: Record<string, string> = {
@@ -240,22 +266,23 @@ export default function Certificates() {
       {!certificates ? (
         <Spinner />
       ) : (
-        <div className="grid">
+        <motion.div className="grid" variants={gridVariants} initial="hidden" animate="visible">
           {certificates
             .slice()
             .sort((a, b) => a.id - b.id)
             .map(cert => (
-              <Card
-                key={cert.id}
-                thumbnail={cert.thumb}
-                title={cert.title}
-                description={cert.description}
-                tag={cert.tags[0]}
-                tagColor={mappedTags[cert.tags[0]] as 'purple' | 'red' | 'orange' | 'white'}
-                href={cert.pdf}
-              />
+              <motion.div key={cert.id} variants={cardVariants}>
+                <Card
+                  thumbnail={cert.thumb}
+                  title={cert.title}
+                  description={cert.description}
+                  tag={cert.tags[0]}
+                  tagColor={mappedTags[cert.tags[0]] as 'purple' | 'red' | 'orange' | 'white'}
+                  href={cert.pdf}
+                />
+              </motion.div>
             ))}
-        </div>
+        </motion.div>
       )}
     </>
   )

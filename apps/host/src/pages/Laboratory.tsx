@@ -1,10 +1,36 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'motion/react'
 import { FaGithub, FaTimes } from 'react-icons/fa'
 import Card from '../components/Card'
 import { MFEErrorBoundary } from '../components/MFEErrorBoundary'
 import Spinner from '../components/Spinner'
 import { MFEEvents, eventBus } from '../utils/eventBus'
 import { type Project, projects } from './projectsData'
+
+// Animation variants
+const gridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut' as const
+    }
+  }
+}
 
 export default function Laboratory() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -91,18 +117,24 @@ export default function Laboratory() {
           </div>
 
           {/* Projects Grid */}
-          <div className="projects-grid">
+          <motion.div
+            className="projects-grid"
+            variants={gridVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {filteredProjects.map(project => (
-              <Card
-                key={project.id}
-                thumbnail={project.screenshot}
-                title={project.name}
-                description={project.description}
-                technologies={project.technologies}
-                onClick={() => handleProjectSelect(project)}
-              />
+              <motion.div key={project.id} variants={cardVariants}>
+                <Card
+                  thumbnail={project.screenshot}
+                  title={project.name}
+                  description={project.description}
+                  technologies={project.technologies}
+                  onClick={() => handleProjectSelect(project)}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </>
       ) : (
         /* MFE Viewer with iframe - Industry Standard Practice */

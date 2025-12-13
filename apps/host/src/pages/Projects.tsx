@@ -1,8 +1,35 @@
 import { useEffect, useMemo, useState } from 'react'
 import { VscBeaker } from 'react-icons/vsc'
+import { motion } from 'motion/react'
 import { type WPPost, fetchPosts } from '../api/wp'
 import ProjectCard from '../components/ProjectCard'
 import Spinner from '../components/Spinner'
+
+// Animation variants for the grid container
+const gridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+// Animation variants for each card
+const cardVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut' as const
+    }
+  }
+}
 
 export default function Projects() {
   const [posts, setPosts] = useState<WPPost[] | null>(null)
@@ -43,11 +70,13 @@ export default function Projects() {
       {!posts ? (
         <Spinner />
       ) : (
-        <div className="grid">
+        <motion.div className="grid" variants={gridVariants} initial="hidden" animate="visible">
           {filtered.map(p => (
-            <ProjectCard key={p.id} post={p} />
+            <motion.div key={p.id} variants={cardVariants}>
+              <ProjectCard post={p} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   )
