@@ -35,7 +35,7 @@ Este projeto é um portfólio profissional que demonstra boas práticas de desen
 - **Advanced Custom Fields** (ACF v3)
 
 ### Quality & Tooling
-- **Vitest** - Framework de testes unitários (substituto rápido do Jest)
+- **Vitest** - Framework de testes unitários
 - **React Testing Library** - Testes de componentes centrados no usuário
 - **Happy-DOM** - Ambiente de simulação de browser leve (substituto do JSDOM)
 - **ESLint** - Linting JavaScript/TypeScript
@@ -525,8 +525,8 @@ export default defineConfig({
 ### Variáveis de Ambiente (apps/host/.env)
 
 ```env
-VITE_WP_API_URL=https://seusite.com.br/wp-json/wp/v2
-VITE_WP_ACF_URL=https://seusite.com.br/wp-json/acf/v3
+VITE_WP_API_URL=
+VITE_WP_ACF_URL=
 ```
 
 ### Campos ACF Esperados
