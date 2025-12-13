@@ -5,7 +5,7 @@ import { IoIosMenu, IoMdClose } from 'react-icons/io'
 import { TiSocialLinkedin } from 'react-icons/ti'
 import { NavLink } from 'react-router-dom'
 import brandImage from '../assets/brand.png'
-import profileImage from '../assets/profile.jpg'
+import profileImage from '../assets/anime-profile.png'
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
