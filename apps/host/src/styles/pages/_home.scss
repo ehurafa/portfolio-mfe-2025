@@ -1,3 +1,5 @@
+@use '../tokens/typography' as *;
+
 .home-container {
   display: flex;
   flex-direction: column;
@@ -14,19 +16,19 @@
     color: #c084fc;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    font-size: 0.875rem;
+    font-size: $font-size-body-sm;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 2rem;
 
     svg {
-      font-size: 1rem;
+      font-size: $font-size-base;
     }
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: $font-size-display;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -66,7 +68,7 @@
   }
 
   .subtitle {
-    font-size: 1.125rem;
+    font-size: $font-size-md;
     color: #94a3b8;
     max-width: 600px;
     margin-bottom: 3rem;
@@ -142,7 +144,7 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 1rem;
-        font-size: 1.5rem;
+        font-size: $font-size-xl;
 
         &.purple {
           background: rgba(168, 85, 247, 0.2);
@@ -159,7 +161,7 @@
       }
 
       h3 {
-        font-size: 1.25rem;
+        font-size: $font-size-lg;
         font-weight: 700;
         color: #fff;
         margin-bottom: 0.5rem;
@@ -167,7 +169,7 @@
 
       p {
         color: #94a3b8;
-        font-size: 0.875rem;
+        font-size: $font-size-body-sm;
         line-height: 1.5;
       }
     }
@@ -182,12 +184,12 @@
     min-height: auto;
 
     h1 {
-      font-size: 2.5rem;
+      font-size: $font-size-3xl;
       margin-bottom: 1rem;
     }
 
     .subtitle {
-      font-size: 1rem;
+      font-size: $font-size-base;
       margin-bottom: 2rem;
     }
 
@@ -214,7 +216,7 @@
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: $font-size-4xl;
       margin-bottom: 1rem;
     }
 

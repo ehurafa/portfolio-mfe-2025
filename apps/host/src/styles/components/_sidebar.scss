@@ -35,15 +35,16 @@
   }
 
   .avatar {
-    width: 100%;
+    width: 80%;
     height: auto;
     border-radius: 50%;
-    border: 2px solid $color-border-white;
+     border: 2px solid $color-border-white;
     overflow: hidden;
-    margin: 0 auto $space-3 auto;
+    margin: 0;
 
     @include media-lg {
       max-width: 120px;
+      margin: 0 auto $space-3 auto;
     }
   }
 
