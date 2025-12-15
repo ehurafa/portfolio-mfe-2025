@@ -12,7 +12,7 @@
   height: 10rem;
   margin: $space-4 $space-4 0;
   padding-top: 2.2rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: $color-bg-hover;
 
   &::after {
     position: absolute;

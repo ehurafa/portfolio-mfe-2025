@@ -5,7 +5,7 @@
 @use '../utilities/mixins' as *;
 
 .generic-card {
-  background-color: $color-bg-card;
+  background-color: $color-bg-active;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: $shadow-sm;
@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid $color-border-light;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -95,14 +94,14 @@
     font-family: 'Poppins', sans-serif;
     font-size: $font-size-base;
     font-weight: $font-weight-bold;
-    color: $color-text-primary;
+    color: $color-text-light;
     margin: 0;
     line-height: $line-height-tight;
   }
 
   &__description {
     font-size: $font-size-xs;
-    color: $color-text-secondary;
+    color: $color-text-light;
     line-height: $line-height-relaxed;
     margin: 0;
     flex: 1;
