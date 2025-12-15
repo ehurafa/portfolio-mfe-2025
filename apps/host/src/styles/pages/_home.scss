@@ -28,24 +28,32 @@
   }
 
   h1 {
-    font-size: $font-size-display;
-    font-weight: 800;
+    font-size: $font-size-4xl;
+    font-family: $font-family-tertiary;
+    font-weight: $font-weight-light;
     line-height: 1.1;
     margin-bottom: 1.5rem;
+    margin-top: 75px;
     background: #fff;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
+    span {
+     font-size: $font-size-display-xs;
+     font-weight: $font-weight-semibold;
+     text-transform: uppercase;
+    }
+
     .gradient-text {
       display: block;
-      // background: linear-gradient(-45deg, #f472b6, #fb923c, #d946ef, #23d5ab);
-    background: linear-gradient(-45deg, #00ffaa,  #fd00fd,  #00ffeb, #dd00ff);
+       // background: linear-gradient(-45deg, #00ffaa,  #fd00fd,  #00ffeb, #dd00ff);
+       background: linear-gradient(-45deg, #00ffaa,  #ffbb00,  #00ffeb, #a6ff00);
       background-size: 300%;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: gradient 8s ease infinite;
+      animation: gradient 15s ease infinite;
     }
   }
 
@@ -69,7 +77,6 @@
 
   .subtitle {
     font-size: $font-size-md;
-    color: #94a3b8;
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.6;
@@ -92,14 +99,16 @@
       text-decoration: none;
 
       &.btn-primary {
-        background: radial-gradient(circle at center, #d946ef, #a855f7);
-        color: white;
+       // background: radial-gradient(circle at center, #d946ef, #a855f7);
+        background: radial-gradient(circle at center, #a6ff00, #00ffeb);
+        color: black;
         border: none;
         box-shadow: 0 4px 14px 0 rgba(192, 132, 252, 0.4);
+        box-shadow: 0 4px 14px 0 rgba(0, 247, 255, 0.4);
 
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px 0 rgba(192, 132, 252, 0.6);
+          box-shadow: 0 6px 20px 0 rgba(0, 247, 255, 0.4);
         }
       }
 
@@ -186,6 +195,7 @@
     h1 {
       font-size: $font-size-3xl;
       margin-bottom: 1rem;
+      margin-top: 0;
     }
 
     .subtitle {

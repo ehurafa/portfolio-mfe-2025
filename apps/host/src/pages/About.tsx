@@ -24,7 +24,7 @@ export default function About() {
             <VscPreview />{' '}
             <span>
               Minha História
-              <br /> <span>no Front-End</span>
+              <br /> <span className="gradient-text">no Front-End</span>
             </span>
           </h1>
         </div>
