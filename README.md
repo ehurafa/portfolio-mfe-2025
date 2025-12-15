@@ -134,15 +134,22 @@ $space-16: 64px;  // 64px
 #### Tipografia
 ```scss
 // Tamanhos
-$font-size-xs: 0.625rem;  // 10px
-$font-size-sm: 0.75rem;   // 12px
-$font-size-base: 1rem;    // 16px
-$font-size-xl: 1.5rem;    // 24px
+// Tamanhos
+$font-size-body-sm: 0.875rem; // 14px
+$font-size-base: 1rem;        // 16px
+$font-size-lg: 1.25rem;       // 20px
+$font-size-xl: 1.5rem;        // 24px
+$font-size-2xl: 2rem;         // 32px
+$font-size-3xl: 2.5rem;       // 40px
+$font-size-4xl: 3rem;         // 48px
+$font-size-display: 4rem;     // 64px
 
 // Weights
+$font-weight-regular: 400;
 $font-weight-medium: 500;
+$font-weight-semibold: 600;
 $font-weight-bold: 700;
-$font-weight-black: 900;
+$font-weight-extrabold: 800;
 ```
 
 ## 🏗️ Arquitetura Microfrontend
@@ -617,8 +624,9 @@ interface WPPost {
 - ✅ Design System completo com SASS
 - ✅ TypeScript com type-safety total
 - ✅ Lazy loading de imagens
-- ✅ Animações suaves
-- ✅ 100% Responsivo
+- ✅ Animações suaves (Framer Motion)
+- ✅ Home Page cinemática
+- ✅ 100% Responsivo (Mobile & Desktop)
 - ✅ SEO otimizado
 
 ### Integrações
