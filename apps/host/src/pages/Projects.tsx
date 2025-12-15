@@ -1,6 +1,6 @@
+import { motion } from 'motion/react'
 import { useEffect, useMemo, useState } from 'react'
 import { VscBeaker } from 'react-icons/vsc'
-import { motion } from 'motion/react'
 import { type WPPost, fetchPosts } from '../api/wp'
 import ProjectCard from '../components/ProjectCard'
 import Spinner from '../components/Spinner'

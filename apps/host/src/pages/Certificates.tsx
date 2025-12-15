@@ -1,5 +1,5 @@
-import { VscMortarBoard } from 'react-icons/vsc'
 import { motion } from 'motion/react'
+import { VscMortarBoard } from 'react-icons/vsc'
 import Card from '../components/Card'
 import Spinner from '../components/Spinner'
 

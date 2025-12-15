@@ -1,8 +1,9 @@
-import { Route, Routes } from 'react-router-dom'
 import { motion } from 'motion/react'
+import { Route, Routes } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import About from './pages/About'
 import Certificates from './pages/Certificates'
+import Home from './pages/Home'
 import Laboratory from './pages/Laboratory'
 import ProjectDetails from './pages/ProjectDetails'
 import Projects from './pages/Projects'
@@ -51,7 +52,8 @@ export default function App() {
         animate="visible"
       >
         <Routes>
-          <Route path="/" element={<Projects />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/projetos" element={<Projects />} />
           <Route path="/certificados" element={<Certificates />} />
           <Route path="/sobre-mim" element={<About />} />
           <Route path="/laboratorio" element={<Laboratory />} />

@@ -1,10 +1,10 @@
+import { motion } from 'motion/react'
 import { useState } from 'react'
 import { BiLogoPinterestAlt } from 'react-icons/bi'
 import { FaGithubAlt } from 'react-icons/fa6'
 import { IoIosMenu, IoMdClose } from 'react-icons/io'
 import { TiSocialLinkedin } from 'react-icons/ti'
 import { NavLink } from 'react-router-dom'
-import { motion } from 'motion/react'
 import brandImage from '../assets/brand.png'
 import profileImage from '../assets/profile.jpg'
 
@@ -174,7 +174,12 @@ export default function Sidebar() {
 
       <motion.nav className={`nav ${isOpen ? 'open' : ''}`} variants={navVariants}>
         <motion.div variants={navItemVariants}>
-          <NavLink to="/" onClick={() => setIsOpen(false)}>
+          <NavLink to="/" onClick={() => setIsOpen(false)} end>
+            Início
+          </NavLink>
+        </motion.div>
+        <motion.div variants={navItemVariants}>
+          <NavLink to="/projetos" onClick={() => setIsOpen(false)}>
             Projetos
           </NavLink>
         </motion.div>

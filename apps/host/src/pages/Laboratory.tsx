@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
 import { FaGithub, FaTimes } from 'react-icons/fa'
 import Card from '../components/Card'
 import { MFEErrorBoundary } from '../components/MFEErrorBoundary'

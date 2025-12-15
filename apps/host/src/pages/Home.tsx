@@ -1,131 +1,122 @@
-import { useEffect, useState } from 'react'
-import { fetchGithubContributions, fetchGithubLanguages } from '../api/github'
-import Card from '../components/Card'
-import Spinner from '../components/Spinner'
+import { motion } from 'motion/react'
+import { BsCodeSlash, BsLightningCharge, BsStars } from 'react-icons/bs'
+import { HiOutlineSparkles } from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 
-interface GithubLanguage {
-  name: string
-  percentage: number
-  color: string
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2
+    }
+  }
 }
 
-interface GithubContribution {
-  date: string
-  count: number
-  level: 0 | 1 | 2 | 3 | 4
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1] as const // Custom easeOutQuint for smooth slide
+    }
+  }
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      damping: 12,
+      stiffness: 100
+    }
+  }
 }
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
-  const [languages, setLanguages] = useState<GithubLanguage[]>([])
-  const [contributions, setContributions] = useState<{
-    total: number
-    contributions: GithubContribution[]
-  }>({ total: 0, contributions: [] })
-
-  useEffect(() => {
-    const loadData = async () => {
-      const [langs, contribs] = await Promise.all([
-        fetchGithubLanguages(),
-        fetchGithubContributions()
-      ])
-      setLanguages(langs)
-      setContributions(contribs)
-      setLoading(false)
-    }
-    loadData()
-  }, [])
-
-  if (loading) {
-    return <Spinner />
-  }
-
   return (
-    <div className="home-page">
-      <section className="intro-section">
-        <h1 className="intro-title">Olá, eu sou Rafael.</h1>
-        <p className="intro-text">
-          Rafael Gomes com paixão pelo desenvolvimento front-end. Experiência em projetos diversos,
-          sempre buscando aprender e compartilhar conhecimento.
-        </p>
-      </section>
+    <motion.div
+      className="home-container"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.h1 variants={textVariants}>
+        Criando experiências
+        <span className="gradient-text">digitais incríveis</span>
+      </motion.h1>
 
-      <div className="home-cards-grid">
-        <Card variant="info" title="Linguagens Mais Usadas">
-          {/* Barra de cores empilhada */}
-          <div className="languages-bar">
-            {languages.map(lang => (
-              <div
-                key={lang.name}
-                className="language-segment"
-                style={{
-                  width: `${lang.percentage}%`,
-                  backgroundColor: lang.color
-                }}
-                title={`${lang.name}: ${lang.percentage.toFixed(2)}%`}
-              />
-            ))}
-          </div>
+      <motion.p className="subtitle" variants={textVariants}>
+        Desenvolvedor Front-end especializado em criar interfaces modernas, responsivas e
+        performáticas com Javascript e as melhores práticas do mercado.
+      </motion.p>
 
-          {/* Lista de linguagens em 2 colunas */}
-          <div className="languages-grid">
-            {languages.map(lang => (
-              <div key={lang.name} className="language-item">
-                <span className="language-dot" style={{ backgroundColor: lang.color }} />
-                <span className="language-name">{lang.name}</span>
-                <span className="language-percent">{lang.percentage.toFixed(2)}%</span>
-              </div>
-            ))}
-          </div>
-        </Card>
+      <motion.div className="cta-group" variants={textVariants}>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link to="/projetos" className="btn btn-primary">
+            Ver Projetos
+            <HiOutlineSparkles />
+          </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link to="/sobre-mim" className="btn btn-secondary">
+            Sobre mim
+          </Link>
+        </motion.div>
+      </motion.div>
 
-        <Card variant="info" title="Experiência">
-          <div className="experience-item">
-            <h3 className="experience-role">UI Developer</h3>
-            <p className="experience-company">
-              UI Developer a uma startup tech folojpis de entr arionalizar com interesta tamalhando
-              em om oncentuai mento aumnino.
-            </p>
+      <motion.div className="features-grid" variants={containerVariants}>
+        <motion.div
+          className="feature-card"
+          variants={cardVariants}
+          whileHover={{ y: -8, transition: { duration: 0.3 } }}
+        >
+          <div className="icon-box purple glow-effect">
+            <BsCodeSlash />
           </div>
-        </Card>
+          <h3>Clean Code</h3>
+          <p>
+            Código limpo e manutenível, seguindo princípios SOLID e padrões de arquitetura modernos.
+          </p>
+        </motion.div>
 
-        <Card variant="info" title="Contribuições GitHub">
-          <p className="contributions-count">{contributions.total} contribuições no último ano</p>
-          <div className="contributions-graph">
-            <div className="contribution-weeks">
-              {Array.from({ length: 52 }, (_, weekIndex) => {
-                const weekContribs = contributions.contributions.slice(
-                  weekIndex * 7,
-                  (weekIndex + 1) * 7
-                )
-                return (
-                  <div
-                    key={weekContribs[0]?.date ?? `week-${weekIndex}`}
-                    className="contribution-week"
-                  >
-                    {weekContribs.map(contrib => (
-                      <div
-                        key={contrib.date}
-                        className={`contribution-day level-${contrib.level}`}
-                        title={`${contrib.date}: ${contrib.count} contribuições`}
-                      />
-                    ))}
-                  </div>
-                )
-              })}
-            </div>
+        <motion.div
+          className="feature-card"
+          variants={cardVariants}
+          whileHover={{ y: -8, transition: { duration: 0.3 } }}
+        >
+          <div className="icon-box pink glow-effect">
+            <BsLightningCharge />
           </div>
-          <div className="contribution-legend">
-            <span>Menos</span>
-            <div className="contribution-day level-0" />
-            <div className="contribution-day level-1" />
-            <div className="contribution-day level-2" />
-            <div className="contribution-day level-3" />
-            <div className="contribution-day level-4" />
-            <span>Mais</span>
+          <h3>Performance</h3>
+          <p>
+            Otimização extrema para garantir o melhor tempo de carregamento e pontuação no
+            Lighthouse.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="feature-card"
+          variants={cardVariants}
+          whileHover={{ y: -8, transition: { duration: 0.3 } }}
+        >
+          <div className="icon-box blue glow-effect">
+            <BsStars />
           </div>
-        </Card>
-      </div>
-    </div>
+          <h3>UX/UI</h3>
+          <p>
+            Foco total na experiência do usuário, com micro-interações e design system consistente.
+          </p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
