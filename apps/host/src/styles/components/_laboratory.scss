@@ -14,7 +14,7 @@
   margin: 0 auto;
   padding: $space-8 $space-6;
 
-  @media (max-width: $breakpoint-md) {
+  @include media-md {
     padding: $space-6 $space-4;
   }
 }
@@ -28,7 +28,7 @@
     color: $color-text-primary;
     margin-bottom: $space-4;
 
-    @media (max-width: $breakpoint-md) {
+    @include media-md {
       font-size: $font-size-2xl;
     }
   }
@@ -39,7 +39,7 @@
     line-height: $line-height-relaxed;
     max-width: 800px;
 
-    @media (max-width: $breakpoint-md) {
+    @include media-md {
       font-size: $font-size-base;
     }
   }
@@ -80,7 +80,7 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: $space-6;
 
-  @media (max-width: $breakpoint-md) {
+  @include media-md {
     grid-template-columns: 1fr;
     gap: $space-4;
   }
@@ -220,7 +220,7 @@
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-  @media (max-width: $breakpoint-md) {
+  @include media-md {
     padding: $space-3 $space-4;
   }
 }
@@ -236,7 +236,7 @@
     color: $color-white;
     margin: 0;
 
-    @media (max-width: $breakpoint-md) {
+    @include media-md {
       font-size: $font-size-lg;
     }
   }
@@ -265,7 +265,7 @@
     border-color: rgba(255, 255, 255, 0.4);
   }
 
-  @media (max-width: $breakpoint-md) {
+  @include media-md {
     span {
       display: none;
     }
