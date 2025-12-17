@@ -82,7 +82,7 @@ export const projects: Project[] = [
     name: 'Photo Album',
     description: 'Searchable photo gallery using Unsplash API',
     technologies: ['React', 'API', 'Axios'],
-    screenshot: '/screenshots/photo-album.png',
+    screenshot: '/screenshots/photo-album-ai.png',
     githubUrl: 'https://github.com/ehurafa/20-react-projects',
     category: 'API'
   },
