@@ -34,7 +34,7 @@ const cardVariants = {
 
 export default function Laboratory() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [filter, setFilter] = useState<string>('all')
+  const [filter, setFilter] = useState<string>('Todos')
   const [loading, setLoading] = useState(true)
   const [iframeLoading, setIframeLoading] = useState(false)
   const [iframeError, setIframeError] = useState<string | null>(null)
@@ -89,8 +89,14 @@ export default function Laboratory() {
     setIframeError(null)
   }
 
-  const categories = ['all', ...new Set(projects.map(p => p.category))]
-  const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter)
+  const frameworks = ['Todos', 'React', 'Vue', 'Angular']
+
+  const filteredProjects =
+    filter === 'Todos'
+      ? projects
+      : projects.filter(p =>
+          p.technologies.some(tech => tech.toLowerCase().includes(filter.toLowerCase()))
+        )
 
   // Construct iframe source
   const iframeSrc = selectedProject
@@ -119,14 +125,14 @@ export default function Laboratory() {
         <>
           {/* Filter buttons */}
           <div className="category-filter">
-            {categories.map(category => (
+            {frameworks.map(fw => (
               <button
-                key={category}
-                className={`filter-btn ${filter === category ? 'active' : ''}`}
+                key={fw}
+                className={`filter-btn ${filter === fw ? 'active' : ''}`}
                 type="button"
-                onClick={() => setFilter(category)}
+                onClick={() => setFilter(fw)}
               >
-                {category === 'all' ? 'Todos' : category}
+                {fw}
               </button>
             ))}
           </div>
