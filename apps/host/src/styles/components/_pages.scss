@@ -31,12 +31,18 @@
   h1 {
     margin-bottom: $space-4;
   }
+
+  h1,
+  h3,
+  p {
+    color: $color-gray-50;
+  }
 }
 
 .about {
   max-width: 1024px;
   line-height: $line-height-relaxed;
-  
+
   p {
     font-size: $font-size-lg;
     font-style: italic;

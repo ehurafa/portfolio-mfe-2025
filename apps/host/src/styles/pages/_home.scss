@@ -65,26 +65,29 @@
     }
 
     @include media-md {
-      font-size: $font-size-3xl;
       margin-bottom: 1rem;
       margin-top: 0;
     }
 
     @include media-short-vertical {
-      font-size: $font-size-4xl;
+      font-size: $font-size-xl;
       margin-bottom: 1rem;
     }
 
     span {
-     font-size: $font-size-display-xs;
-     font-weight: $font-weight-semibold;
-     text-transform: uppercase;
+      font-size: $font-size-display-xs;
+      font-weight: $font-weight-semibold;
+      text-transform: uppercase;
+
+      @include media-md {
+        font-size: $font-size-4xl;
+      }
     }
 
     .gradient-text {
       display: block;
-       // background: linear-gradient(-45deg, #00ffaa,  #fd00fd,  #00ffeb, #dd00ff);
-       background: linear-gradient(-45deg, #00ffaa,  #ffbb00,  #00ffeb, #a6ff00);
+      // background: linear-gradient(-45deg, #00ffaa,  #fd00fd,  #00ffeb, #dd00ff);
+      background: linear-gradient(-45deg, #00ffaa, #ffbb00, #00ffeb, #a6ff00);
       background-size: 300%;
       background-clip: text;
       -webkit-background-clip: text;
@@ -98,9 +101,11 @@
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -159,7 +164,7 @@
       }
 
       &.btn-primary {
-       // background: radial-gradient(circle at center, #d946ef, #a855f7);
+        // background: radial-gradient(circle at center, #d946ef, #a855f7);
         background: radial-gradient(circle at center, #a6ff00, #00ffeb);
         color: black;
         border: none;
@@ -235,10 +240,12 @@
           background: rgba(168, 85, 247, 0.2);
           color: #d8b4fe;
         }
+
         &.pink {
           background: rgba(236, 72, 153, 0.2);
           color: #fca5a5;
         }
+
         &.blue {
           background: rgba(59, 130, 246, 0.2);
           color: #93c5fd;
