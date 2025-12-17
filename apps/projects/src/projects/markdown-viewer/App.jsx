@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { marked } from 'marked'
 
@@ -39,7 +39,8 @@ function App() {
   return (
     <div className="app-container">
       <Toolbar insertText={insertText} />
-      <textarea ref={textAreaRef} value={text} onChange={e => setText(e.target.value)}></textarea>
+      <textarea ref={textAreaRef} value={text} onChange={e => setText(e.target.value)} />
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Required for markdown preview */}
       <div dangerouslySetInnerHTML={renderText()} />
     </div>
   )

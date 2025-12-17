@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import DetailedPhoto from './components/DetailedPhoto'
 import PhotoList from './components/PhotoList'
@@ -28,7 +28,7 @@ function App() {
         searchQuery = category
       }
 
-      const response = await axios.get(`https://api.unsplash.com/photos`, {
+      const response = await axios.get('https://api.unsplash.com/photos', {
         params: {
           client_id: apiKey,
           query: searchQuery
@@ -41,7 +41,7 @@ function App() {
       return
     }
 
-    const response = await axios.get(`https://api.unsplash.com/photos/random`, {
+    const response = await axios.get('https://api.unsplash.com/photos/random', {
       params: {
         client_id: apiKey,
         count: 10
@@ -53,7 +53,7 @@ function App() {
 
   useEffect(() => {
     fetchData(query, category)
-  }, [])
+  }, [query, category])
 
   useEffect(() => {
     if (activateSearch) {
