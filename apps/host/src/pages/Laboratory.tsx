@@ -46,11 +46,21 @@ export default function Laboratory() {
     return () => clearTimeout(timer)
   }, [])
 
+  const PROJECTS_BASE_URL = import.meta.env.VITE_PROJECTS_URL || 'http://localhost:5001'
+
   // Listen for messages from MFEs via postMessage
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       // Security: verify origin
-      if (event.origin !== 'http://localhost:5001') return
+      // Allow messages from the base projects URL OR the specific project URL
+      // In production, you might want to be more strict or use a whitelist
+      const allowedOrigins = [PROJECTS_BASE_URL]
+      if (selectedProject?.projectUrl) {
+        allowedOrigins.push(new URL(selectedProject.projectUrl).origin)
+      }
+
+      // Also allow localhost:8080 implicitly for development convenience if needed
+      if (!allowedOrigins.includes(event.origin) && event.origin !== 'http://localhost:8080') return
 
       // Handle MFE events via EventBus
       if (event.data.type) {
@@ -60,7 +70,7 @@ export default function Laboratory() {
 
     window.addEventListener('message', handleMessage)
     return () => window.removeEventListener('message', handleMessage)
-  }, [])
+  }, [selectedProject]) // Re-bind listener when selectedProject changes to update allowed origins
 
   // Handle iframe load events
   const handleIframeLoad = () => {
@@ -81,6 +91,11 @@ export default function Laboratory() {
 
   const categories = ['all', ...new Set(projects.map(p => p.category))]
   const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter)
+
+  // Construct iframe source
+  const iframeSrc = selectedProject
+    ? selectedProject.projectUrl || `${PROJECTS_BASE_URL}/${selectedProject.id}`
+    : ''
 
   if (loading) {
     return <Spinner />
@@ -183,7 +198,7 @@ export default function Laboratory() {
 
               {/* MFE iframe - Isolated Runtime */}
               <iframe
-                src={`http://localhost:5001/${selectedProject.id}`}
+                src={iframeSrc}
                 title={selectedProject.name}
                 className="project-iframe"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups"

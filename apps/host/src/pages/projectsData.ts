@@ -5,11 +5,22 @@ export interface Project {
   technologies: string[]
   screenshot: string
   githubUrl?: string
+  projectUrl?: string // Optional custom URL (e.g., for different ports or external deploys)
   category: 'UI' | 'Data' | 'Games' | 'Tools' | 'API' | 'Other'
 }
 
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
+  {
+    id: 'citacoes',
+    name: 'Citações',
+    description: 'Gerador de citações inspiradoras com Vue 2',
+    technologies: ['Vue 2', 'CSS3'],
+    screenshot: '/screenshots/citacoes.png', // Placeholder, using default fallback
+    // githubUrl: '', // Add if available
+    projectUrl: 'http://localhost:8080', // Custom URL for external Vue project
+    category: 'Other'
+  },
   {
     id: 'todo-app',
     name: 'To-Do App',
