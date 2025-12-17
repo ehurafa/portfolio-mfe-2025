@@ -18,7 +18,7 @@ export const projects: Project[] = [
     technologies: ['Vue 2', 'CSS3'],
     screenshot: '/screenshots/citacoes.png', // Placeholder, using default fallback
     // githubUrl: '', // Add if available
-    projectUrl: 'http://localhost:8080', // Custom URL for external Vue project
+    projectUrl: import.meta.env.VITE_CITACOES_URL || 'http://localhost:8080', // Configurable via .env
     category: 'Other'
   },
   {
