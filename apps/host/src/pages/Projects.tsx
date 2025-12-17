@@ -51,7 +51,8 @@ export default function Projects() {
   const filtered = useMemo(() => {
     if (!posts) return []
     return posts.filter(post => {
-      return (post.acf.title_post || '').toLowerCase()
+      // Ensure we have a title to display
+      return !!post.acf.title_post
     })
   }, [posts])
 

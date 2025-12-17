@@ -55,8 +55,8 @@ export default function Home() {
       </motion.h1>
 
       <motion.p className="subtitle" variants={textVariants}>
-        Desenvolvedor Front-end especializado em <br></br>
-        criar interfaces modernas, <i>pixel-perfect</i>, responsivas e performáticas <br></br>
+        Desenvolvedor Front-end especializado em <br />
+        criar interfaces modernas, <i>pixel-perfect</i>, responsivas e performáticas <br />
         com Javascript e as melhores práticas do mercado.
       </motion.p>
 

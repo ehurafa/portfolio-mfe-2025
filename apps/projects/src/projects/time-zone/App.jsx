@@ -48,8 +48,9 @@ function App() {
         <hr />
         <p>{selectedTimeZones}</p>
         <hr />
-        {selectedTimeZones &&
-          selectedTimeZones.map(timezone => <TimeZoneClock key={timezone} timeZone={timezone} />)}
+        {selectedTimeZones?.map(timezone => (
+          <TimeZoneClock key={timezone} timeZone={timezone} />
+        ))}
       </div>
     </div>
   )

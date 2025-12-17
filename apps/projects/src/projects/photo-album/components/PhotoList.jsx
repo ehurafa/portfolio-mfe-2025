@@ -9,10 +9,9 @@ const PhotoList = ({ photos, setDetailedPhoto }) => {
 
   return (
     <div className="album">
-      {photos &&
-        photos.map(photo => (
-          <Photo key={photo.id} info={photo} setDetailedPhoto={setDetailedPhoto} />
-        ))}
+      {photos?.map(photo => (
+        <Photo key={photo.id} info={photo} setDetailedPhoto={setDetailedPhoto} />
+      ))}
     </div>
   )
 }

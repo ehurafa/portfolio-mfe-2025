@@ -14,15 +14,14 @@ const Calculator = () => {
     setCurrentValue(prevValue => {
       if (prevValue === '0') {
         return val
-      } else {
-        return prevValue + val
       }
+      return prevValue + val
     })
     setCompleteOperation(prevOperation => prevOperation + val)
   }
 
   const handleOperation = operation => {
-    setCompleteOperation(currentValue + ' ' + operation)
+    setCompleteOperation(`${currentValue} ${operation}`)
     setPendingOperation(operation)
     setPendingValue(currentValue)
     setCurrentValue('0')
@@ -40,8 +39,8 @@ const Calculator = () => {
       return
     }
 
-    const num1 = parseFloat(pendingValue)
-    const num2 = parseFloat(currentValue)
+    const num1 = Number.parseFloat(pendingValue)
+    const num2 = Number.parseFloat(currentValue)
 
     let result
 
@@ -74,9 +73,7 @@ const Calculator = () => {
         break
     }
 
-    setCompleteOperation(
-      pendingValue + ' ' + pendingOperation + ' ' + currentValue + ' = ' + result
-    )
+    setCompleteOperation(`${pendingValue} ${pendingOperation} ${currentValue} = ${result}`)
 
     setCurrentValue(result.toString())
     setPendingOperation(null)
