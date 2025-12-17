@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  overflow-y: auto;
+  // overflow-y: auto;
   height: 100%;
 
   @include media-lg {
@@ -32,7 +32,7 @@
   }
 
   scroll-behavior: smooth;
-  
+
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -44,7 +44,7 @@
   &::-webkit-scrollbar-thumb {
     background-color: $color-gray-300;
     border-radius: 4px;
-    
+
     &:hover {
       background-color: $color-gray-400;
     }
