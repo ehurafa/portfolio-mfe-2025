@@ -6,7 +6,7 @@ import { IoIosMenu, IoMdClose } from 'react-icons/io'
 import { TiSocialLinkedin } from 'react-icons/ti'
 import { NavLink } from 'react-router-dom'
 import brandImage from '../assets/brand.png'
-import profileImage from '../assets/profile.jpg'
+import profileImage from '../assets/vibrant-avatar.png'
 
 // Animation variants
 const containerVariants = {
