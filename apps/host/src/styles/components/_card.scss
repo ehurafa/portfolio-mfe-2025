@@ -5,28 +5,36 @@
 @use '../utilities/mixins' as *;
 
 .card {
-  background-color: $color-bg-dark;
+  background-color: $color-bg-active;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: $shadow-sm;
   @include transition(all, 0.3s);
-  height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid $color-border-light;
+  height: 100%;
+  width: 100%; // Ensure card takes full width of grid cell
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &[type='button'] {
+    font-family: inherit;
+    text-align: left;
+    padding: 0;
+    border: 1px solid $color-border-light;
+  }
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: $shadow-lg;
-  }
 
-  &--project {
-    .card__body {
-      padding: $space-4;
+    .card__thumbnail img {
+      transform: scale(1.05);
     }
   }
 
-  &__thumb {
+  &__thumbnail {
     position: relative;
     width: 100%;
     padding-top: 56.25%;
@@ -42,55 +50,84 @@
       object-fit: cover;
       @include transition(transform, 0.5s);
     }
-
-    &:hover img {
-      transform: scale(1.05);
-    }
   }
 
   &__tag {
     position: absolute;
     top: $space-3;
-    right: $space-3;
-    padding: 4px 10px;
+    left: $space-3;
+    padding: 4px 12px;
     border-radius: 20px;
     font-size: $font-size-xs;
     font-weight: $font-weight-bold;
     color: $color-white;
     z-index: 2;
-    background-color: $color-dark;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 
-    &.purple { background-color: $color-tag-purple; }
-    &.red { background-color: $color-tag-red; }
-    &.orange { background-color: $color-tag-orange; }
+    &--purple {
+      background-color: $color-tag-purple;
+    }
+
+    &--red {
+      background-color: $color-tag-red;
+    }
+
+    &--orange {
+      background-color: $color-tag-orange;
+    }
+
+    &--white {
+      background-color: $color-white;
+      color: $color-dark;
+    }
   }
 
   &__body {
-    padding: $space-6;
+    padding: $space-4;
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: $space-2;
   }
 
   &__title {
     font-family: 'Poppins', sans-serif;
-    font-size: $font-size-lg;
-    font-weight: $font-weight-semibold;
-    color: $color-text-primary;
-    margin-bottom: $space-3;
-    
-    &--bordered {
-      border-bottom: 2px solid $color-brand;
-      padding-bottom: $space-2;
-      display: inline-block;
-      margin-bottom: $space-4;
-    }
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-text-light;
+    margin: 0;
+    line-height: $line-height-tight;
   }
 
-  &__content {
-    color: $color-text-secondary;
-    font-size: $font-size-base;
+  &__description {
+    font-size: $font-size-xs;
+    color: $color-text-light;
     line-height: $line-height-relaxed;
+    margin: 0;
     flex: 1;
+  }
+
+  &__tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-top: $space-2;
+  }
+
+  &__tech-tag {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    padding: $space-1 $space-3;
+    background: $color-gray-200;
+    color: $color-text-primary;
+    border-radius: 6px;
+    @include transition(all, 0.2s);
+
+    &:hover {
+      background: $color-brand;
+      color: $color-dark;
+    }
   }
 }

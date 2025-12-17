@@ -33,46 +33,46 @@ export default function Card({
   variant,
   children
 }: CardProps) {
-  // If variant="info", use the old Card layout (for Home page)
+  // If variant="info", use the old Card layout (for Home page) - now Info Card
   if (variant === 'info') {
     return (
-      <div className={`card card--info ${className}`.trim()}>
-        <div className="card__body">
-          {title && <h2 className="card__title card__title--bordered">{title}</h2>}
-          <div className="card__content">{children}</div>
+      <div className={`info-card ${className}`.trim()}>
+        <div className="info-card__body">
+          {title && <h2 className="info-card__title info-card__title--bordered">{title}</h2>}
+          <div className="info-card__content">{children}</div>
         </div>
       </div>
     )
   }
 
-  // Otherwise, use GenericCard layout
-  const cardClasses = `generic-card ${className}`.trim()
+  // Otherwise, use GenericCard layout - now Standard Card
+  const cardClasses = `card ${className}`.trim()
   const isClickable = onClick || href
 
   const CardContent = (
     <>
       {thumbnail && (
-        <div className="generic-card__thumbnail">
-          {tag && <span className={`generic-card__tag generic-card__tag--${tagColor}`}>{tag}</span>}
+        <div className="card__thumbnail">
+          {tag && <span className={`card__tag card__tag--${tagColor}`}>{tag}</span>}
           <img src={thumbnail} alt={title || ''} loading="lazy" />
         </div>
       )}
 
-      <div className="generic-card__body">
-        {title && <h3 className="generic-card__title">{title}</h3>}
-        {description && <p className="generic-card__description">{description}</p>}
+      <div className="card__body">
+        {title && <h3 className="card__title">{title}</h3>}
+        {description && <p className="card__description">{description}</p>}
 
         {technologies && technologies.length > 0 && (
-          <div className="generic-card__tech-tags">
+          <div className="card__tech-tags">
             {technologies.map(tech => (
-              <span key={tech} className="generic-card__tech-tag">
+              <span key={tech} className="card__tech-tag">
                 {tech}
               </span>
             ))}
           </div>
         )}
 
-        {children && <div className="generic-card__content">{children}</div>}
+        {children && <div className="card__content">{children}</div>}
       </div>
     </>
   )
