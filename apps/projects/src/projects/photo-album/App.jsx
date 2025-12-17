@@ -5,6 +5,8 @@ import DetailedPhoto from './components/DetailedPhoto'
 import PhotoList from './components/PhotoList'
 import Searchbar from './components/Searchbar'
 
+import './index.css'
+
 import axios from 'axios'
 
 function App() {
