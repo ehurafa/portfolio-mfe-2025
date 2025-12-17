@@ -91,7 +91,7 @@ export const projects: Project[] = [
     name: 'Markdown Viewer',
     description: 'Markdown editor and viewer with real-time preview',
     technologies: ['React', 'Marked', 'CSS3'],
-    screenshot: '/screenshots/markdown-viewer.png',
+    screenshot: '/screenshots/markdown-viewer-ai.png',
     githubUrl: 'https://github.com/ehurafa/20-react-projects',
     category: 'Tools'
   },

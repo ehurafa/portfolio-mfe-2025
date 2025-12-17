@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { marked } from 'marked'
+import './App.css'
+import './index.css'
 
 import Toolbar from './components/Toolbar'
 
 function App() {
   const [text, setText] = useState(
-    localStorage.getItem('markdownText') || '# Olá, eu sou feito de markdown'
+    localStorage.getItem('portfolio_markdown_text') || '# Olá, eu sou feito de markdown'
   )
 
   const renderText = () => {
@@ -17,7 +19,7 @@ function App() {
   const textAreaRef = useRef(null)
 
   useEffect(() => {
-    localStorage.setItem('markdownText', text)
+    localStorage.setItem('portfolio_markdown_text', text)
   }, [text])
 
   const insertText = (before, after) => {
@@ -41,7 +43,7 @@ function App() {
       <Toolbar insertText={insertText} />
       <textarea ref={textAreaRef} value={text} onChange={e => setText(e.target.value)} />
       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Required for markdown preview */}
-      <div dangerouslySetInnerHTML={renderText()} />
+      <div className="markdown-preview" dangerouslySetInnerHTML={renderText()} />
     </div>
   )
 }

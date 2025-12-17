@@ -30,15 +30,15 @@
     align-items: center;
   }
 
-  & > div {
+  &>div {
     width: 100%;
   }
 
   .avatar {
-    width: 80%;
+    width: 75%;
     height: auto;
     border-radius: 50%;
-     border: 2px solid $color-border-white;
+    border: 2px solid $color-border-white;
     overflow: hidden;
     margin: 0;
 
@@ -54,7 +54,7 @@
 
     @include media-lg {
       margin-top: $space-4;
-      
+
       img {
         display: inline-block;
         max-width: 180px;
