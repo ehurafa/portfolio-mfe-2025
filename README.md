@@ -535,6 +535,10 @@ export default defineConfig({
 # WordPress API (usado apenas quando mock está desabilitado)
 VITE_WP_API_BASE=https://your-wordpress-site.com/wp-json/wp/v2
 
+# URL Base dos Microfrontends (Padrão: localhost:5001)
+# Em produção, aponte para a URL onde os projetos estão hospedados
+VITE_PROJECTS_URL=http://localhost:5001
+
 # Mock data (defina como 'true' para evitar problemas de CORS no desenvolvimento)
 VITE_USE_MOCK_DATA=true
 ```
@@ -632,6 +636,7 @@ interface WPPost {
 ### Integrações
 - ✅ Integração com WordPress API
 - ✅ Advanced Custom Fields (ACF)
+- ✅ Projetos Vue 2 Legados (via Custom URL)
 
 ### Quality & Tooling
 - ✅ Performance otimizada
