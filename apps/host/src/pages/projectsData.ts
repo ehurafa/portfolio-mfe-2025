@@ -28,15 +28,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/ehurafa/20-react-projects',
     category: 'API'
   },
-  {
-    id: 'calculator',
-    name: 'Calculator',
-    description: 'Calculadora funcional com operações matemáticas básicas',
-    technologies: ['React', 'JavaScript', 'CSS3'],
-    screenshot: '/screenshots/calculator.png',
-    githubUrl: 'https://github.com/ehurafa/20-react-projects',
-    category: 'Tools'
-  },
+
   {
     id: 'timer',
     name: 'Timer',
@@ -45,6 +37,78 @@ export const projects: Project[] = [
     screenshot: '/screenshots/timer.png',
     githubUrl: 'https://github.com/ehurafa/20-react-projects',
     category: 'Tools'
-  }
+  },
   // TODO: Add your remaining 17 projects here
+  {
+    id: 'calculator',
+    name: 'Calculator',
+    description: 'Functional calculator with basic mathematical operations',
+    technologies: ['React', 'CSS3'],
+    screenshot: '/screenshots/calculator.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'Tools'
+  },
+  {
+    id: 'currency-converter',
+    name: 'Currency Converter',
+    description: 'Real-time currency converter consuming external API',
+    technologies: ['React', 'API', 'CSS3'],
+    screenshot: '/screenshots/currency-converter.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'API'
+  },
+  {
+    id: 'quotes',
+    name: 'Quotes',
+    description: 'Random quote generator',
+    technologies: ['React', 'CSS3'],
+    screenshot: '/screenshots/quotes.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'Other'
+  },
+  {
+    id: 'photo-album',
+    name: 'Photo Album',
+    description: 'Searchable photo gallery using Unsplash API',
+    technologies: ['React', 'API', 'Axios'],
+    screenshot: '/screenshots/photo-album.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'API'
+  },
+  {
+    id: 'markdown-viewer',
+    name: 'Markdown Viewer',
+    description: 'Markdown editor and viewer with real-time preview',
+    technologies: ['React', 'Marked', 'CSS3'],
+    screenshot: '/screenshots/markdown-viewer.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'Tools'
+  },
+  {
+    id: 'time-zone',
+    name: 'Time Zone',
+    description: 'World clock to check times across different time zones',
+    technologies: ['React', 'CSS3'],
+    screenshot: '/screenshots/time-zone.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'Tools'
+  },
+  {
+    id: 'hash-game',
+    name: 'Hash Game',
+    description: 'Classic Tic-Tac-Toe game',
+    technologies: ['React', 'CSS3'],
+    screenshot: '/screenshots/hash-game.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'Games'
+  },
+  {
+    id: 'todo-redux',
+    name: 'Todo Redux',
+    description: 'Task manager using Redux for global state',
+    technologies: ['React', 'Redux', 'Redux Toolkit'],
+    screenshot: '/screenshots/todo-redux.png',
+    githubUrl: 'https://github.com/ehurafa/20-react-projects',
+    category: 'Tools'
+  }
 ]

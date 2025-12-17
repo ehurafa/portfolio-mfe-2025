@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/testcomponent.tsx","./src/main.tsx","./src/registry.ts","./src/vite-env.d.ts","./src/projects/todo-app/app.tsx"],"version":"5.9.2"}
+{"root":["./src/app.tsx","./src/testcomponent.tsx","./src/main.tsx","./src/registry.ts","./src/vite-env.d.ts","./src/projects/markdown-viewer/components/toolbar.tsx","./src/projects/todo-app/app.tsx"],"version":"5.9.2"}

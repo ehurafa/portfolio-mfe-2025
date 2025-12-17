@@ -1,0 +1,28 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+div {
+  text-align: center;
+}
+
+h1 {
+  background-color: #6200ea;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+}
+
+select {
+  margin: 15px;
+  padding: 8px;
+}
+
+.timezone {
+  margin: 15px;
+  padding: 12px;
+  
+}
