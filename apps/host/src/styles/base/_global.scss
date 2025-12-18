@@ -13,4 +13,21 @@ body {
   color: $color-text-primary;
   font-size: $font-size-base;
   line-height: $line-height-normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  color: $color-dark-panel;
+  background-color: $color-brand;
+}
+
+::-moz-selection {
+  color: $color-dark-panel;
+  background-color: $color-brand;
 }
