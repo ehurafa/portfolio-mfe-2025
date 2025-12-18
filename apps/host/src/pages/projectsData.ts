@@ -9,6 +9,13 @@ export interface Project {
   category: 'UI' | 'Data' | 'Games' | 'Tools' | 'API' | 'Other'
 }
 
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_CITACOES_URL) return import.meta.env.VITE_CITACOES_URL
+  return 'http://localhost:8080'
+}
+
+const citacoesUrl = getBaseUrl()
+
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
   {
@@ -18,7 +25,7 @@ export const projects: Project[] = [
     technologies: ['Vue 2', 'CSS3'],
     screenshot: '/screenshots/citacoes.png', // Placeholder, using default fallback
     // githubUrl: '', // Add if available
-    projectUrl: 'http://localhost:8080', // Custom URL for external Vue project
+    projectUrl: citacoesUrl, // Custom URL for external Vue project
     category: 'Other'
   },
   {

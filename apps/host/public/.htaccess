@@ -1,13 +1,17 @@
 RewriteEngine On
 RewriteBase /
+
 # 1. Preservar WordPress em /postsapi
 RewriteRule ^postsapi/wp-json/(.*)$ /postsapi/wp-json/$1 [L]
 RewriteRule ^postsapi/(.*)$ - [L]
+
 # 2. Regras para o App de Projetos (Microfrontends) em /micro/
-# Se a URL começar com /micro/ e não for um arquivo real, manda para /micro/index.html
+# Apenas redireciona se NÃO for um arquivo real E NÃO for uma pasta real (como /micro/citacoes/)
 RewriteCond %{REQUEST_URI} ^/micro/
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^micro/(.*)$ /micro/index.html [L]
+
 # 3. Regras SPA para o Host (Raiz)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

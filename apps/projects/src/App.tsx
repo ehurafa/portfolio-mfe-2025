@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 // @ts-expect-error - .jsx import
 import CalculatorApp from './projects/calculator/App'
 // @ts-expect-error - .jsx import
@@ -36,7 +36,21 @@ export default function App(): JSX.Element {
         <Route path="/time-zone" element={<TimeZoneApp />} />
         <Route path="/hash-game" element={<HashGameApp />} />
         <Route path="/todo-redux" element={<TodoReduxApp />} />
+
+        {/* Fallback routes for when basename might behave unexpectedly */}
+        <Route path="micro/todo-app" element={<TodoApp />} />
+        <Route path="micro/weather-app" element={<WeatherApp />} />
+
         <Route path="/" element={<TodoApp />} />
+
+        {/* Debug route to show what the router sees */}
+        <Route path="*" element={
+          <div style={{ padding: '20px', color: 'white', background: '#333' }}>
+            <h2>Projeto não encontrado</h2>
+            <p>O roteador está tentando carregar: {window.location.pathname}</p>
+            <p>Se você vê isso, o basename não está funcionando como esperado.</p>
+          </div>
+        } />
       </Routes>
     </Router>
   )

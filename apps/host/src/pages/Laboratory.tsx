@@ -95,12 +95,12 @@ export default function Laboratory() {
     filter === 'Todos'
       ? projects
       : projects.filter(p =>
-          p.technologies.some(tech => tech.toLowerCase().includes(filter.toLowerCase()))
-        )
+        p.technologies.some(tech => tech.toLowerCase().includes(filter.toLowerCase()))
+      )
 
   // Construct iframe source
   const iframeSrc = selectedProject
-    ? selectedProject.projectUrl || `${PROJECTS_BASE_URL}/${selectedProject.id}`
+    ? selectedProject.projectUrl || `${PROJECTS_BASE_URL}/#/${selectedProject.id}`
     : ''
 
   if (loading) {

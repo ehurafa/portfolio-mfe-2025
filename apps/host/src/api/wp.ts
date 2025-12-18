@@ -4,16 +4,21 @@ export interface ImageSizes {
   large: string
   medium?: string
   small?: string
+  thumbnail?: string
+  [key: string]: string | number | undefined
 }
 export interface ImagePost {
   url: string
   sizes?: ImageSizes
+  [key: string]: any
 }
 
 export interface TechnologyTag {
   term_id: number
   name: string
   slug?: string
+  term_group?: number
+  [key: string]: any
 }
 export interface ACF {
   data_post: string
@@ -21,16 +26,20 @@ export interface ACF {
   title_post: string
   post_content: string
   list_of_technologies: TechnologyTag[]
+  [key: string]: any
 }
 
 export interface Content {
   rendered?: string
+  protected?: boolean
 }
 export interface WPPost {
   id: number
   acf: ACF
   slug: string
   content: Content
+  excerpt?: Content
+  [key: string]: any
 }
 
 const WP_API_BASE = import.meta.env.VITE_WP_API_BASE
