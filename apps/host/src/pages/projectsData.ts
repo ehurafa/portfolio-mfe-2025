@@ -36,8 +36,8 @@ export const projects: Project[] = [
   {
     id: 'angular-todo',
     name: 'Angular To-Do',
-    description: 'Aplicação To-Do lista desenvolvida com Angular 15',
-    technologies: ['Angular 15', 'SCSS', 'TypeScript'],
+    description: 'Aplicação To-Do lista desenvolvida com Angular 19',
+    technologies: ['Angular 19', 'SCSS', 'TypeScript'],
     screenshot: '/screenshots/angular-todo-ai.png',
     projectUrl: angularTodoUrl,
     category: 'Tools'
