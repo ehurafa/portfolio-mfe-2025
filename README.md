@@ -1,124 +1,126 @@
 # 🎨 Portfolio Microfrontend
 
-Portfolio moderno e performático com **arquitetura Microfrontend**, construído com React, TypeScript e SASS. Aplicação host consumindo dados do WordPress via REST API e integrando microfrontends isolados via iframe.
+Modern and high-performance portfolio with **Microfrontend architecture**, built with React, TypeScript, and SASS. Host application consuming WordPress data via REST API and integrating isolated microfrontends via iframe.
 
-## 📋 Sobre o Projeto
+## 📋 About the Project
 
-Este projeto é um portfólio profissional que demonstra boas práticas de desenvolvimento front-end moderno, incluindo:
-- **Arquitetura Microfrontend** com iframe para isolamento completo
-- **Monorepo Structure** com workspaces npm (host + microfrontends)
-- **Design System** completo com tokens de design (cores, espaçamento, tipografia)
-- **Event Bus** para comunicação inter-MFE via postMessage
-- **Type-safe** com TypeScript em todos os workspaces
-- **Performance otimizada** com lazy loading e code splitting
-- **SEO-friendly** com meta tags e estrutura semântica
-- **100% Responsivo** com mobile-first approach
-- **Isolamento de runtime** com sandbox security
+This project is a professional portfolio demonstrating modern front-end development best practices, including:
+- **Microfrontend Architecture** with iframe for complete isolation
+- **Monorepo Structure** with npm workspaces (host + microfrontends)
+- **Design System** complete with design tokens (colors, spacing, typography)
+- **Event Bus** for inter-MFE communication via postMessage
+- **Type-safe** with TypeScript across all workspaces
+- **Optimized Performance** with lazy loading and code splitting
+- **SEO-friendly** with meta tags and semantic structure
+- **100% Responsive** with mobile-first approach
+- **Runtime Isolation** with sandbox security
+- **Animated SVG Favicon** with brand color synchronization
+- **PWA Ready** with manifest and mobile theme-color customization
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Tech Stack
 
 ### Core
-- **React 18** - Biblioteca UI
+- **React 18** - UI Library
 - **TypeScript** - Type safety
-- **Vite** - Build tool rápido
-- **React Router** - Navegação SPA
+- **Vite** - Fast build tool
+- **React Router** - SPA Navigation
 - **npm Workspaces** - Monorepo management
 - **Concurrently** - Multi-process orchestration
 
 ### Styling
-- **SASS/SCSS** - Pre-processador CSS
-- **Design System** - Tokens e componentes padronizados
-- **CSS Grid/Flexbox** - Layouts responsivos
+- **SASS/SCSS** - CSS Pre-processor
+- **Design System** - Standardized tokens and components
+- **CSS Grid/Flexbox** - Responsive layouts
 
 ### API & Data
 - **WordPress REST API** (v2)
 - **Advanced Custom Fields** (ACF v3)
 
 ### Quality & Tooling
-- **Vitest** - Framework de testes unitários
-- **React Testing Library** - Testes de componentes centrados no usuário
-- **Happy-DOM** - Ambiente de simulação de browser leve (substituto do JSDOM)
-- **ESLint** - Linting JavaScript/TypeScript
-- **Prettier** - Formatação de código
-- **Biome** - Lint + Formatter unificado (opcional, focado em performance)
+- **Vitest** - Unit testing framework
+- **React Testing Library** - User-centric component tests
+- **Happy-DOM** - Lightweight browser simulation environment
+- **ESLint** - JavaScript/TypeScript linting
+- **Prettier** - Code formatting
+- **Biome** - Unified Lint + Formatter (performance-focused)
 - **Husky** - Git hooks
 - **Lint-Staged** - Pre-commit validation
 
-## 📁 Estrutura do Projeto (Monorepo)
+## 📁 Project Structure (Monorepo)
 
 ```
 portfolio-mfe-2025/
 ├── apps/                      # Workspaces (Microfrontends)
-│   ├── host/                 # 🏠 Aplicação Host (Container)
+│   ├── host/                 # 🏠 Host Application (Container)
 │   │   ├── src/
-│   │   │   ├── api/          # Cliente API WordPress
+│   │   │   ├── api/          # WordPress API Client
 │   │   │   │   └── wp.ts
-│   │   │   ├── assets/       # Imagens estáticas
-│   │   │   ├── components/   # Componentes do Host
+│   │   │   ├── assets/       # Static assets
+│   │   │   ├── components/   # Host Components
 │   │   │   │   ├── ProjectCard.tsx
 │   │   │   │   ├── Sidebar.tsx
 │   │   │   │   ├── Spinner.tsx
-│   │   │   │   └── MFEErrorBoundary.tsx  # Error boundary específico para MFEs
-│   │   │   ├── pages/        # Páginas principais
+│   │   │   │   └── MFEErrorBoundary.tsx  # Specific error boundary for MFEs
+│   │   │   ├── pages/        # Main pages
 │   │   │   │   ├── Home.tsx
 │   │   │   │   ├── Projects.tsx
 │   │   │   │   ├── About.tsx
 │   │   │   │   ├── Certificates.tsx
-│   │   │   │   ├── Laboratory.tsx         # 🔬 Viewer de MFEs com iframe
+│   │   │   │   ├── Laboratory.tsx         # 🔬 MFE Viewer with iframe
 │   │   │   │   └── ProjectDetails.tsx
-│   │   │   ├── utils/        # Utilitários
+│   │   │   ├── utils/        # Utilities
 │   │   │   │   └── eventBus.ts           # 📡 Event Bus (postMessage)
 │   │   │   ├── styles/       # Design System (SASS)
 │   │   │   │   ├── tokens/   # Design Tokens
-│   │   │   │   ├── base/     # Reset e global
+│   │   │   │   ├── base/     # Reset and global
 │   │   │   │   ├── components/
-│   │   │   │   │   ├── _laboratory.scss  # Estilos do iframe viewer
+│   │   │   │   │   ├── _laboratory.scss  # Iframe viewer styles
 │   │   │   │   │   └── ...
 │   │   │   │   └── main.scss
 │   │   │   ├── App.tsx
 │   │   │   └── main.tsx
 │   │   ├── public/
 │   │   │   └── certificates/
-│   │   ├── package.json      # Dependências do host
+│   │   ├── package.json      # Host dependencies
 │   │   ├── vite.config.ts
 │   │   └── tsconfig.json
 │   │
-│   └── projects/             # 🎯 Microfrontend de Projetos (Remote)
+│   └── projects/             # 🎯 Projects Microfrontend (Remote)
 │       ├── src/
-│       │   ├── projects/     # Projetos isolados
+│       │   ├── projects/     # Isolated projects
 │       │   │   ├── todo-app/
 │       │   │   ├── weather/
 │       │   │   └── timer/
-│       │   ├── App.tsx       # Router dos MFEs
+│       │   ├── App.tsx       # MFE Router
 │       │   └── main.tsx
-│       ├── package.json      # Dependências independentes
+│       ├── package.json      # Independent dependencies
 │       ├── vite.config.ts
 │       └── tsconfig.json
 │
-├── node_modules/             # Dependências raiz
+├── node_modules/             # Root dependencies
 ├── package.json              # 📦 Root - Workspace orchestration
-├── .env                      # Variáveis de ambiente
-├── eslint.config.js          # Config ESLint compartilhada
-├── .prettierrc               # Config Prettier compartilhada
+├── .env                      # Environment variables
+├── eslint.config.js          # Shared ESLint config
+├── .prettierrc               # Shared Prettier config
 └── README.md
 ```
 
 ## 🎨 Design System
 
-### Tokens de Design
+### Design Tokens
 
-#### Cores
+#### Colors
 ```scss
-// Principais
+// Main
 $color-brand: #00ffeb;
 $color-dark: #1f1f1f;
 $color-light: #f3f3f3;
 
-// Escala de cinzas (50-900)
+// Grayscale (50-900)
 $color-gray-100, $color-gray-200, ..., $color-gray-900
 ```
 
-#### Espaçamento (múltiplos de 4px)
+#### Spacing (Multiples of 4px)
 ```scss
 $space-0: 0;      // 0px
 $space-1: 4px;    // 4px
@@ -131,10 +133,9 @@ $space-10: 40px;  // 40px
 $space-16: 64px;  // 64px
 ```
 
-#### Tipografia
+#### Typography
 ```scss
-// Tamanhos
-// Tamanhos
+// Sizes
 $font-size-body-sm: 0.875rem; // 14px
 $font-size-base: 1rem;        // 16px
 $font-size-lg: 1.25rem;       // 20px
@@ -152,19 +153,22 @@ $font-weight-bold: 700;
 $font-weight-extrabold: 800;
 ```
 
-## 🏗️ Arquitetura Microfrontend
+## 🏗️ Microfrontend Architecture
 
-### 🎯 Visão Geral
+### 🎯 Overview
 
-Este projeto utiliza **arquitetura Microfrontend com iframe** para isolar completamente diferentes aplicações. A abordagem com iframe oferece:
+This project uses **Microfrontend architecture with iframes** to completely isolate different applications. The iframe approach offers:
 
-- ✅ **Isolamento completo** de runtime e estilos
-- ✅ **Independência de versões** (cada MFE pode ter suas próprias dependências)
-- ✅ **Deploy independente** de cada microfrontend
-- ✅ **Segurança** via sandbox attributes
-- ✅ **Fallback confiável** em caso de falhas individuais
+- ✅ **Complete Isolation** of runtime and styles
+- ✅ **Version Independence** (each MFE can have its own dependencies)
+- ✅ **Independent Deploy** for each microfrontend
+- ✅ **Security** via sandbox attributes
+- ✅ **Reliable Fallback** in case of individual failures
 
-### 📐 Estrutura de Workspaces
+> [!NOTE]
+> **Architectural Roadmap**: The current **iframe-based isolation** is a strategic temporary choice for immediate runtime and style isolation. The project roadmap includes migrating to a **pure Module Federation** implementation to further enhance performance and deep component integration.
+
+### 📐 Workspace Structure
 
 ```mermaid
 graph TB
@@ -178,9 +182,9 @@ graph TB
     style PROJECTS fill:#2d2d2d,stroke:#ff6b6b,color:#fff
 ```
 
-### 🔄 Comunicação entre MFEs
+### 🔄 Communication between MFEs
 
-A comunicação entre o Host e os Microfrontends é feita via **postMessage API** + **Event Bus**:
+Communication between the Host and Microfrontends is handled via **postMessage API** + **Event Bus**:
 
 ```mermaid
 sequenceDiagram
@@ -189,24 +193,24 @@ sequenceDiagram
     participant EventBus as Event Bus
     participant Iframe as MFE iframe<br/>(localhost:5001)
     
-    User->>Host: Seleciona projeto
-    Host->>Host: Abre viewer
-    Host->>Iframe: Carrega MFE via iframe
-    Iframe->>Iframe: Renderiza aplicação
+    User->>Host: Selects project
+    Host->>Host: Opens viewer
+    Host->>Iframe: Loads MFE via iframe
+    Iframe->>Iframe: Renders application
     
-    Note over Host,Iframe: Comunicação bidirecional
+    Note over Host,Iframe: Bidirectional Communication
     
-    Iframe->>Host: postMessage (evento)
+    Iframe->>Host: postMessage (event)
     Host->>EventBus: publish(type, payload)
-    EventBus->>Host: Notifica subscribers
+    EventBus->>Host: Notifies subscribers
     
-    Host->>Iframe: postMessage (comando)
-    Iframe->>Iframe: Processa comando
+    Host->>Iframe: postMessage (command)
+    Iframe->>Iframe: Processes command
 ```
 
-### 🛡️ Segurança com Sandbox
+### 🛡️ Sandbox Security
 
-O iframe utiliza atributos `sandbox` para controlar permissões:
+The iframe uses `sandbox` attributes to control permissions:
 
 ```html
 <iframe
@@ -215,54 +219,54 @@ O iframe utiliza atributos `sandbox` para controlar permissões:
 />
 ```
 
-**Permissões habilitadas:**
-- `allow-scripts` - Execução de JavaScript
-- `allow-same-origin` - Comunicação via postMessage
-- `allow-forms` - Submissão de formulários
-- `allow-popups` - Abertura de popups (quando necessário)
+**Enabled Permissions:**
+- `allow-scripts` - JavaScript execution
+- `allow-same-origin` - Communication via postMessage
+- `allow-forms` - Form submission
+- `allow-popups` - Opening popups (when necessary)
 
-### 🎨 Padrões de Design
+### 🎨 Design Patterns
 
 1. **Microfrontend Architecture**
    - Host (container) + Remotes (microfrontends)
-   - Isolamento via iframe
-   - Comunicação via Event Bus (postMessage)
-   - Error boundaries específicos para MFEs
+   - Isolation via iframe
+   - Communication via Event Bus (postMessage)
+   - Specific error boundaries for MFEs
 
-2. **Monorepo com Workspaces**
-   - npm workspaces para gerenciar múltiplos apps
-   - Dependências compartilhadas na raiz
-   - Configurações unificadas (ESLint, Prettier)
+2. **Monorepo with Workspaces**
+   - npm workspaces to manage multiple apps
+   - Shared dependencies at root
+   - Unified configurations (ESLint, Prettier)
 
 3. **Component-Based Architecture**
-   - Componentes pequenos e reutilizáveis
-   - Separação de responsabilidades (apresentação vs lógica)
-   - Props typing com TypeScript
+   - Small, reusable components
+   - Separation of concerns (presentation vs logic)
+   - Props typing with TypeScript
 
 4. **Atomic Design System** (Host)
-   - Tokens (cores, espaçamento, tipografia)
-   - Componentes (sidebar, card, button)
-   - Layouts (grid system, estrutura principal)
+   - Tokens (colors, spacing, typography)
+   - Components (sidebar, card, button)
+   - Layouts (grid system, main structure)
 
 5. **API Integration Pattern** (Host)
-   - Cliente centralizado (`apps/host/src/api/wp.ts`)
-   - Type-safe com interfaces TypeScript
-   - Error handling consistente
+   - Centralized client (`apps/host/src/api/wp.ts`)
+   - Type-safe with TypeScript interfaces
+   - Consistent error handling
 
 6. **SASS Organization** (ITCSS-inspired)
-   - **Tokens** → Design tokens (variáveis)
-   - **Base** → Reset e estilos globais
-   - **Utilities** → Mixins e funções
-   - **Layouts** → Sistema de grid
-   - **Components** → Componentes isolados
+   - **Tokens** → Design tokens (variables)
+   - **Base** → Reset and global styles
+   - **Utilities** → Mixins and functions
+   - **Layouts** → Grid system
+   - **Components** → Isolated components
 
-### 🧩 Fluxo de Dados (Host App)
+### 🧩 Data Flow (Host App)
 
 ```mermaid
 flowchart TD
     A[main.tsx] --> B[App.tsx]
     B --> C[React Router]
-    C --> D{Rota}
+    C --> D{Route}
     
     D -->|/| E[Home.tsx]
     D -->|/projetos| F[Projects.tsx]
@@ -277,14 +281,14 @@ flowchart TD
     
     J --> N[WordPress API]
     N --> O[fetchPostBySlug]
-    O --> P[Renderiza Detalhes]
+    O --> P[Render Details]
     
     I --> Q["🔬 MFE Viewer"]
     Q --> R["iframe (localhost:5001)"]
     R --> S[Projects MFE]
     
     B --> T[Sidebar Component]
-    T --> U[Navegação]
+    T --> U[Navigation]
     
     I --> V[Event Bus]
     V <--> |postMessage| R
@@ -295,7 +299,7 @@ flowchart TD
     style V fill:#ffd93d
 ```
 
-### 🧱 Arquitetura de Componentes
+### 🧱 Component Architecture
 
 ```mermaid
 flowchart LR
@@ -330,99 +334,99 @@ flowchart LR
     style O fill:#ff6b6b,color:#fff
 ```
 
-## 🚀 Como Usar
+## 🚀 Getting Started
 
-### 1. Configuração Inicial
+### 1. Initial Setup
 
 ```bash
-# Clone o repositório
+# Clone the repository
 git clone <repo-url>
 cd portfolio-mfe-2025
 
-# Instale as dependências de todos os workspaces
+# Install dependencies for all workspaces
 npm install
 
-# Configure variáveis de ambiente
+# Configure environment variables
 cp .env.example .env
-# Edite .env com suas URLs do WordPress
+# Edit .env with your WordPress URLs
 ```
 
-### 2. Desenvolvimento (Monorepo)
+### 2. Development (Monorepo)
 
 ```bash
-# Inicia TODOS os microfrontends simultaneamente
+# Start ALL microfrontends simultaneously
 npm run dev
-# Isso roda:
-# - Host App em http://localhost:5173
-# - Projects MFE em http://localhost:5001
+# This runs:
+# - Host App at http://localhost:5173
+# - Projects MFE at http://localhost:5001
 
-# OU rode individualmente:
+# OR run individually:
 
-# Apenas o Host
+# Host only
 npm run dev:host
 
-# Apenas o MFE de Projects
+# Projects MFE only
 npm run dev:projects
 ```
 
-**Portas configuradas:**
-- **Host**: `5173` (aplicação principal)
-- **Projects MFE**: `5001` (microfrontend de projetos)
+**Configured Ports:**
+- **Host**: `5173` (main application)
+- **Projects MFE**: `5001` (projects microfrontend)
 
 ### 3. Build & Deploy
 
 ```bash
-# Gera build de TODOS os workspaces
+# Generate build for ALL workspaces
 npm run build
 
-# OU build individual:
-npm run build:host      # Build apenas do host
-npm run build:projects  # Build apenas do Projects MFE
+# OR individual build:
+npm run build:host      # Build host only
+npm run build:projects  # Build Projects MFE only
 
-# Preview dos builds
-npm run preview         # Preview de todos
-npm run preview:host    # Preview apenas do host
-npm run preview:projects # Preview apenas do MFE
+# Preview builds
+npm run preview         # Preview all
+npm run preview:host    # Preview host only
+npm run preview:projects # Preview MFE only
 
 # Deploy:
-# 1. Faça upload de apps/host/dist/ para o servidor principal
-# 2. Faça upload de apps/projects/dist/ para um subdomínio ou path separado
-# 3. Atualize as URLs no código para apontar para produção
+# 1. Upload apps/host/dist/ to your main server
+# 2. Upload apps/projects/dist/ to a separate subdomain or path
+# 3. Update URLs in code to point to production
 ```
 
-### 4. Linting & Formatação
+### 4. Linting & Formatting
 
 ```bash
-# Verifica problemas de lint (ESLint)
+# Check for lint issues (ESLint)
 npm run lint
 
-# Auto-corrige problemas (ESLint)
+# Auto-fix issues (ESLint)
 npm run lint:fix
 
-# Formata código (Prettier)
+# Format code (Prettier)
 npm run format
 
-# Executa lint + format de uma vez (ESLint + Prettier)
+# Run lint + format at once (ESLint + Prettier)
 npm run clean
 
-# Lint e format com Biome (opcional)
+# Lint and format with Biome (optional)
 
-# Checa todos os apps com Biome (regras recomendadas)
+# Check all apps with Biome (recommended rules)
 npm run biome:check
 
-# Formata código dos apps usando o formatter do Biome
+# Format code using Biome formatter
 npm run biome:format
 
-# Comando de verificação para CI/CD (equivalente ao biome:check sem warnings suavizados)
+# CI/CD verification command
 npm run biome:ci
 ```
 
-## 📝 Scripts Disponíveis
+## 📝 Available Scripts
 
-### Scripts Raiz (Monorepo)
+### Root Scripts (Monorepo)
 
-| Script | Descrição |
-|--------|-----------|
+| Script | Description |
+|--------|-------------|
 | `npm run dev` | Inicia TODOS os microfrontends (host + projects) |
 | `npm run dev:host` | Inicia apenas o Host (porta 5173) |
 | `npm run dev:projects` | Inicia apenas o Projects MFE (porta 5001) |
@@ -442,158 +446,158 @@ npm run biome:ci
 | `npm run test` | Executa testes unitários (Vitest) |
 | `npm run test:ui` | Abre interface gráfica de testes |
 
-### Scripts por Workspace
+### Workspace Scripts
 
-Você também pode executar comandos em workspaces específicos:
+You can also run commands in specific workspaces:
 
 ```bash
-# Executar comando no workspace do host
+# Run command in host workspace
 npm run dev --workspace=apps/host
 
-# Executar comando no workspace de projects
+# Run command in projects workspace
 npm run lint --workspace=apps/projects
 ```
 
-## 🌐 Configuração de Microfrontends
+## 🌐 Microfrontends Configuration
 
-### Comunicação Host ↔ MFE
+### Host ↔ MFE Communication
 
 **Event Bus (postMessage):**
 
 ```typescript
-// No Host (apps/host/src/utils/eventBus.ts)
+// In Host (apps/host/src/utils/eventBus.ts)
 import { eventBus, MFEEvents } from './utils/eventBus'
 
-// Publicar evento
+// Publish event
 eventBus.publish(MFEEvents.PROJECT_LOADED, { projectId: 'todo-app' })
 
-// Subscrever a evento
+// Subscribe to event
 eventBus.subscribe(MFEEvents.PROJECT_LOADED, (payload) => {
-  console.log('Projeto carregado:', payload)
+  console.log('Project loaded:', payload)
 })
 ```
 
-**PostMessage do MFE para Host:**
+**PostMessage from MFE to Host:**
 
 ```typescript
-// No MFE (apps/projects/src/...)
+// In MFE (apps/projects/src/...)
 window.parent.postMessage(
   {
     type: 'PROJECT_READY',
     payload: { name: 'Todo App' }
   },
-  'http://localhost:5173' // Origin do Host
+  'http://localhost:5173' // Host Origin
 )
 ```
 
-### Adicionar Novo Microfrontend
+### Adding a New Microfrontend
 
-1. **Criar novo workspace:**
+1. **Create new workspace:**
 
 ```bash
-mkdir -p apps/novo-mfe
-cd apps/novo-mfe
+mkdir -p apps/new-mfe
+cd apps/new-mfe
 npm init -y
 ```
 
-2. **Adicionar ao package.json raiz:**
+2. **Add to root package.json:**
 
 ```json
 {
   "workspaces": [
     "apps/host",
     "apps/projects",
-    "apps/novo-mfe"  // Adicionar aqui
+    "apps/new-mfe"  // Add here
   ]
 }
 ```
 
-3. **Adicionar scripts de dev/build:**
+3. **Add dev/build scripts:**
 
 ```json
 "scripts": {
-  "dev:novo-mfe": "npm run dev --workspace=apps/novo-mfe",
-  "build:novo-mfe": "npm run build --workspace=apps/novo-mfe"
+  "dev:new-mfe": "npm run dev --workspace=apps/new-mfe",
+  "build:new-mfe": "npm run build --workspace=apps/new-mfe"
 }
 ```
 
-4. **Configurar porta no Vite:**
+4. **Configure port in Vite:**
 
 ```typescript
-// apps/novo-mfe/vite.config.ts
+// apps/new-mfe/vite.config.ts
 export default defineConfig({
   server: {
-    port: 5002, // Porta única
+    port: 5002, // Unique port
     strictPort: true
   }
 })
 ```
 
-### Variáveis de Ambiente (apps/host/.env)
+### Environment Variables (apps/host/.env)
 
 ```env
-# WordPress API (usado apenas quando mock está desabilitado)
+# WordPress API (used only when mock is disabled)
 VITE_WP_API_BASE=https://your-wordpress-site.com/wp-json/wp/v2
 
-# URL Base dos Microfrontends (Padrão: localhost:5001)
-# Em produção, aponte para a URL onde os projetos estão hospedados
+# Microfrontends Base URL (Default: localhost:5001)
+# In production, point to the URL where projects are hosted
 VITE_PROJECTS_URL=http://localhost:5001
 
-# Mock data (defina como 'true' para evitar problemas de CORS no desenvolvimento)
+# Mock data (set to 'true' to avoid CORS issues during development)
 VITE_USE_MOCK_DATA=true
 ```
 
-> **💡 Dica**: Use dados mockados durante o desenvolvimento para evitar problemas de CORS. Defina `VITE_USE_MOCK_DATA=false` apenas quando estiver pronto para conectar à API WordPress real.
+> **💡 Tip**: Use mocked data during development to avoid CORS issues. Set `VITE_USE_MOCK_DATA=false` only when ready to connect to the real WordPress API.
 
-### 🎭 Sistema de Mock
+### 🎭 Mock System
 
-O projeto inclui um sistema simples de mock para evitar problemas de CORS durante o desenvolvimento local.
+The project includes a simple mock system to avoid CORS issues during local development.
 
-**Arquivos:**
-- `apps/host/src/api/mockData.ts` - Dados de exemplo para projetos
-- `apps/host/src/api/wp.ts` - Cliente API com suporte a mock
-- `apps/host/MOCK_SYSTEM.md` - Documentação detalhada
-- `ENV_CLEANUP.md` - Guia de limpeza de variáveis de ambiente
+**Files:**
+- `apps/host/src/api/mockData.ts` - Example project data
+- `apps/host/src/api/wp.ts` - API client with mock support
+- `apps/host/MOCK_SYSTEM.md` - Detailed documentation
+- `ENV_CLEANUP.md` - Environment variable cleanup guide
 
-**Como usar:**
+**How to use:**
 
-1. **Habilitar modo mock** (edite `apps/host/.env`):
+1. **Enable mock mode** (edit `apps/host/.env`):
    ```env
    VITE_USE_MOCK_DATA=true
    ```
 
-2. **Reiniciar servidor de desenvolvimento**:
+2. **Restart development server**:
    ```bash
    npm run dev
    ```
 
-3. **Verificar no console** - Você verá:
+3. **Check console** - You will see:
    ```
    🎭 Using mock data for projects
    ```
 
-**Personalizando dados mockados:**
+**Customizing mocked data:**
 
-Edite `apps/host/src/api/mockData.ts` para adicionar, remover ou modificar projetos mockados:
+Edit `apps/host/src/api/mockData.ts` to add, remove, or modify mocked projects:
 
 ```typescript
 export const mockProjects: WPPost[] = [
   {
     id: 7,
-    slug: 'meu-novo-projeto',
+    slug: 'my-new-project',
     acf: {
-      title_post: 'Meu Novo Projeto',
-      // ... resto dos dados
+      title_post: 'My New Project',
+      // ... rest of data
     }
   }
 ]
 ```
 
-**Variáveis ativas:**
-- ✅ `VITE_WP_API_BASE` - URL da API WordPress (apenas quando `USE_MOCK_DATA=false`)
-- ✅ `VITE_USE_MOCK_DATA` - Alterna modo mock (padrão: `false`)
+**Active variables:**
+- ✅ `VITE_WP_API_BASE` - WordPress API URL (only when `USE_MOCK_DATA=false`)
+- ✅ `VITE_USE_MOCK_DATA` - Toggles mock mode (default: `false`)
 
-### Campos ACF Esperados
+### Expected ACF Fields
 
 ```typescript
 interface WPPost {
@@ -617,72 +621,92 @@ interface WPPost {
 
 ## 🎯 Features
 
-### Arquitetura
-- ✅ **Microfrontend com iframe** para isolamento completo
-- ✅ **Monorepo** com npm workspaces
-- ✅ **Event Bus** para comunicação inter-MFE
-- ✅ **MFE Error Boundaries** específicos
-- ✅ **Sandbox Security** nos iframes
+### Architecture
+- ✅ **Microfrontend with iframe** for complete isolation (Roadmap: Pure Module Federation)
+- ✅ **Monorepo** with npm workspaces
+- ✅ **Event Bus** for inter-MFE communication
+- ✅ **Specific MFE Error Boundaries**
+- ✅ **Sandbox Security** in iframes
 
 ### Design & UX
-- ✅ Design System completo com SASS
-- ✅ TypeScript com type-safety total
-- ✅ Lazy loading de imagens
-- ✅ Animações suaves (Framer Motion)
-- ✅ Home Page cinemática
-- ✅ 100% Responsivo (Mobile & Desktop)
-- ✅ SEO otimizado
+- ✅ Complete Design System with SASS
+- ✅ Total Type-safety with TypeScript
+- ✅ Image Lazy Loading
+- ✅ Smooth Animations (Framer Motion)
+- ✅ Cinematic Home Page
+- ✅ **Animated SVG Favicon** synchronized with brand colors
+- ✅ **PWA Manifest** with custom mobile theme-color
+- ✅ 100% Responsive (Mobile & Desktop)
+- ✅ Optimized SEO
 
-### Integrações
-- ✅ Integração com WordPress API
+### Integrations
+- ✅ WordPress API Integration
 - ✅ Advanced Custom Fields (ACF)
-- ✅ Projetos Vue 2 Legados (via Custom URL)
+- ✅ Legacy Vue 2 Projects (via Custom URL)
 
 ### Quality & Tooling
-- ✅ Performance otimizada
+- ✅ Optimized Performance
 - ✅ Git hooks (Husky + Lint-Staged)
-- ✅ ESLint + Prettier configurados
-- ✅ Build otimizado com Vite
+- ✅ Pre-configured ESLint + Prettier
+- ✅ Optimized build with Vite
 
-## 📱 Responsividade
+## 📱 Responsiveness
 
-Breakpoints definidos:
-- **sm**: 640px
-- **md**: 768px
-- **lg**: 960px
-- **xl**: 1280px
-- **2xl**: 1536px
+### Breakpoints & Mixins
 
-## 🧪 Testes Automatizados
+Breakpoints are defined in `_breakpoints.scss`. **Crucial Rule**: Hardcoded pixel values in media queries are forbidden. Always use the provided mixins.
 
-O projeto conta com uma suíte de testes unitários robusta utilizando **Vitest** e **React Testing Library**.
+| Breakpoint | Value | Mixin | Use Case |
+|------------|-------|-------|----------|
+| **sm** | 640px | `@include media-sm` | Mobile |
+| **md** | 768px | `@include media-md` | Tablet Portrait |
+| **lg-tablet**| 1024px | `@include media-lg-tablet` | Tablet Landscape |
+| **lg** | 960px | `@include media-lg` | Small Laptops |
+| **xl** | 1280px | `@include media-xl` | Desktop |
+| **2xl** | 1536px | `@include media-2xl` | Large Screens |
+| **short-v** | 850px (h) | `@include media-short-vertical`| Small Heights |
 
-### Stack de Testes
-- **Vitest**: Test Runner rápido e compatível com Vite.
-- **Happy-DOM**: Ambiente DOM simulado para execução rápida.
-- **React Testing Library**: Testes de interação focados no usuário.
+### Usage Example:
+```scss
+.my-component {
+  width: 100%;
+  
+  @include media-md-up {
+    width: 50%; // Responsive adjustment using standard mixin
+  }
+}
+```
 
-### Cobertura
-Os testes cobrem os principais aspectos da aplicação `host`:
+## 🧪 Automated Testing
 
-1. **Componentes Core**:
+The project includes a robust suite of unit tests using **Vitest** and **React Testing Library**.
+
+### Testing Stack
+- **Vitest**: Fast and Vite-compatible test runner.
+- **Happy-DOM**: Simulated DOM environment for fast execution.
+- **React Testing Library**: User-centric interaction tests.
+
+### Coverage
+Tests cover key aspects of the `host` application:
+
+1. **Core Components**:
    - `Card`, `ProjectCard`, `Spinner`, `Sidebar`, `MFEErrorBoundary`.
-   - Validação de renderização, variantes, interatividade e error handling.
+   - Validation of rendering, variants, interactivity, and error handling.
 
-2. **Páginas**:
+2. **Pages**:
    - `Home`, `About`, `Projects`.
-   - Mocks de APIs externas (GitHub, WordPress) para testes isolados.
-   - Validação de estados de loading e exibição de dados.
+   - Mocks for external APIs (GitHub, WordPress).
+   - Validation of loading states and data display.
 
-### Executando Testes
+### Running Tests
 
 ```bash
-# Rodar todos os testes (watch mode padrão)
+# Run all tests (default watch mode)
 npm run test
 
-# Rodar testes apenas uma vez (CI/CD)
+# Run tests once (CI/CD)
 npm run test -- --run
 
-# Rodar testes com interface gráfica
+# Run tests with graphical interface
 npm run test:ui
 ```
