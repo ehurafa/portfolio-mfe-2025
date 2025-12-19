@@ -23,7 +23,7 @@
 
   @include media-short-vertical {
     min-height: auto;
-    padding-top: 1rem;
+    padding-top: 0;
     padding-bottom: 2rem;
   }
 
@@ -129,6 +129,12 @@
 
     @include media-short-vertical {
       margin-bottom: 2rem;
+    }
+
+    i {
+      font-family: $font-family-tertiary;
+      font-size: $font-size-base;
+      font-weight: $font-weight-regular;
     }
 
     br {

@@ -49,7 +49,7 @@
   }
 
   .brand {
-    margin: 2.5rem 0 0 0;
+    margin: 1.5rem 0 0 0;
     text-align: center;
 
     @include media-lg {
@@ -77,13 +77,14 @@
     @include media-lg {
       text-align: center;
       margin-bottom: $space-4;
+      font-size: $font-size-base;
     }
   }
 
   .social {
     display: flex;
     gap: 15px;
-    margin: $space-4 0 $space-6 0;
+    margin: $space-5 0 $space-6 0;
 
     @include media-lg {
       justify-content: center;
@@ -139,6 +140,8 @@
   }
 
   .nav {
+    margin-top: 2rem;
+
     @include media-lg {
       @include transition(max-height, 0.4s, ease-in-out);
       width: 100%;
