@@ -9,12 +9,17 @@ export interface Project {
   category: 'UI' | 'Data' | 'Games' | 'Tools' | 'API' | 'Other'
 }
 
-const getBaseUrl = () => {
-  if (import.meta.env.VITE_CITACOES_URL) return import.meta.env.VITE_CITACOES_URL
-  return 'http://localhost:8080'
+/**
+ * Helper to get project URL from environment variables or fallback to a local port.
+ * This makes it easy to add more external Angular/Vue projects.
+ */
+const getExternalUrl = (envVar: string, defaultPort: string) => {
+  const envUrl = import.meta.env[envVar]
+  return envUrl || `http://localhost:${defaultPort}`
 }
 
-const citacoesUrl = getBaseUrl()
+const citacoesUrl = getExternalUrl('VITE_CITACOES_URL', '8080')
+const angularTodoUrl = getExternalUrl('VITE_ANGULAR_TODO_URL', '4200')
 
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
@@ -27,6 +32,15 @@ export const projects: Project[] = [
     // githubUrl: '', // Add if available
     projectUrl: citacoesUrl, // Custom URL for external Vue project
     category: 'Other'
+  },
+  {
+    id: 'angular-todo',
+    name: 'Angular To-Do',
+    description: 'Aplicação To-Do lista desenvolvida com Angular 15',
+    technologies: ['Angular 15', 'SCSS', 'TypeScript'],
+    screenshot: '/screenshots/angular-todo-ai.png',
+    projectUrl: angularTodoUrl,
+    category: 'Tools'
   },
   {
     id: 'todo-app',

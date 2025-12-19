@@ -55,11 +55,12 @@ export default function Home() {
       </motion.h1>
 
       <motion.p className="subtitle" variants={textVariants}>
-        Desenvolvedor Front-end especializado em criar interfaces modernas, <br></br>
+        Desenvolvedor Front-end especializado em criar interfaces modernas, <br />
         <i>
           <b>pixel-perfect</b>
         </i>
-        , responsivas e performáticas com Javascript<br></br>e as melhores práticas do mercado.
+        , responsivas e performáticas com Javascript
+        <br />e as melhores práticas do mercado.
       </motion.p>
 
       <motion.div className="cta-group" variants={textVariants}>

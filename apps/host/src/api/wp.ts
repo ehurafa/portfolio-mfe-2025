@@ -10,7 +10,7 @@ export interface ImageSizes {
 export interface ImagePost {
   url: string
   sizes?: ImageSizes
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export interface TechnologyTag {
@@ -18,7 +18,7 @@ export interface TechnologyTag {
   name: string
   slug?: string
   term_group?: number
-  [key: string]: any
+  [key: string]: unknown
 }
 export interface ACF {
   data_post: string
@@ -26,7 +26,7 @@ export interface ACF {
   title_post: string
   post_content: string
   list_of_technologies: TechnologyTag[]
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export interface Content {
@@ -39,7 +39,7 @@ export interface WPPost {
   slug: string
   content: Content
   excerpt?: Content
-  [key: string]: any
+  [key: string]: unknown
 }
 
 const WP_API_BASE = import.meta.env.VITE_WP_API_BASE
