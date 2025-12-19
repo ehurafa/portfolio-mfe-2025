@@ -95,8 +95,8 @@ export default function Laboratory() {
     filter === 'Todos'
       ? projects
       : projects.filter(p =>
-        p.technologies.some(tech => tech.toLowerCase().includes(filter.toLowerCase()))
-      )
+          p.technologies.some(tech => tech.toLowerCase().includes(filter.toLowerCase()))
+        )
 
   // Construct iframe source
   const iframeSrc = selectedProject

@@ -1,15 +1,15 @@
 {
-    "short_name": "Portfolio",
-    "name": "Rafael Gomes - Portfolio",
-    "icons": [
-        {
-            "src": "favicon.svg",
-            "type": "image/svg+xml",
-            "sizes": "any"
-        }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#00ffeb",
-    "background_color": "#0a0a0a"
+	"short_name": "Portfolio",
+	"name": "Rafael Gomes - Portfolio",
+	"icons": [
+		{
+			"src": "favicon.svg",
+			"type": "image/svg+xml",
+			"sizes": "any"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#00ffeb",
+	"background_color": "#0a0a0a"
 }

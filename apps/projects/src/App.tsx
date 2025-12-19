@@ -44,13 +44,16 @@ export default function App(): JSX.Element {
         <Route path="/" element={<TodoApp />} />
 
         {/* Debug route to show what the router sees */}
-        <Route path="*" element={
-          <div style={{ padding: '20px', color: 'white', background: '#333' }}>
-            <h2>Projeto não encontrado</h2>
-            <p>O roteador está tentando carregar: {window.location.pathname}</p>
-            <p>Se você vê isso, o basename não está funcionando como esperado.</p>
-          </div>
-        } />
+        <Route
+          path="*"
+          element={
+            <div style={{ padding: '20px', color: 'white', background: '#333' }}>
+              <h2>Projeto não encontrado</h2>
+              <p>O roteador está tentando carregar: {window.location.pathname}</p>
+              <p>Se você vê isso, o basename não está funcionando como esperado.</p>
+            </div>
+          }
+        />
       </Routes>
     </Router>
   )
