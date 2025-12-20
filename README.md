@@ -105,234 +105,41 @@ portfolio-mfe-2025/
 └── README.md
 ```
 
-## 🎨 Design System
 
-### Design Tokens
 
-#### Colors
-```scss
-// Main
-$color-brand: #00ffeb;
-$color-dark: #1f1f1f;
-$color-light: #f3f3f3;
 
-// Grayscale (50-900)
-$color-gray-100, $color-gray-200, ..., $color-gray-900
-```
 
-#### Spacing (Multiples of 4px)
-```scss
-$space-0: 0;      // 0px
-$space-1: 4px;    // 4px
-$space-2: 8px;    // 8px
-$space-3: 12px;   // 12px
-$space-4: 16px;   // 16px
-$space-6: 24px;   // 24px
-$space-8: 32px;   // 32px
-$space-10: 40px;  // 40px
-$space-16: 64px;  // 64px
-```
+## 🏗️ Architecture & Microfrontends
 
-#### Typography
-```scss
-// Sizes
-$font-size-body-sm: 0.875rem; // 14px
-$font-size-base: 1rem;        // 16px
-$font-size-lg: 1.25rem;       // 20px
-$font-size-xl: 1.5rem;        // 24px
-$font-size-2xl: 2rem;         // 32px
-$font-size-3xl: 2.5rem;       // 40px
-$font-size-4xl: 3rem;         // 48px
-$font-size-display: 4rem;     // 64px
-
-// Weights
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-$font-weight-extrabold: 800;
-```
-
-## 🏗️ Microfrontend Architecture
-
-### 🎯 Overview
-
-This project uses **Microfrontend architecture with iframes** to completely isolate different applications. The iframe approach offers:
-
-- ✅ **Complete Isolation** of runtime and styles
-- ✅ **Version Independence** (each MFE can have its own dependencies)
-- ✅ **Independent Deploy** for each microfrontend
-- ✅ **Security** via sandbox attributes
-- ✅ **Reliable Fallback** in case of individual failures
+This project uses **Microfrontend architecture with iframes** for complete isolation of runtime and styles.
 
 > [!NOTE]
-> **Architectural Roadmap**: The current **iframe-based isolation** is a strategic temporary choice for immediate runtime and style isolation. The project roadmap includes migrating to a **pure Module Federation** implementation to further enhance performance and deep component integration.
+> **Architectural Roadmap**: The current iframe approach is a strategic choice for isolation. Future plans include migrating to **pure Module Federation** for deeper integration.
 
 ### 📐 Workspace Structure
-
 ```mermaid
 graph TB
-    ROOT["📦 Root Workspace<br/>(Monorepo)"] --> HOST["🏠 Host App<br/>apps/host<br/>Port: 5173"]
-    ROOT --> PROJECTS["🎯 Projects MFE<br/>apps/projects<br/>Port: 5001"]
-    
-    HOST --> |"iframe + postMessage"| PROJECTS
-    
-    style ROOT fill:#1f1f1f,stroke:#00ffeb,color:#fff
-    style HOST fill:#2d2d2d,stroke:#00ffeb,color:#fff
-    style PROJECTS fill:#2d2d2d,stroke:#ff6b6b,color:#fff
+    ROOT["📦 Root (Monorepo)"] --> HOST["🏠 Host (Port: 5173)"]
+    ROOT --> PROJECTS["🎯 Projects MFE (Port: 5001)"]
+    HOST --> |"postMessage"| PROJECTS
 ```
 
-### 🔄 Communication between MFEs
-
-Communication between the Host and Microfrontends is handled via **postMessage API** + **Event Bus**:
-
+### 🔄 Communication Flow
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Host as Host App<br/>(localhost:5173)
-    participant EventBus as Event Bus
-    participant Iframe as MFE iframe<br/>(localhost:5001)
-    
-    User->>Host: Selects project
-    Host->>Host: Opens viewer
-    Host->>Iframe: Loads MFE via iframe
-    Iframe->>Iframe: Renders application
-    
-    Note over Host,Iframe: Bidirectional Communication
-    
-    Iframe->>Host: postMessage (event)
-    Host->>EventBus: publish(type, payload)
-    EventBus->>Host: Notifies subscribers
-    
-    Host->>Iframe: postMessage (command)
-    Iframe->>Iframe: Processes command
+    participant Host as Host App
+    participant Bus as Event Bus
+    participant MFE as Projects MFE
+    Host->>MFE: Load via iframe
+    MFE->>Host: postMessage(ready)
+    Host->>Bus: publish(load)
 ```
 
-### 🛡️ Sandbox Security
-
-The iframe uses `sandbox` attributes to control permissions:
-
-```html
-<iframe
-  src="http://localhost:5001/todo-app"
-  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-/>
-```
-
-**Enabled Permissions:**
-- `allow-scripts` - JavaScript execution
-- `allow-same-origin` - Communication via postMessage
-- `allow-forms` - Form submission
-- `allow-popups` - Opening popups (when necessary)
-
-### 🎨 Design Patterns
-
-1. **Microfrontend Architecture**
-   - Host (container) + Remotes (microfrontends)
-   - Isolation via iframe
-   - Communication via Event Bus (postMessage)
-   - Specific error boundaries for MFEs
-
-2. **Monorepo with Workspaces**
-   - npm workspaces to manage multiple apps
-   - Shared dependencies at root
-   - Unified configurations (ESLint, Prettier)
-
-3. **Component-Based Architecture**
-   - Small, reusable components
-   - Separation of concerns (presentation vs logic)
-   - Props typing with TypeScript
-
-4. **Atomic Design System** (Host)
-   - Tokens (colors, spacing, typography)
-   - Components (sidebar, card, button)
-   - Layouts (grid system, main structure)
-
-5. **API Integration Pattern** (Host)
-   - Centralized client (`apps/host/src/api/wp.ts`)
-   - Type-safe with TypeScript interfaces
-   - Consistent error handling
-
-6. **SASS Organization** (ITCSS-inspired)
-   - **Tokens** → Design tokens (variables)
-   - **Base** → Reset and global styles
-   - **Utilities** → Mixins and functions
-   - **Layouts** → Grid system
-   - **Components** → Isolated components
-
-### 🧩 Data Flow (Host App)
-
-```mermaid
-flowchart TD
-    A[main.tsx] --> B[App.tsx]
-    B --> C[React Router]
-    C --> D{Route}
-    
-    D -->|/| E[Home.tsx]
-    D -->|/projetos| F[Projects.tsx]
-    D -->|/certificados| G[Certificates.tsx]
-    D -->|/sobre-mim| H[About.tsx]
-    D -->|/laboratorio| I[Laboratory.tsx]
-    D -->|/projeto/:slug| J[ProjectDetails.tsx]
-    
-    E --> K[WordPress API]
-    K --> L[fetchPosts]
-    L --> M[ProjectCard Components]
-    
-    J --> N[WordPress API]
-    N --> O[fetchPostBySlug]
-    O --> P[Render Details]
-    
-    I --> Q["🔬 MFE Viewer"]
-    Q --> R["iframe (localhost:5001)"]
-    R --> S[Projects MFE]
-    
-    B --> T[Sidebar Component]
-    T --> U[Navigation]
-    
-    I --> V[Event Bus]
-    V <--> |postMessage| R
-    
-    style K fill:#00ffeb
-    style N fill:#00ffeb
-    style R fill:#ff6b6b
-    style V fill:#ffd93d
-```
-
-### 🧱 Component Architecture
-
-```mermaid
-flowchart LR
-    A[App] --> B[Sidebar]
-    A --> C[Content Area]
-    
-    C --> D[Pages]
-    D --> E[Home]
-    D --> F[Projects]
-    D --> G[About]
-    D --> H[Certificates]
-    D --> I["🔬 Laboratory"]
-    D --> J[ProjectDetails]
-    
-    E --> K[ProjectCard]
-    E --> L[Spinner]
-    
-    I --> M["MFE Error Boundary"]
-    M --> N["Project Viewer"]
-    N --> O["iframe (MFE)"]
-    N --> L
-    
-    J --> L
-    
-    B --> P[NavLinks]
-    B --> Q[Social Links]
-    
-    style A fill:#1f1f1f,color:#fff
-    style B fill:#222,color:#fff
-    style C fill:#f3f3f3
-    style I fill:#00ffeb,color:#000
-    style O fill:#ff6b6b,color:#fff
-```
+### 🛠️ Tech Highlights
+- **Communication**: PostMessage API + Event Bus for bidirectional data flow.
+- **Security**: Sandbox attributes for iframe isolation.
+- **Design Pattern**: Atomic Design System + ITCSS-inspired SASS organization.
+- **Registry**: Centralized projects registry in `projectsData.ts`.
 
 ## 🚀 Getting Started
 
@@ -421,42 +228,14 @@ npm run biome:format
 npm run biome:ci
 ```
 
-## 📝 Available Scripts
+### 🛠️ Common Commands
 
-### Root Scripts (Monorepo)
-
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Inicia TODOS os microfrontends (host + projects) |
-| `npm run dev:host` | Inicia apenas o Host (porta 5173) |
-| `npm run dev:projects` | Inicia apenas o Projects MFE (porta 5001) |
-| `npm run build` | Build de todos os workspaces |
-| `npm run build:host` | Build apenas do Host |
-| `npm run build:projects` | Build apenas do Projects MFE |
-| `npm run preview` | Preview de todos os builds |
-| `npm run preview:host` | Preview do build do Host |
-| `npm run preview:projects` | Preview do build do Projects MFE |
-| `npm run lint` | Verifica problemas em todos os workspaces |
-| `npm run lint:fix` | Corrige problemas automaticamente |
-| `npm run format` | Formata código com Prettier |
-| `npm run clean` | Lint + Format |
-| `npm run biome:check` | Verifica código dos apps com Biome (lint + sugestões de estilo) |
-| `npm run biome:format` | Formata código dos apps usando o formatter do Biome |
-| `npm run biome:ci` | Checagem de Biome para pipelines de CI/CD |
-| `npm run test` | Executa testes unitários (Vitest) |
-| `npm run test:ui` | Abre interface gráfica de testes |
-
-### Workspace Scripts
-
-You can also run commands in specific workspaces:
-
-```bash
-# Run command in host workspace
-npm run dev --workspace=apps/host
-
-# Run command in projects workspace
-npm run lint --workspace=apps/projects
-```
+| Command | Action |
+|---------|--------|
+| `npm run dev` | Starts all apps (Host + Remotes) |
+| `npm run build` | Builds all workspaces |
+| `npm run lint` | Runs Linter and Formatter |
+| `npm run test` | Executes unit tests (Vitest) |
 
 ## 🌐 Microfrontends Configuration
 
