@@ -10,7 +10,6 @@
     gap: $spacing-xl;
     padding: $spacing-lg;
     max-width: 1400px;
-    margin: 0 auto;
 
     @include media-md {
         padding: $spacing-md 0;
@@ -169,6 +168,7 @@
                 line-height: 1.7;
                 white-space: pre-wrap;
                 word-break: break-all;
+                color: $color-gray-500;
 
                 .keyword {
                     color: #f472b6;
@@ -366,9 +366,6 @@
                 }
 
                 .soft-skills-card {
-                    background: #2563eb;
-                    border: none;
-
                     h2 {
                         color: $color-white;
 
@@ -379,22 +376,7 @@
                     }
 
                     ul {
-                        list-style: none;
-                        padding: 0;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-
-                        li {
-                            display: flex;
-                            align-items: center;
-                            gap: 8px;
-                            font-size: 0.9rem;
-
-                            svg {
-                                color: rgba(255, 255, 255, 0.6);
-                            }
-                        }
+                        color: $color-light
                     }
 
                     .currently-studying {
@@ -420,6 +402,7 @@
                                 padding: 4px 10px;
                                 border-radius: 20px;
                                 font-size: 0.75rem;
+                                color: $color-light;
                             }
                         }
                     }

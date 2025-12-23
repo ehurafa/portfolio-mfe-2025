@@ -219,7 +219,7 @@ export default function About() {
               <span className="tag">SASS</span>
               <span className="tag">Cypress</span>
               <span className="tag">Docker</span>
-              <span className="tag">Kubernetes</span>
+              <span className="tag">System Design</span>
               <span className="tag">Storybook</span>
               <span className="tag">Git</span>
             </div>
@@ -248,7 +248,7 @@ export default function About() {
               <div className="currently-studying">
                 <span className="label">Atualmente Estudando</span>
                 <div className="study-tags">
-                  <span>Kubernetes</span>
+                  <span>System Design</span>
                   <span>Microfrontends</span>
                 </div>
               </div>
