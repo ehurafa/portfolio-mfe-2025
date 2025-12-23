@@ -72,7 +72,7 @@ describe('Card', () => {
         </Card>
       )
 
-      const card = container.querySelector('.card--info')
+      const card = container.querySelector('.info-card')
       expect(card).toBeInTheDocument()
     })
   })

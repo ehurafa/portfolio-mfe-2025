@@ -12,7 +12,7 @@
   @include media-lg {
     flex-direction: column;
     height: auto;
-    overflow: visible;
+    overflow-x: hidden;
   }
 }
 

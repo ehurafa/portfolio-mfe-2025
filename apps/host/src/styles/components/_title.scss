@@ -3,7 +3,8 @@
 @use '../tokens/spacing' as *;
 @use '../tokens/breakpoints' as *;
 
-h1, .h1 {
+h1,
+.h1 {
   font-size: $font-size-3xl;
   font-weight: $font-weight-extrabold;
   color: $color-text-primary;
@@ -15,18 +16,20 @@ h1, .h1 {
   }
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $color-text-primary;
   margin-bottom: $space-5;
-  
+
   @include media-md {
     font-size: $font-size-xl;
   }
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: $font-size-xl;
   font-weight: $font-weight-bold;
   color: $color-text-primary;
@@ -41,7 +44,7 @@ h3, .h3 {
   position: relative;
   display: inline-block;
   margin-bottom: $space-8;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -81,46 +84,54 @@ h3, .h3 {
         line-height: $font-size-2xl;
       }
 
-    svg {
-      width: 35px;
-      height: 35px;
-      color: $color-text-primary;
-      margin-top: 5px;
-      display: none;
-    }
-
-    & > span {
-      float: right;
-      margin: 8px 0 0 0;
-      font-family: 'Kaushan Script', cursive;
-      font-weight: 500;
-
-      @include media-lg {
-        float: none;
+      svg {
+        width: 35px;
+        height: 35px;
+        color: $color-text-primary;
         margin-top: 5px;
-        font-size: $font-size-xl;
+        display: none;
       }
 
-       span {
-        background: linear-gradient(-45deg, #00ffaa,  #ffbb00,  #00ffeb, #a6ff00);
-        background-size: 300%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient 20s ease infinite;
-        font-size: $font-size-display;
-        text-transform: uppercase;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 900;
+      &>span {
+        float: right;
+        margin: 8px 0 0 0;
+        font-family: 'Kaushan Script', cursive;
+        font-weight: 500;
 
         @include media-lg {
-          font-size:  $font-size-3xl;
+          float: none;
+          margin-top: 5px;
+          font-size: $font-size-xl;
+        }
+
+        @include media-md {
+          font-size: $font-size-lg;
+        }
+
+        span {
+          background: linear-gradient(-45deg, #00ffaa, #ffbb00, #00ffeb, #a6ff00);
+          background-size: 300%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradient 20s ease infinite;
+          font-size: $font-size-display;
+          text-transform: uppercase;
+          font-family: 'Poppins', sans-serif;
+          font-weight: 900;
+
+          @include media-lg {
+            font-size: $font-size-3xl;
+          }
+
+          @include media-md {
+            font-size: $font-size-xl;
+          }
         }
       }
     }
-  }
 
-}
+  }
 
   p {
     font-style: italic;

@@ -26,7 +26,7 @@ describe('About Page', () => {
     })
 
     expect(screen.getByText(/Minha História/i)).toBeInTheDocument()
-    expect(screen.getByText(/Rafael Gomes/i)).toBeInTheDocument()
-    expect(screen.getByText(/Mercado Bitcoin/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Desenvolvedor Front-end/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/Mercado Bitcoin/i).length).toBeGreaterThan(0)
   })
 })
