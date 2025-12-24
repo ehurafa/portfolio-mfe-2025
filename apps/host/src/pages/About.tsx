@@ -67,22 +67,6 @@ export default function About() {
               <b>elevar o nível técnico</b> dos produtos e construir aplicações{' '}
               <b>rápidas, seguras e bem estruturadas</b>.
             </p>
-            <div className="header-actions">
-              <a href="#" className="btn btn-primary">
-                <MdOutlineFileDownload /> Download CV
-              </a>
-              <a
-                href="https://github.com/rflrafa"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-primary btn-icon"
-              >
-                <FiGithub />
-              </a>
-              <a href="mailto:rafarfl2010@gmail.com" className="btn btn-primary btn-icon">
-                <FiMail />
-              </a>
-            </div>
           </div>
         </header>
 
