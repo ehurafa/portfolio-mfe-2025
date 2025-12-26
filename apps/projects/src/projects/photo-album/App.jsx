@@ -17,9 +17,11 @@ function App() {
   const [activateSearch, setActivateSearch] = useState(false)
 
   const fetchData = async ({ query, category }) => {
-    console.log('query ', query)
-    console.log('category ', category)
     const apiKey = import.meta.env.VITE_UNSPLASH_API_KEY
+
+    if (!apiKey) {
+      console.error('VITE_UNSPLASH_API_KEY not found. Please check your environment variables.')
+    }
 
     if (query || category) {
       let searchQuery = query
@@ -54,8 +56,8 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData(query, category)
-  }, [query, category])
+    fetchData({ query, category })
+  }, [])
 
   useEffect(() => {
     if (activateSearch) {

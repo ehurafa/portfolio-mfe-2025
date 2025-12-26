@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: '/micro/',
+  envDir: '../../',
   plugins: [react()],
   server: {
     port: 5001,
