@@ -20,6 +20,7 @@ const getExternalUrl = (envVar: string, defaultPort: string) => {
 
 const citacoesUrl = getExternalUrl('VITE_CITACOES_URL', '8080')
 const angularTodoUrl = getExternalUrl('VITE_ANGULAR_TODO_URL', '4200')
+const vuexExerciciosUrl = getExternalUrl('VITE_VUEX_EXERCICIOS_URL', '8080')
 
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
@@ -41,6 +42,15 @@ export const projects: Project[] = [
     screenshot: '/screenshots/angular-todo-ai.png',
     projectUrl: angularTodoUrl,
     category: 'Tools'
+  },
+  {
+    id: 'vuex-exercicios',
+    name: 'Vuex Exercícios',
+    description: 'Exercícios práticos de gerenciamento de estado com Vuex e Vue 2',
+    technologies: ['Vue 2', 'Vuex', 'JavaScript'],
+    screenshot: '/screenshots/vuex_exercicios_thumb.png',
+    projectUrl: vuexExerciciosUrl,
+    category: 'Other'
   },
   {
     id: 'todo-app',
