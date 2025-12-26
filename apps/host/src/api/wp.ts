@@ -23,6 +23,7 @@ export interface TechnologyTag {
 export interface ACF {
   data_post: string
   image_post: ImagePost
+  image_square_400?: ImagePost
   title_post: string
   post_content: string
   list_of_technologies: TechnologyTag[]
@@ -61,13 +62,18 @@ export async function fetchPosts(): Promise<WPPost[]> {
 
 // Try to resolve an image URL from multiple possible shapes
 export function getPostImage(p: WPPost): string | null {
-  const acfThumb: string | undefined = p.acf?.image_post?.url
+  // 1. Try the specific 400x400 square image requested for thumbnails
+  const squareThumb = p.acf?.image_square_400?.sizes?.['post-page']
+  if (typeof squareThumb === 'string' && squareThumb.length > 0) {
+    return squareThumb
+  }
+
+  // 2. Fallback to the default image_post url
+  const acfThumb = p.acf?.image_post?.url
   if (typeof acfThumb === 'string' && acfThumb.length > 0) {
     return acfThumb
   }
-  // if (p.better_featured_image?.source_url) return p.better_featured_image.source_url
-  // const emb = p?._embedded?.['wp:featuredmedia']?.[0]?.source_url
-  // if (emb) return emb
+
   return null
 }
 
