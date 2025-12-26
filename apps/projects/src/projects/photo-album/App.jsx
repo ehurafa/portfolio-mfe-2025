@@ -20,7 +20,7 @@ function App() {
     const apiKey = import.meta.env.VITE_UNSPLASH_API_KEY
 
     if (!apiKey) {
-      console.error('VITE_UNSPLASH_API_KEY not found. Please check your environment variables.')
+      console.error('CRITICAL: VITE_UNSPLASH_API_KEY is undefined in this build!')
     }
 
     if (query || category) {
