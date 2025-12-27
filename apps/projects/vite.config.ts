@@ -7,11 +7,20 @@ export default defineConfig(({ mode }) => {
   const rootDir = resolve(__dirname, '../../')
   const env = loadEnv(mode, rootDir, '')
 
+  const unsplashKey = (env.VITE_UNSPLASH_API_KEY || '').trim()
+
+  console.log('--- VITE BUILD DEBUG ---')
+  console.log('Mode:', mode)
+  console.log('RootDir:', rootDir)
+  console.log('Unsplash Key Length:', unsplashKey.length)
+  console.log('Unsplash Key Starts With:', unsplashKey.substring(0, 5))
+  console.log('------------------------')
+
   return {
     base: '/micro/',
     plugins: [react()],
     define: {
-      'import.meta.env.VITE_UNSPLASH_API_KEY': JSON.stringify(env.VITE_UNSPLASH_API_KEY)
+      'import.meta.env.VITE_UNSPLASH_API_KEY': JSON.stringify(unsplashKey)
     },
     server: {
       port: 5001,
