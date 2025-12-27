@@ -9,13 +9,6 @@ export default defineConfig(({ mode }) => {
 
   const unsplashKey = (env.VITE_UNSPLASH_API_KEY || '').trim()
 
-  console.log('--- VITE BUILD DEBUG ---')
-  console.log('Mode:', mode)
-  console.log('RootDir:', rootDir)
-  console.log('Unsplash Key Length:', unsplashKey.length)
-  console.log('Unsplash Key Starts With:', unsplashKey.substring(0, 5))
-  console.log('------------------------')
-
   return {
     base: '/micro/',
     plugins: [react()],

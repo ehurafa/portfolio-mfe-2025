@@ -21,8 +21,6 @@ function App() {
 
     if (!apiKey) {
       console.error('CRITICAL: VITE_UNSPLASH_API_KEY is undefined in this build!')
-    } else {
-      console.log('API Key present, prefix:', apiKey.substring(0, 4))
     }
 
     if (query || category) {
