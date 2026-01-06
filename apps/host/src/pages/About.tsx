@@ -139,9 +139,6 @@ export default function About() {
           </h2>
           <div className="timeline">
             <div className="timeline-item">
-              <div className="timeline-dot">
-                <BiCodeBlock />
-              </div>
               <div className="item-header">
                 <h3>Desenvolvedor Front-end Sênior</h3>
                 <span className="date">2024 - Atual</span>
@@ -155,9 +152,6 @@ export default function About() {
             </div>
 
             <div className="timeline-item">
-              <div className="timeline-dot">
-                <BiCodeBlock />
-              </div>
               <div className="item-header">
                 <h3>Sênior Front-end Developer</h3>
                 <span className="date">2023 - 2024</span>
@@ -171,9 +165,6 @@ export default function About() {
             </div>
 
             <div className="timeline-item">
-              <div className="timeline-dot">
-                <BiCodeBlock />
-              </div>
               <div className="item-header">
                 <h3>Front-end Developer</h3>
                 <span className="date">2022 - 2022</span>
