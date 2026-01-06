@@ -7,9 +7,11 @@
     "apps/projects"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:host\" \"npm run dev:projects\"",
+    "dev": "concurrently \"npm run dev:host\" \"npm run dev:projects\" \"npm run dev:vuex\" \"npm run dev:citacoes\"",
     "dev:host": "npm run dev --workspace=apps/host",
     "dev:projects": "npm run dev --workspace=apps/projects",
+    "dev:vuex": "cd ../vue2/projects/vuex-exercicios/vuex-exercicios && SET NODE_OPTIONS=--openssl-legacy-provider && npm run serve -- --port 8081",
+    "dev:citacoes": "cd ../vue2/advanced-components/citacoes && SET NODE_OPTIONS=--openssl-legacy-provider && npm run serve -- --port 8082",
     "build": "npm run build --workspaces",
     "build:host": "npm run build --workspace=apps/host",
     "build:projects": "npm run build --workspace=apps/projects",
