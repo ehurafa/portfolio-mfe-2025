@@ -1,46 +1,44 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { BrowserRouter } from 'react-router-dom'
+import { describe, expect, it } from 'vitest'
 import Home from './Home'
 
-// Mock the API
-vi.mock('../api/github', () => ({
-  fetchGithubLanguages: vi.fn().mockResolvedValue([
-    { name: 'TypeScript', percentage: 60, color: '#2b7489' },
-    { name: 'Vue', percentage: 40, color: '#41b883' }
-  ]),
-  fetchGithubContributions: vi.fn().mockResolvedValue({
-    total: 1500,
-    contributions: Array(365).fill({ date: '2025-01-01', count: 5, level: 3 })
-  })
-}))
-
 describe('Home Page', () => {
+  const renderHome = () => {
+    return render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    )
+  }
+
   it('renders introduction text', async () => {
-    render(<Home />)
+    renderHome()
 
     await waitFor(() => {
-      expect(screen.getByText(/Olá, eu sou Rafael/i)).toBeInTheDocument()
+      expect(screen.getByText(/Criando experiências/i)).toBeInTheDocument()
+      expect(screen.getByText(/digitais incríveis/i)).toBeInTheDocument()
     })
 
-    expect(screen.getByText(/paixão pelo desenvolvimento front-end/i)).toBeInTheDocument()
+    expect(screen.getByText(/Desenvolvedor Front-end especializado/i)).toBeInTheDocument()
   })
 
-  it('displays github languages after loading', async () => {
-    render(<Home />)
+  it('renders call to action buttons', () => {
+    renderHome()
 
-    await waitFor(() => {
-      expect(screen.getByText('TypeScript')).toBeInTheDocument()
-      expect(screen.getByText('Vue')).toBeInTheDocument()
-    })
-
-    expect(screen.getByText('60.00%')).toBeInTheDocument()
+    expect(screen.getByText('Ver Projetos')).toBeInTheDocument()
+    expect(screen.getByText('Sobre mim')).toBeInTheDocument()
   })
 
-  it('displays github contributions', async () => {
-    render(<Home />)
+  it('displays feature cards', () => {
+    renderHome()
 
-    await waitFor(() => {
-      expect(screen.getByText(/1500 contribuições/i)).toBeInTheDocument()
-    })
+    expect(screen.getByText('Clean Code')).toBeInTheDocument()
+    expect(screen.getByText('Performance')).toBeInTheDocument()
+    expect(screen.getByText('UX/UI')).toBeInTheDocument()
+
+    expect(screen.getByText(/Código limpo e manutenível/i)).toBeInTheDocument()
+    expect(screen.getByText(/Otimização extrema/i)).toBeInTheDocument()
+    expect(screen.getByText(/Foco total na experiência do usuário/i)).toBeInTheDocument()
   })
 })
