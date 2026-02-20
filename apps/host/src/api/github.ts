@@ -1,4 +1,3 @@
-// GitHub API service
 const GITHUB_USERNAME = 'ehurafa'
 
 interface GithubLanguage {
@@ -7,7 +6,6 @@ interface GithubLanguage {
   color: string
 }
 
-// Cores oficiais das linguagens (GitHub)
 const languageColors: Record<string, string> = {
   JavaScript: '#f1e05a',
   TypeScript: '#3178c6',
@@ -27,10 +25,9 @@ const languageColors: Record<string, string> = {
   Shell: '#89e051'
 }
 
-// Cache para evitar múltiplas requisições
 let languagesCache: GithubLanguage[] | null = null
 let languagesCacheTime: number | null = null
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutos
+const CACHE_DURATION = 5 * 60 * 1000
 
 export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
   // Retornar do cache se ainda válido
@@ -39,7 +36,6 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
   }
 
   try {
-    // Buscar apenas os repos principais (mais recentes e não-forks)
     const reposResponse = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=15&sort=updated&type=owner`
     )
@@ -52,10 +48,8 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
     const languageTotals: Record<string, number> = {}
     let totalBytes = 0
 
-    // Buscar apenas repos não-fork (máximo 10)
     const nonForkRepos = repos.filter((repo: { fork: boolean }) => !repo.fork).slice(0, 10)
 
-    // Fetch em paralelo
     const results = await Promise.all(
       nonForkRepos.map(async (repo: { languages_url: string }) => {
         try {
@@ -67,7 +61,6 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
       })
     )
 
-    // Agregar
     for (const langs of results) {
       if (langs) {
         for (const [lang, bytes] of Object.entries(langs)) {
@@ -77,7 +70,6 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
       }
     }
 
-    // Calcular percentuais
     const languagesArray: GithubLanguage[] = Object.entries(languageTotals)
       .map(([name, bytes]) => ({
         name,
@@ -87,7 +79,6 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
       .sort((a, b) => b.percentage - a.percentage)
       .slice(0, 6)
 
-    // Cache
     languagesCache = languagesArray
     languagesCacheTime = Date.now()
 
@@ -98,7 +89,7 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
       console.info('Using fallback data for GitHub languages')
     }
     return [
-      { name: 'JavaScript', percentage: 31.06, color: '#f1e05a' },
+      { name: 'JavaScript', percentage: 31.06, color: '#8b886d' },
       { name: 'CSS', percentage: 26.78, color: '#563d7c' },
       { name: 'HTML', percentage: 16.25, color: '#e34c26' },
       { name: 'PHP', percentage: 11.8, color: '#4F5D95' },
@@ -107,14 +98,12 @@ export async function fetchGithubLanguages(): Promise<GithubLanguage[]> {
     ]
   }
 }
-
 interface GithubContribution {
   date: string
   count: number
-  level: 0 | 1 | 2 | 3 | 4 // GitHub uses 0-4 levels
+  level: 0 | 1 | 2 | 3 | 4
 }
 
-// Cache para contribuições
 let contributionsCache: { total: number; contributions: GithubContribution[] } | null = null
 let contributionsCacheTime: number | null = null
 
@@ -122,7 +111,6 @@ export async function fetchGithubContributions(): Promise<{
   total: number
   contributions: GithubContribution[]
 }> {
-  // Retornar do cache se ainda válido
   if (
     contributionsCache &&
     contributionsCacheTime &&
@@ -132,7 +120,6 @@ export async function fetchGithubContributions(): Promise<{
   }
 
   try {
-    // Buscar eventos do usuário (últimos 90 dias)
     const eventsResponse = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100`
     )
@@ -143,7 +130,6 @@ export async function fetchGithubContributions(): Promise<{
 
     const events = await eventsResponse.json()
 
-    // Contar contribuições por dia
     const contributionsByDate: Record<string, number> = {}
 
     for (const event of events as Array<{ created_at: string }>) {
@@ -151,7 +137,7 @@ export async function fetchGithubContributions(): Promise<{
       contributionsByDate[date] = (contributionsByDate[date] || 0) + 1
     }
 
-    // Gerar últimas 52 semanas (364 dias)
+    // 52 weeks
     const contributions: GithubContribution[] = []
     const today = new Date()
     const totalDays = 364
@@ -162,7 +148,6 @@ export async function fetchGithubContributions(): Promise<{
       const dateStr = date.toISOString().split('T')[0]
       const count = contributionsByDate[dateStr] || 0
 
-      // Determinar nível (0-4) baseado na quantidade
       let level: 0 | 1 | 2 | 3 | 4 = 0
       if (count > 0) level = 1
       if (count >= 3) level = 2
@@ -176,18 +161,16 @@ export async function fetchGithubContributions(): Promise<{
 
     const result = { total, contributions }
 
-    // Salvar no cache
     contributionsCache = result
     contributionsCacheTime = Date.now()
 
     return result
   } catch {
-    // Silent fallback - API can fail due to CORS or rate limits
     if (import.meta.env.DEV) {
       console.info('Using simulated data for GitHub contributions')
     }
 
-    // Fallback com dados simulados realistas
+    // Fallback with realistic simulated data
     const contributions: GithubContribution[] = []
     const today = new Date()
     const totalDays = 364
@@ -198,18 +181,16 @@ export async function fetchGithubContributions(): Promise<{
       date.setDate(date.getDate() - i)
       const dateStr = date.toISOString().split('T')[0]
 
-      // Simular padrão realista de contribuições (mais atividade em dias úteis)
       const dayOfWeek = date.getDay()
       const isWeekend = dayOfWeek === 0 || dayOfWeek === 6
 
       let count = 0
       let level: 0 | 1 | 2 | 3 | 4 = 0
 
-      // ~30% de chance de ter atividade em dias úteis, ~10% em finais de semana
       const hasActivity = Math.random() < (isWeekend ? 0.1 : 0.3)
 
       if (hasActivity) {
-        count = Math.floor(Math.random() * 15) + 1 // 1-15 contribuições
+        count = Math.floor(Math.random() * 15) + 1 // 1-15 contributions
         total += count
 
         if (count >= 1) level = 1
