@@ -1,6 +1,6 @@
 import type { WPPost } from './wp'
 
-// Mock data para projetos
+// Mock data for projects
 export const mockProjects: WPPost[] = [
   {
     id: 997,
@@ -1134,7 +1134,7 @@ export const mockProjects: WPPost[] = [
   }
 ]
 
-// Mock data para certificados (já existente no componente, mas vamos centralizar)
+// Mock data for certificates (already existing in the component, but let's centralize it)
 export const mockCertificates = [
   {
     id: 1,
@@ -1170,7 +1170,7 @@ export const mockCertificates = [
   }
 ]
 
-// Mock data para laboratório (já existente no projectsData, mantemos separado)
+// Mock data for laboratory (already existing in projectsData, kept separate)
 export const mockLaboratoryProjects = [
   {
     id: 'd3-charts',

@@ -18,7 +18,6 @@ export interface CardProps {
 }
 
 export default function Card({
-  // GenericCard props
   thumbnail,
   title,
   description,
@@ -29,7 +28,6 @@ export default function Card({
   technologies,
   className = '',
 
-  // Old Card props
   variant,
   children
 }: CardProps) {

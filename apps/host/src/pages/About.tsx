@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { VscPreview } from 'react-icons/vsc'
 import { HiCheckCircle, HiLightningBolt, HiUserGroup } from 'react-icons/hi'
-import { MdOutlineFileDownload } from 'react-icons/md'
-import { FiGithub, FiMail } from 'react-icons/fi'
 import { BiCodeBlock } from 'react-icons/bi'
 import { FaClock, FaRocket, FaCodeBranch, FaCoffee } from 'react-icons/fa'
 import Spinner from '../components/Spinner'
