@@ -1,0 +1,62 @@
+<svg width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+
+  <!-- Cyberpunk Interface Elements -->
+  <!-- Main Card -->
+  <g transform="translate(240, 160)">
+    <rect width="800" height="450" rx="15" fill="#1e293b" stroke="#38bdf8" stroke-width="2" opacity="0.9"/>
+    
+    <!-- Header -->
+    <rect x="2" y="2" width="796" height="50" rx="13" fill="#0f172a" opacity="0.8"/>
+    <circle cx="30" cy="27" r="6" fill="#ef4444"/>
+    <circle cx="50" cy="27" r="6" fill="#fbbf24"/>
+    <circle cx="70" cy="27" r="6" fill="#22c55e"/>
+    
+    <!-- Sidebar Preview -->
+    <rect x="20" y="70" width="180" height="360" rx="4" fill="#0f172a" opacity="0.5"/>
+    <rect x="40" y="90" width="140" height="20" rx="2" fill="#334155"/>
+    <rect x="40" y="120" width="140" height="20" rx="2" fill="#334155"/>
+    <rect x="40" y="150" width="140" height="20" rx="2" fill="#38bdf8" opacity="0.5"/> <!-- Active item -->
+    <rect x="40" y="180" width="140" height="20" rx="2" fill="#334155"/>
+    
+    <!-- Content Area -->
+    <g transform="translate(220, 70)">
+        <!-- Stats Cards -->
+        <rect x="0" y="0" width="170" height="100" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+        <rect x="190" y="0" width="170" height="100" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1"/>
+        <rect x="380" y="0" width="170" height="100" rx="4" fill="#1e1b4b" stroke="#ec4899" stroke-width="1"/>
+        
+        <!-- Chart Area -->
+        <rect x="0" y="120" width="550" height="240" rx="4" fill="#0f172a" stroke="#3b82f6" stroke-width="1" stroke-dasharray="5,5"/>
+        <path d="M20 200 Q 150 100 250 180 T 530 150" stroke="#38bdf8" stroke-width="3" fill="none" filter="url(#glow)"/>
+    </g>
+  </g>
+
+  <!-- Title Text Overlay -->
+  <text x="640" y="100" text-anchor="middle" font-family="Courier New, monospace" font-size="48" font-weight="bold" fill="#f0f9ff" filter="url(#glow)" letter-spacing="4">ADMIN TEMPLATE</text>
+  <text x="640" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#94a3b8" letter-spacing="2">NEXT.JS • FIREBASE • TAILWIND</text>
+
+  <!-- Glowing Accents -->
+  <circle cx="100" cy="100" r="200" fill="#3b82f6" opacity="0.05" filter="url(#glow)"/>
+  <circle cx="1180" cy="620" r="150" fill="#a855f7" opacity="0.05" filter="url(#glow)"/>
+
+</svg>
