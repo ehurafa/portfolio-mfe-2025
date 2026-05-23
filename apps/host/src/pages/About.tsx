@@ -54,9 +54,12 @@ export default function About() {
             </p>
 
             <p className="summary">
-              No <b>Mercado Bitcoin</b>, contribuo para a evolução de módulos <b>Vue.js</b>,
-              melhoria do <b>Design System</b>, implementação de <b>padrões de UI/UX</b> e
-              integrações analíticas em ambiente <b>Kubernetes</b> sob arquitetura <b>BFF</b>.
+              No <b>Ouribank</b>, atuo como Desenvolvedor Front-end Sênior focado na evolução e
+              manutenção de plataformas financeiras de alta escala, garantindo performance,
+              acessibilidade e modularização por meio de arquitetura de <b>Micro-frontends</b>,
+              ecossistema <b>React</b> (<b>Redux, Zustand</b>), integração de dados de alta
+              performance com <b>GraphQL/REST/BFF</b> e componentização consistente via{' '}
+              <b>Design System</b>.
             </p>
 
             <p className="summary">
@@ -138,8 +141,22 @@ export default function About() {
           <div className="timeline">
             <div className="timeline-item">
               <div className="item-header">
+                <h3>Senior Front-end Developer</h3>
+                <span className="date">2026 - Atual</span>
+              </div>
+              <span className="company">Ouribank</span>
+              <p className="description">
+                Atuação na evolução e manutenção de plataformas financeiras de alta escala.
+                Responsável por garantir a performance, acessibilidade e modularização do
+                ecossistema front-end do banco, utilizando arquitetura de Micro-frontends, React,
+                TypeScript, Redux, Zustand, GraphQL e APIs REST/BFF.
+              </p>
+            </div>
+
+            <div className="timeline-item">
+              <div className="item-header">
                 <h3>Desenvolvedor Front-end Sênior</h3>
-                <span className="date">2024 - Atual</span>
+                <span className="date">2024 - 2026</span>
               </div>
               <span className="company">bycoders_ | Mercado Bitcoin</span>
               <p className="description">
