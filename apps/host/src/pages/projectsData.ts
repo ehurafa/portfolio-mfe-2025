@@ -22,6 +22,7 @@ const citacoesUrl = getExternalUrl('VITE_CITACOES_URL', '8080')
 const angularTodoUrl = getExternalUrl('VITE_ANGULAR_TODO_URL', '4200')
 const vuexExerciciosUrl = getExternalUrl('VITE_VUEX_EXERCICIOS_URL', '8080')
 const formExercisesUrl = getExternalUrl('VITE_FORM_EXERCISES_URL', '8080')
+const adminTemplateUrl = getExternalUrl('VITE_ADMIN_TEMPLATE_URL', '3000')
 
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
@@ -61,6 +62,15 @@ export const projects: Project[] = [
     screenshot: '/screenshots/form-exercises.png',
     projectUrl: formExercisesUrl,
     category: 'Other'
+  },
+  {
+    id: 'admin-template',
+    name: 'Admin Template',
+    description: 'Template de administração com autenticação Firebase e Next.js',
+    technologies: ['Next.js 16', 'React 19', 'Firebase', 'TypeScript', 'Tailwind CSS'],
+    screenshot: '/screenshots/admin-template.svg',
+    projectUrl: adminTemplateUrl,
+    category: 'UI'
   },
   {
     id: 'todo-app',
