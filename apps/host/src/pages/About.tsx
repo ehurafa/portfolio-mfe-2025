@@ -1,24 +1,9 @@
-import { useEffect, useState } from 'react'
 import { VscPreview } from 'react-icons/vsc'
 import { HiCheckCircle, HiLightningBolt, HiUserGroup } from 'react-icons/hi'
 import { BiCodeBlock } from 'react-icons/bi'
 import { FaClock, FaRocket, FaCodeBranch, FaCoffee } from 'react-icons/fa'
-import Spinner from '../components/Spinner'
 
 export default function About() {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 500)
-    return () => clearTimeout(timer)
-  }, [])
-
-  if (loading) {
-    return <Spinner />
-  }
-
   return (
     <div className="about-page">
       {/* Tier 1: Hero Section (Profile + Intro + JSON) */}
