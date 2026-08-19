@@ -23,9 +23,21 @@ const angularTodoUrl = getExternalUrl('VITE_ANGULAR_TODO_URL', '4200')
 const vuexExerciciosUrl = getExternalUrl('VITE_VUEX_EXERCICIOS_URL', '8080')
 const formExercisesUrl = getExternalUrl('VITE_FORM_EXERCISES_URL', '8080')
 const adminTemplateUrl = getExternalUrl('VITE_ADMIN_TEMPLATE_URL', '3000')
+const ovgsUrl = getExternalUrl('VITE_OVGS_URL', '3002')
 
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
+  {
+    id: 'ovgs',
+    name: 'OVGS - Gestão de Ordens de Venda',
+    description:
+      'Sistema de gestão do ciclo de vida de Ordens de Venda: cadastros, agendamento de entregas, monitoramento operacional e auditoria, com API mockada via MSW',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'Redux Saga', 'Tailwind CSS'],
+    screenshot: '/screenshots/ovgs.jpg',
+    githubUrl: 'https://github.com/ehurafa/ovgs-frontend',
+    projectUrl: ovgsUrl,
+    category: 'UI'
+  },
   {
     id: 'citacoes',
     name: 'Citações',
