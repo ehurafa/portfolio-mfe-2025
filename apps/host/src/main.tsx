@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles/main.scss'
+import { initGA } from './utils/analytics'
 
 const container = document.getElementById('root')
 
 if (!container) {
   throw new Error("Root element with id 'root' not found")
 }
+
+initGA()
 
 ReactDOM.createRoot(container).render(
   <React.StrictMode>

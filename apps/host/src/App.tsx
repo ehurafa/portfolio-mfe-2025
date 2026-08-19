@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { Route, Routes } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
+import { usePageTracking } from './hooks/usePageTracking'
 import About from './pages/About'
 import Certificates from './pages/Certificates'
 import Home from './pages/Home'
@@ -35,6 +36,8 @@ const contentVariants = {
 }
 
 export default function App() {
+  usePageTracking()
+
   return (
     <div className="layout">
       <motion.aside
