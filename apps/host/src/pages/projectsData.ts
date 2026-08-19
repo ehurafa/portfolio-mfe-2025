@@ -29,17 +29,6 @@ const blogAngularUrl = getExternalUrl('VITE_BLOG_ANGULAR_URL', '4201')
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
   {
-    id: 'blog-angular',
-    name: 'Blog Angular + Supabase',
-    description:
-      'Blog com autenticação, categorias e capa de post, construído com Angular 22 (standalone components + signals) e Supabase (Postgres + Auth + Row Level Security)',
-    technologies: ['Angular 22', 'Angular Material', 'Supabase', 'TypeScript', 'RxJS'],
-    screenshot: '/screenshots/blog-angular.svg',
-    githubUrl: 'https://github.com/ehurafa/blog-angular-2026',
-    projectUrl: blogAngularUrl,
-    category: 'UI'
-  },
-  {
     id: 'ovgs',
     name: 'OVGS - Gestão de Ordens de Venda',
     description:
@@ -86,6 +75,17 @@ export const projects: Project[] = [
     screenshot: '/screenshots/form-exercises.png',
     projectUrl: formExercisesUrl,
     category: 'Other'
+  },
+  {
+    id: 'blog-angular',
+    name: 'Blog Angular + Supabase',
+    description:
+      'Blog com autenticação, categorias e capa de post, construído com Angular 22 (standalone components + signals) e Supabase (Postgres + Auth + Row Level Security)',
+    technologies: ['Angular 22', 'Angular Material', 'Supabase', 'TypeScript', 'RxJS'],
+    screenshot: '/screenshots/blog-angular.svg',
+    githubUrl: 'https://github.com/ehurafa/blog-angular-2026',
+    projectUrl: blogAngularUrl,
+    category: 'UI'
   },
   {
     id: 'admin-template',
