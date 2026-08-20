@@ -40,6 +40,17 @@ export const projects: Project[] = [
     category: 'UI'
   },
   {
+    id: 'aiva-test',
+    name: 'Aiva Commerce',
+    description:
+      'Desafio técnico de loja virtual: navegação por categorias, busca, carrinho e favoritos, consumindo a API pública Platzi Fake Store',
+    technologies: ['React', 'Zustand', 'Vite', 'React Router Dom', 'Cypress', 'Jest'],
+    screenshot: '/screenshots/aiva-test.svg',
+    githubUrl: 'https://github.com/ehurafa/aiva-test',
+    projectUrl: 'https://aiva-test.vercel.app',
+    category: 'UI'
+  },
+  {
     id: 'citacoes',
     name: 'Citações',
     description: 'Gerador de citações inspiradoras com Vue 2',
