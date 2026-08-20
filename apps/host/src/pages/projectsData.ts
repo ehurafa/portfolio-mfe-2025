@@ -45,7 +45,7 @@ export const projects: Project[] = [
     description:
       'Desafio técnico de loja virtual: navegação por categorias, busca, carrinho e favoritos, consumindo a API pública Platzi Fake Store',
     technologies: ['React', 'Zustand', 'Vite', 'React Router Dom', 'Cypress', 'Jest'],
-    screenshot: '/screenshots/aiva-test.svg',
+    screenshot: '/screenshots/aiva-test.png',
     githubUrl: 'https://github.com/ehurafa/aiva-test',
     projectUrl: 'https://aiva-test.vercel.app',
     category: 'UI'
