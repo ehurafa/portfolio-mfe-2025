@@ -29,17 +29,6 @@ const blogAngularUrl = getExternalUrl('VITE_BLOG_ANGULAR_URL', '4201')
 // Registry of all projects - you'll add your real projects here
 export const projects: Project[] = [
   {
-    id: 'ovgs',
-    name: 'OVGS - Gestão de Ordens de Venda',
-    description:
-      'Sistema de gestão do ciclo de vida de Ordens de Venda: cadastros, agendamento de entregas, monitoramento operacional e auditoria, com API mockada via MSW',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'Redux Saga', 'Tailwind CSS'],
-    screenshot: '/screenshots/ovgs.jpg',
-    githubUrl: 'https://github.com/ehurafa/ovgs-frontend',
-    projectUrl: ovgsUrl,
-    category: 'UI'
-  },
-  {
     id: 'aiva-test',
     name: 'Aiva Commerce',
     description:
@@ -207,5 +196,17 @@ export const projects: Project[] = [
     screenshot: '/screenshots/todo-redux.png',
     githubUrl: 'https://github.com/ehurafa/20-react-projects',
     category: 'Tools'
+  },
+  {
+    // TODO: confirm real production URL for OVGS before re-enabling VITE_OVGS_URL — /micro/ovgs currently falls back to localhost in prod
+    id: 'ovgs',
+    name: 'OVGS - Gestão de Ordens de Venda',
+    description:
+      'Sistema de gestão do ciclo de vida de Ordens de Venda: cadastros, agendamento de entregas, monitoramento operacional e auditoria, com API mockada via MSW',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'Redux Saga', 'Tailwind CSS'],
+    screenshot: '/screenshots/ovgs.jpg',
+    githubUrl: 'https://github.com/ehurafa/ovgs-frontend',
+    projectUrl: ovgsUrl,
+    category: 'UI'
   }
 ]

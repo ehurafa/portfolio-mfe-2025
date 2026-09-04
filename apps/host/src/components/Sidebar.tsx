@@ -193,11 +193,6 @@ export default function Sidebar() {
             Certificados
           </NavLink>
         </motion.div>
-        <motion.div variants={navItemVariants}>
-          <NavLink to="/laboratorio" onClick={() => setIsOpen(false)}>
-            Laboratório
-          </NavLink>
-        </motion.div>
       </motion.nav>
     </motion.div>
   )
