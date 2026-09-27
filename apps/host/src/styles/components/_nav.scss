@@ -1,29 +1,80 @@
 // ====================================
-// NAV COMPONENT
+// NAV (vertical list with a stretching rule)
 // ====================================
 
 @use '../tokens/colors' as *;
 @use '../tokens/spacing' as *;
 @use '../tokens/typography' as *;
-@use '../utilities/mixins' as *;
+@use '../tokens/breakpoints' as *;
 
 .nav {
-  a {
-    display: block;
-    padding: $space-2 $space-3;
-    border-radius: 10px;
-    color: #e8e8e8;
-    margin: $space-1 0;
-    font-weight: $font-weight-medium;
-    @include transition(all);
+  margin-top: $space-16;
 
-    &:hover {
-      background: $color-bg-hover;
-      transform: translateX(2px);
+  @include media-lg {
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.open {
+      grid-template-rows: 1fr;
+      margin-top: $space-6;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-3 0;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-wide;
+    text-transform: uppercase;
+    color: $color-text;
+    transition: color 0.15s ease;
+
+    // Rule and label move by transform only: rule scales from half width, label follows
+    .nav-rule {
+      display: block;
+      width: 4rem;
+      height: 1px;
+      background: $color-text;
+      transform: scaleX(0.5);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
     }
 
+    .nav-rule + span {
+      transform: translateX(-2rem);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &:hover,
+    &:focus-visible,
     &.active {
-      background: $color-bg-active;
+      color: $color-text-strong;
+
+      .nav-rule {
+        transform: scaleX(1);
+        background: $color-text-strong;
+      }
+
+      .nav-rule + span {
+        transform: none;
+      }
+    }
+
+    &.active .nav-rule {
+      background: $color-accent;
     }
   }
 }

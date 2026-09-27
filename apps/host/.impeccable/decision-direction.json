@@ -1,0 +1,126 @@
+{
+  "title": "Escolha o mundo visual do portfólio",
+  "question": "O sorteio escolheu a Folha de Dados Técnica. Mantenha, escolha uma alternativa ou sorteie de novo.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Folha de Dados Técnica",
+      "kicker": "THE ROLL",
+      "lineage": "datasheets de componentes eletrônicos (TI, NXP, Analog Devices)",
+      "thesis": "Cada projeto é uma peça catalogada com número, especificações, diagrama de blocos e status de produção.",
+      "palette": ["#ffffff", "#121417", "#d7dade", "#00857a"],
+      "materials": ["papel técnico branco", "tabelas com fio fino", "diagramas de blocos em linha única"],
+      "viewport": "Cabeçalho de datasheet com 'RG-FE / Rafael Gomes, Front-end Sênior', colunas Features / Applications / Description e um diagrama de blocos do host MFE ligando os projetos rodando.",
+      "risk": "Pode parecer seco para quem não é técnico; depende de acabamento tipográfico preciso.",
+      "raised": [
+        { "from": "Terminal de fósforo", "raise": "Estados se imprimem sozinhos: carregando, rodando e falha aparecem como linha de tabela com código de status, sem spinner." },
+        { "from": "Datamatics (Ikeda)", "raise": "Números em algarismos tabulares alinhados em coluna: anos, datas, versões, contagens." },
+        { "from": "Estação de azulejos", "raise": "Layout preso a um módulo inteiro; nada em posição fracionada." },
+        { "from": "Folha Miura", "raise": "Vocabulário de estado explícito por projeto: spec, preview, rodando, falha." },
+        { "from": "Cel rubber-hose", "raise": "Uma única espessura de linha em fios, diagramas e ícones." },
+        { "from": "Cartaz noir", "raise": "Bloco de revisão/créditos com fio, travado no rodapé de toda página." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Status Page de Serviços",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "status pages (Statuspage, GitHub Status) e painéis de observabilidade",
+      "thesis": "O portfólio como painel de serviços em produção: cada projeto é um serviço com uptime, stack e link ao vivo.",
+      "palette": ["#f6f7f9", "#0f172a", "#16a34a", "#d97706"],
+      "materials": ["barras de uptime", "linhas de incidente", "badges de estado"],
+      "viewport": "'Todos os sistemas operacionais' no topo, lista de projetos como serviços com barra de disponibilidade e botão abrir.",
+      "risk": "Familiar: painéis/dashboards são onde muitos portfólios dev acabam; métricas de uptime teriam de ser reais ou rotuladas como ilustrativas."
+    },
+    {
+      "id": "challenger-phosphor",
+      "label": "Terminal de Fósforo",
+      "verdict": "declined",
+      "lineage": "terminais de fósforo verde",
+      "thesis": "O site como transcript de terminal digitado.",
+      "palette": ["#0a0f0a", "#33ff66", "#1a7a33"],
+      "materials": ["vidro curvo", "brilho de fósforo"],
+      "viewport": "Prompt piscando com comandos que listam projetos.",
+      "risk": "É o clichê escuro + neon que você pediu para evitar.",
+      "case": "Perde nos dois eixos: recrutador lê pior, e o brilho contradiz a credibilidade sênior.",
+      "kept": "Estados impressos como texto, sem chrome."
+    },
+    {
+      "id": "challenger-datamatics",
+      "label": "Datamatics (Ikeda)",
+      "verdict": "declined",
+      "lineage": "instalações de Ryoji Ikeda",
+      "thesis": "Campo de barras e números em preto e branco puro.",
+      "palette": ["#000000", "#ffffff"],
+      "materials": ["barras de código", "senoides"],
+      "viewport": "Parede de barras com a stack em colunas monoespaçadas.",
+      "risk": "Estroboscópico e abstrato; esconde projetos e contato.",
+      "case": "Perde nos dois eixos: impressiona, mas não informa cargo nem projetos.",
+      "kept": "Densidade numérica tabular."
+    },
+    {
+      "id": "challenger-azulejo",
+      "label": "Estação de Azulejos",
+      "verdict": "declined",
+      "lineage": "painéis de azulejo em estações portuguesas",
+      "thesis": "A carreira pintada em painéis cobalto sobre branco.",
+      "palette": ["#f7f6f1", "#1c3f94", "#d9a320"],
+      "materials": ["azulejo vidrado", "rejunte"],
+      "viewport": "Painel narrativo com a trajetória em cenas.",
+      "risk": "Decorativo; sem relação com engenharia front-end.",
+      "case": "Perde nos dois eixos para o público técnico.",
+      "kept": "Grade em módulos inteiros."
+    },
+    {
+      "id": "challenger-miura",
+      "label": "Folha Miura",
+      "verdict": "declined",
+      "lineage": "dobra Miura de painéis espaciais",
+      "thesis": "Projetos que se desdobram de um pacote compacto.",
+      "palette": ["#ffffff", "#c9a54a", "#8a8580", "#9cc3de"],
+      "materials": ["papel vincado", "folha dourada"],
+      "viewport": "Pacote dourado que abre em grade tesselada.",
+      "risk": "Interação cara que atrasa chegar aos projetos.",
+      "case": "Perde nos dois eixos: metáfora bonita, clareza baixa.",
+      "kept": "Vocabulário de estados explícito."
+    },
+    {
+      "id": "challenger-rubberhose",
+      "label": "Cel Rubber-hose",
+      "verdict": "declined",
+      "lineage": "animação dos anos 1930",
+      "thesis": "Cenas de desenho animado com íris entre páginas.",
+      "palette": ["#111111", "#f4f1ea", "#9a9a9a"],
+      "materials": ["nanquim", "aguada cinza"],
+      "viewport": "Íris abrindo sobre o avatar.",
+      "risk": "Lúdico demais para credibilidade sênior.",
+      "case": "Perde nos dois eixos.",
+      "kept": "Espessura de linha única."
+    },
+    {
+      "id": "challenger-noir",
+      "label": "Cartaz Noir",
+      "verdict": "declined",
+      "lineage": "cartazes de filme noir em duas cores",
+      "thesis": "Figura pequena, sombra enorme, título condensado.",
+      "palette": ["#f1e8d4", "#141414", "#d49a1f"],
+      "materials": ["duotom", "papel cartaz"],
+      "viewport": "Avatar com sombra projetada e nome em caixa-alta condensada.",
+      "risk": "Teatral; cai no creme + serifada.",
+      "case": "Perde nos dois eixos.",
+      "kept": "Bloco de créditos com fio no rodapé."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "O padrão da categoria",
+    "thesis": "Portfólio dev clássico executado com capricho: hero com nome, grid de projetos, sobre e contato.",
+    "palette": ["#0b0d10", "#e6e8eb", "#3b82f6"],
+    "materials": ["grid limpo", "screenshots de projeto"],
+    "viewport": "Nome grande, cargo, dois botões e grid de cards de projeto logo abaixo.",
+    "risk": "Indistinguível de outros portfólios por definição."
+  },
+  "steer": true
+}

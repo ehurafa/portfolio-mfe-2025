@@ -1,4 +1,3 @@
-import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { FaGithub, FaTimes } from 'react-icons/fa'
 import Card from '../components/Card'
@@ -6,31 +5,6 @@ import { MFEErrorBoundary } from '../components/MFEErrorBoundary'
 import Spinner from '../components/Spinner'
 import { MFEEvents, eventBus } from '../utils/eventBus'
 import { type Project, projects } from './projectsData'
-
-// Animation variants
-const gridVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut' as const
-    }
-  }
-}
 
 export default function Laboratory() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -80,7 +54,7 @@ export default function Laboratory() {
 
   const handleIframeError = () => {
     setIframeLoading(false)
-    setIframeError('Erro ao carregar projeto')
+    setIframeError('Não foi possível carregar este projeto.')
   }
 
   const handleProjectSelect = (project: Project) => {
@@ -109,43 +83,35 @@ export default function Laboratory() {
 
   return (
     <div className="laboratory">
-      <header className="title-wrapper">
-        <div className="title">
-          <h1>
-            <span>Laboratório</span>
-          </h1>
-        </div>
+      <header className="page-header">
+        <h1>Laboratório</h1>
         <p>
-          Explore meus projetos desenvolvidos durante cursos e estudos. Cada projeto é uma aplicação
-          funcional que você pode interagir.
+          Projetos de cursos e estudos em React, Vue e Angular. Cada um roda isolado num iframe e
+          você pode usar direto aqui.
         </p>
       </header>
 
       {!selectedProject ? (
         <>
           {/* Filter buttons */}
-          <div className="category-filter">
+          <fieldset className="category-filter" aria-label="Filtrar por framework">
             {frameworks.map(fw => (
               <button
                 key={fw}
                 className={`filter-btn ${filter === fw ? 'active' : ''}`}
                 type="button"
+                aria-pressed={filter === fw}
                 onClick={() => setFilter(fw)}
               >
                 {fw}
               </button>
             ))}
-          </div>
+          </fieldset>
 
           {/* Projects Grid */}
-          <motion.div
-            className="projects-grid"
-            variants={gridVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <ul className="card-list">
             {filteredProjects.map(project => (
-              <motion.div key={project.id} variants={cardVariants}>
+              <li key={project.id}>
                 <Card
                   thumbnail={project.screenshot}
                   title={project.name}
@@ -153,9 +119,9 @@ export default function Laboratory() {
                   technologies={project.technologies}
                   onClick={() => handleProjectSelect(project)}
                 />
-              </motion.div>
+              </li>
             ))}
-          </motion.div>
+          </ul>
         </>
       ) : (
         /* MFE Viewer with iframe - Industry Standard Practice */
@@ -172,7 +138,7 @@ export default function Laboratory() {
                   onClick={e => e.stopPropagation()}
                 >
                   <FaGithub />
-                  <span>Ver Código</span>
+                  <span>Código no GitHub</span>
                 </a>
               )}
             </div>
@@ -197,7 +163,7 @@ export default function Laboratory() {
                 <div className="iframe-error">
                   <p>{iframeError}</p>
                   <button type="button" onClick={() => handleProjectSelect(selectedProject)}>
-                    Tentar Novamente
+                    Tentar de novo
                   </button>
                 </div>
               )}

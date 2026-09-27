@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 import Home from './Home'
@@ -12,33 +12,34 @@ describe('Home Page', () => {
     )
   }
 
-  it('renders introduction text', async () => {
+  it('renders introduction text', () => {
     renderHome()
 
-    await waitFor(() => {
-      expect(screen.getByText(/Criando experiências/i)).toBeInTheDocument()
-      expect(screen.getByText(/digitais incríveis/i)).toBeInTheDocument()
-    })
-
-    expect(screen.getByText(/Desenvolvedor Front-end especializado/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Rafael Gomes/i)
+    expect(screen.getByText(/Sou desenvolvedor front-end há mais de 14 anos/i)).toBeInTheDocument()
   })
 
-  it('renders call to action buttons', () => {
+  it('renders featured projects with their links', () => {
     renderHome()
 
-    expect(screen.getByText('Ver Projetos')).toBeInTheDocument()
-    expect(screen.getByText('Sobre mim')).toBeInTheDocument()
+    expect(screen.getByText('Aiva Commerce')).toBeInTheDocument()
+    expect(screen.getByText('Abrir projeto', { exact: false }).closest('a')).toHaveAttribute(
+      'href',
+      'https://aiva-test.vercel.app'
+    )
+    expect(screen.getByText('Ver todos os projetos').closest('a')).toHaveAttribute(
+      'href',
+      '/projetos'
+    )
   })
 
-  it('displays feature cards', () => {
+  it('renders the experience summary', () => {
     renderHome()
 
-    expect(screen.getByText('Clean Code')).toBeInTheDocument()
-    expect(screen.getByText('Performance')).toBeInTheDocument()
-    expect(screen.getByText('UX/UI')).toBeInTheDocument()
-
-    expect(screen.getByText(/Código limpo e manutenível/i)).toBeInTheDocument()
-    expect(screen.getByText(/Otimização extrema/i)).toBeInTheDocument()
-    expect(screen.getByText(/Foco total na experiência do usuário/i)).toBeInTheDocument()
+    expect(screen.getByText('Ouribank', { selector: '.experience-item__company' })).toBeInTheDocument()
+    expect(screen.getByText('Ver trajetória completa').closest('a')).toHaveAttribute(
+      'href',
+      '/sobre-mim'
+    )
   })
 })

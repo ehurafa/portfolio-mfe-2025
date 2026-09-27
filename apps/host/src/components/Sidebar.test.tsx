@@ -20,7 +20,7 @@ describe('Sidebar', () => {
 
   it('toggles menu on button click', () => {
     const { container } = renderSidebar()
-    const toggleBtn = screen.getByLabelText('Toggle navigation')
+    const toggleBtn = screen.getByLabelText('Menu')
     const nav = container.querySelector('.nav')
 
     // Initial state: not open (class empty or just 'nav')
@@ -37,7 +37,7 @@ describe('Sidebar', () => {
 
   it('closes menu when a link is clicked', () => {
     const { container } = renderSidebar()
-    const toggleBtn = screen.getByLabelText('Toggle navigation')
+    const toggleBtn = screen.getByLabelText('Menu')
     const nav = container.querySelector('.nav')
 
     // Open menu

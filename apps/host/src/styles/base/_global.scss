@@ -5,29 +5,78 @@
 @use '../tokens/typography' as *;
 @use '../tokens/colors' as *;
 
-body {
-  font-family: $font-family-primary;
-  font-weight: $font-weight-medium;
-  font-style: normal;
-  background: $color-bg-primary;
-  color: $color-text-primary;
-  font-size: $font-size-base;
-  line-height: $line-height-normal;
-  -webkit-tap-highlight-color: transparent;
+html {
+  scrollbar-color: $color-line-strong $color-bg;
 }
 
-a,
-button,
-[role="button"] {
+body {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  background: $color-bg;
+  color: $color-text;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
-  color: $color-dark-panel;
-  background-color: $color-brand;
+  color: $color-text-invert;
+  background-color: $color-accent;
 }
 
-::-moz-selection {
-  color: $color-dark-panel;
-  background-color: $color-brand;
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-line-strong;
+  border: 3px solid $color-bg;
+  border-radius: 10px;
+}
+
+:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3 {
+  color: $color-text-strong;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+.text-link {
+  color: $color-text-strong;
+  font-weight: $font-weight-medium;
+  transition: color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-accent;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

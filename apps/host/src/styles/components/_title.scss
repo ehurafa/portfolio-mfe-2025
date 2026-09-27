@@ -1,143 +1,83 @@
+// ====================================
+// PAGE HEADER & SECTION HEADINGS
+// ====================================
+
 @use '../tokens/colors' as *;
 @use '../tokens/typography' as *;
 @use '../tokens/spacing' as *;
 @use '../tokens/breakpoints' as *;
+@use '../utilities/mixins' as *;
 
-h1,
-.h1 {
-  font-size: $font-size-3xl;
-  font-weight: $font-weight-extrabold;
-  color: $color-text-primary;
-  margin-bottom: $space-6;
-  line-height: $line-height-tight;
+.page-header {
+  margin-bottom: $space-12;
 
-  @include media-md {
+  h1 {
     font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    letter-spacing: $letter-spacing-tight;
+
+    @include media-sm {
+      font-size: 1.875rem;
+    }
+  }
+
+  p {
+    margin-top: $space-4;
+    max-width: 36rem;
   }
 }
 
-h2,
-.h2 {
-  font-size: $font-size-2xl;
-  font-weight: $font-weight-bold;
-  color: $color-text-primary;
-  margin-bottom: $space-5;
+.section {
+  margin-bottom: $space-24;
 
-  @include media-md {
-    font-size: $font-size-xl;
+  @include media-lg {
+    margin-bottom: $space-16;
   }
-}
 
-h3,
-.h3 {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  color: $color-text-primary;
-  margin-bottom: $space-4;
-
-  @include media-md {
-    font-size: $font-size-lg;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
 .section-title {
-  position: relative;
-  display: inline-block;
+  @include section-heading;
   margin-bottom: $space-8;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 40px;
-    height: 4px;
-    background-color: $color-brand;
-    border-radius: 2px;
+  @include media-lg {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin: 0 (-$space-6) $space-6;
+    padding: $space-4 $space-6;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+  }
+
+  @include media-sm {
+    margin: 0 (-$space-4) $space-6;
+    padding: $space-4;
   }
 }
 
-.title-wrapper {
-  margin-bottom: $space-4;
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-10;
+  color: $color-text-strong;
+  font-weight: $font-weight-semibold;
 
-  .title {
-    align-items: center;
-    display: flex;
-
-    h1 {
-      float: left;
-      margin: 0;
-      padding: 0;
-
-      font-family: 'Poppins', sans-serif;
-      font-weight: 900;
-      font-size: $font-size-3xl;
-      letter-spacing: -2px;
-      line-height: $font-size-3xl;
-      color: $color-text-light;
-
-      @include media-lg {
-        margin: 0;
-        width: 100%;
-        display: flex;
-        font-size: $font-size-lg;
-        line-height: $font-size-2xl;
-      }
-
-      svg {
-        width: 35px;
-        height: 35px;
-        color: $color-text-primary;
-        margin-top: 5px;
-        display: none;
-      }
-
-      &>span {
-        float: right;
-        margin: 8px 0 0 0;
-        font-family: 'Kaushan Script', cursive;
-        font-weight: 500;
-
-        @include media-lg {
-          float: none;
-          margin-top: 5px;
-          font-size: $font-size-xl;
-        }
-
-        @include media-md {
-          font-size: $font-size-lg;
-        }
-
-        span {
-          background: linear-gradient(-45deg, #00ffaa, #ffbb00, #00ffeb, #a6ff00);
-          background-size: 300%;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradient 20s ease infinite;
-          font-size: $font-size-display;
-          text-transform: uppercase;
-          font-family: 'Poppins', sans-serif;
-          font-weight: 900;
-
-          @include media-lg {
-            font-size: $font-size-3xl;
-          }
-
-          @include media-md {
-            font-size: $font-size-xl;
-          }
-        }
-      }
-    }
-
+  svg {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  p {
-    font-style: italic;
-    font-size: $font-size-sm;
-    margin-top: 0;
-    font-weight: $font-weight-light;
-    color: $color-gray-500;
+  &:hover,
+  &:focus-visible {
+    color: $color-accent;
+
+    svg {
+      transform: translateX(4px);
+    }
   }
 }

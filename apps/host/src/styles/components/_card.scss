@@ -1,133 +1,146 @@
+// ====================================
+// CARD (list row: thumbnail + text)
+// ====================================
+
 @use '../tokens/colors' as *;
 @use '../tokens/spacing' as *;
-@use '../tokens/shadows' as *;
 @use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
 @use '../utilities/mixins' as *;
 
 .card {
-  background-color: $color-bg-active;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: $shadow-sm;
-  @include transition(all, 0.3s);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%; // Ensure card takes full width of grid cell
-  text-decoration: none;
+  @include hover-row;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: $space-5;
+  align-items: start;
+  width: 100%;
+  padding: $space-4;
+  margin: 0 (-$space-4);
+  box-sizing: content-box;
   color: inherit;
-  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  background: transparent;
+  border: 0;
 
-  &[type='button'] {
-    font-family: inherit;
-    text-align: left;
-    padding: 0;
-    border: 1px solid $color-border-light;
+  @include media-lg {
+    box-sizing: border-box;
+    margin: 0;
+    padding: $space-4 0;
+
+    &:hover {
+      background: transparent;
+    }
   }
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: $shadow-lg;
+  @include media-sm {
+    grid-template-columns: 1fr;
+    gap: $space-3;
+  }
 
-    .card__thumbnail img {
-      transform: scale(1.05);
+  &--no-thumb {
+    grid-template-columns: 1fr;
+  }
+
+  &:hover,
+  &:focus-visible {
+    .card__title {
+      color: $color-accent;
+    }
+
+    .card__arrow {
+      transform: translate(2px, -2px);
+    }
+
+    .card__thumbnail {
+      border-color: $color-line-strong;
     }
   }
 
   &__thumbnail {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
+    aspect-ratio: 16 / 10;
+    border: 2px solid $color-line;
+    border-radius: 4px;
     overflow: hidden;
-    background-color: $color-gray-100;
+    background: $color-bg-raised;
+    transition: border-color 0.2s ease;
+
+    @include media-sm {
+      max-width: 12.5rem;
+    }
 
     img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      @include transition(transform, 0.5s);
-    }
-  }
-
-  &__tag {
-    position: absolute;
-    top: $space-3;
-    left: $space-3;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: $font-size-xs;
-    font-weight: $font-weight-bold;
-    color: $color-white;
-    z-index: 2;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-
-    &--purple {
-      background-color: $color-tag-purple;
-    }
-
-    &--red {
-      background-color: $color-tag-red;
-    }
-
-    &--orange {
-      background-color: $color-tag-orange;
-    }
-
-    &--white {
-      background-color: $color-white;
-      color: $color-dark;
     }
   }
 
   &__body {
-    padding: $space-4;
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: $space-2;
+    min-width: 0;
   }
 
   &__title {
-    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: baseline;
+    gap: $space-1;
     font-size: $font-size-base;
-    font-weight: $font-weight-bold;
-    color: $color-text-light;
-    margin: 0;
-    line-height: $line-height-tight;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-snug;
+    color: $color-text-strong;
+    transition: color 0.15s ease;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    font-size: $font-size-sm;
+    transform: translateY(1px);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   &__description {
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+  }
+
+  &__tag {
     font-size: $font-size-xs;
-    color: $color-text-light;
-    line-height: $line-height-relaxed;
-    margin: 0;
-    flex: 1;
+    font-weight: $font-weight-medium;
+    color: $color-text;
+    text-transform: capitalize;
   }
 
   &__tech-tags {
     display: flex;
     flex-wrap: wrap;
     gap: $space-2;
-    margin-top: $space-2;
+    margin-top: $space-1;
   }
 
   &__tech-tag {
-    display: inline-block;
-    font-size: $font-size-xs;
-    font-weight: $font-weight-medium;
-    padding: $space-1 $space-3;
-    background: $color-gray-200;
-    color: $color-text-primary;
-    border-radius: 6px;
-    @include transition(all, 0.2s);
+    @include pill;
+  }
+}
 
-    &:hover {
-      background: $color-brand;
-      color: $color-dark;
-    }
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  @include media-lg {
+    gap: 0;
+  }
+}
+
+.card-link {
+  display: block;
+  border-radius: 8px;
+
+  &:focus-visible .card__title {
+    color: $color-accent;
   }
 }

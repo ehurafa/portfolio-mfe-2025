@@ -2,12 +2,8 @@
 // UTILITY MIXINS
 // ====================================
 
-// Flexbox Center
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@use '../tokens/colors' as *;
+@use '../tokens/typography' as *;
 
 // Truncate Text
 @mixin truncate {
@@ -16,39 +12,35 @@
   white-space: nowrap;
 }
 
-// Transition
-@mixin transition($properties: all, $duration: 0.12s, $timing: ease) {
-  transition: $properties $duration $timing;
+// Small technology pill
+@mixin pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: $color-accent-soft;
+  color: $color-accent;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: 1.25rem;
 }
 
-// Hover Scale Effect
-@mixin hover-scale($scale: 1.02) {
-  transition: transform 0.2s ease;
-  
+// Section heading: short uppercase label that owns its section
+@mixin section-heading {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  letter-spacing: $letter-spacing-wide;
+  text-transform: uppercase;
+  color: $color-text-strong;
+}
+
+// Row that lights up on hover (projects, certificates, experience)
+@mixin hover-row {
+  position: relative;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
   &:hover {
-    transform: scale($scale);
-  }
-}
-
-// Aspect Ratio (for older browsers)
-@mixin aspect-ratio($width, $height) {
-  aspect-ratio: calc($width / $height);
-  
-  @supports not (aspect-ratio: 1) {
-    position: relative;
-    
-    &::before {
-      content: '';
-      display: block;
-      padding-top: calc(($height / $width) * 100%);
-    }
-  }
-}
-
-// Focus Visible
-@mixin focus-visible {
-  &:focus-visible {
-    outline: 2px solid $color-brand;
-    outline-offset: 2px;
+    background-color: $color-bg-raised;
   }
 }

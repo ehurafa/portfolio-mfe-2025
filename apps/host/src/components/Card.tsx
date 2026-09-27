@@ -1,4 +1,5 @@
 import type React from 'react'
+import { FiArrowUpRight } from 'react-icons/fi'
 
 export interface CardProps {
   // GenericCard props (for Projects, Certificates, Laboratory)
@@ -6,13 +7,16 @@ export interface CardProps {
   title?: string
   description?: string
   tag?: string
+  /** @deprecated tags render as plain text; kept for API compatibility */
   tagColor?: 'purple' | 'red' | 'orange' | 'white'
   href?: string
   onClick?: () => void
   technologies?: string[]
   className?: string
+  /** Show the title arrow when the card is wrapped by an external Link */
+  showArrow?: boolean
 
-  // Old Card props (for Home - variant="info")
+  // Info variant (simple titled block)
   variant?: 'info'
   children?: React.ReactNode
 }
@@ -22,16 +26,15 @@ export default function Card({
   title,
   description,
   tag,
-  tagColor = 'purple',
   href,
   onClick,
   technologies,
   className = '',
+  showArrow = false,
 
   variant,
   children
 }: CardProps) {
-  // If variant="info", use the old Card layout (for Home page) - now Info Card
   if (variant === 'info') {
     return (
       <div className={`info-card ${className}`.trim()}>
@@ -43,22 +46,27 @@ export default function Card({
     )
   }
 
-  // Otherwise, use GenericCard layout - now Standard Card
-  const cardClasses = `card ${className}`.trim()
-  const isClickable = onClick || href
+  const cardClasses = `card ${thumbnail ? '' : 'card--no-thumb'} ${className}`
+    .replace(/\s+/g, ' ')
+    .trim()
 
   const CardContent = (
     <>
       {thumbnail && (
         <div className="card__thumbnail">
-          {tag && <span className={`card__tag card__tag--${tagColor}`}>{tag}</span>}
           <img src={thumbnail} alt={title || ''} loading="lazy" />
         </div>
       )}
 
       <div className="card__body">
-        {title && <h3 className="card__title">{title}</h3>}
+        {title && (
+          <h3 className="card__title">
+            {title}
+            {(href || showArrow) && <FiArrowUpRight className="card__arrow" aria-hidden="true" />}
+          </h3>
+        )}
         {description && <p className="card__description">{description}</p>}
+        {tag && <span className="card__tag">{tag}</span>}
 
         {technologies && technologies.length > 0 && (
           <div className="card__tech-tags">
@@ -75,7 +83,6 @@ export default function Card({
     </>
   )
 
-  // If href is provided, render as anchor
   if (href) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cardClasses}>
@@ -84,7 +91,6 @@ export default function Card({
     )
   }
 
-  // If onClick is provided, render as button
   if (onClick) {
     return (
       <button type="button" onClick={onClick} className={cardClasses}>
@@ -93,6 +99,5 @@ export default function Card({
     )
   }
 
-  // Otherwise, render as div
   return <div className={cardClasses}>{CardContent}</div>
 }

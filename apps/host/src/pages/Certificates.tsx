@@ -1,41 +1,6 @@
-import { motion } from 'motion/react'
-import { VscMortarBoard } from 'react-icons/vsc'
 import Card from '../components/Card'
-import Spinner from '../components/Spinner'
-
-// Animation variants for the grid
-const gridVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut' as const
-    }
-  }
-}
 
 export default function Certificates() {
-  const mappedTags: Record<string, string> = {
-    udemy: 'purple',
-    alura: 'white',
-    coder: 'red',
-    'internet innovation': 'orange'
-  }
-
   const certificates = [
     {
       title: 'Arquitetura Limpa e Hexagonal',
@@ -230,40 +195,32 @@ export default function Certificates() {
     }
   ]
 
+  const schoolNames: Record<string, string> = {
+    udemy: 'Udemy',
+    alura: 'Alura',
+    coder: 'Cod3r',
+    'internet innovation': 'Internet Innovation'
+  }
+
   return (
     <>
-      <header className="title-wrapper">
-        <div className="title">
-          <h1>
-            <VscMortarBoard />{' '}
-            <span>
-              Alguns
-              <br />
-              <span>Certificados</span>
-            </span>
-          </h1>
-        </div>
-        <p>Os meus certificados mais relevantes</p>
+      <header className="page-header">
+        <h1>Certificados</h1>
+        <p>Os cursos mais relevantes que concluí. Cada item abre o certificado.</p>
       </header>
 
-      {!certificates ? (
-        <Spinner />
-      ) : (
-        <motion.div className="grid" variants={gridVariants} initial="hidden" animate="visible">
-          {certificates.map(cert => (
-            <motion.div key={cert.pdf} variants={cardVariants}>
-              <Card
-                thumbnail={cert.thumb}
-                title={cert.title}
-                description={cert.description}
-                tag={cert.tags[0]}
-                tagColor={mappedTags[cert.tags[0]] as 'purple' | 'red' | 'orange' | 'white'}
-                href={cert.pdf}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
+      <ul className="card-list">
+        {certificates.map(cert => (
+          <li key={cert.pdf}>
+            <Card
+              title={cert.title}
+              description={cert.description}
+              tag={schoolNames[cert.tags[0]] ?? cert.tags[0]}
+              href={cert.pdf}
+            />
+          </li>
+        ))}
+      </ul>
     </>
   )
 }

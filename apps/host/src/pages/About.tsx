@@ -1,236 +1,92 @@
-import { VscPreview } from 'react-icons/vsc'
-import { HiCheckCircle, HiLightningBolt, HiUserGroup } from 'react-icons/hi'
-import { BiCodeBlock } from 'react-icons/bi'
-import { FaClock, FaRocket, FaCodeBranch, FaCoffee } from 'react-icons/fa'
+import { HiCheckCircle } from 'react-icons/hi'
+import ExperienceList from '../components/ExperienceList'
+import { experiences } from '../data/experience'
+
+const techStack = [
+  'React',
+  'Vue.js',
+  'Angular',
+  'TypeScript',
+  'Next.js',
+  'Vite',
+  'Node.js',
+  'SASS',
+  'Cypress',
+  'Docker',
+  'Storybook',
+  'Git',
+  'System Design'
+]
+
+const softSkills = [
+  'Comunicação assertiva',
+  'Resolução de problemas',
+  'Atenção aos detalhes',
+  'Trabalho em equipe'
+]
 
 export default function About() {
   return (
-    <div className="about-page">
-      {/* Tier 1: Hero Section (Profile + Intro + JSON) */}
-      <section className="about-hero-grid">
-        <header className="about-header glass-card">
-          <div className="header-info">
-            <header className="title-wrapper">
-              <div className="title">
-                <h1>
-                  <VscPreview />{' '}
-                  <span>
-                    Minha História
-                    <br /> <span className="gradient-text">no Front-End</span>
-                  </span>
-                </h1>
-              </div>
-            </header>
+    <>
+      <header className="page-header">
+        <h1>Minha história no front-end</h1>
+      </header>
 
-            <p className="summary">
-              Sou <b>Rafael Gomes, Desenvolvedor Front-end</b> com mais de 14 anos de experiência no
-              ecossistema <b>JavaScript</b>, criando interfaces{' '}
-              <b>escaláveis, performáticas e sustentáveis</b>. Especialista em{' '}
-              <b>React, Vue e Angular</b>, aplico conceitos de <b>arquitetura avançada</b> e{' '}
-              <b>padrões de projeto</b> para desenvolver produtos <b>robustos, manuteníveis</b> e
-              voltados à <b>experiência do usuário</b>.
-            </p>
-
-            <p className="summary">
-              Baseio meu trabalho em princípios como <b>Clean Code, SOLID</b> e{' '}
-              <b>componentização eficiente</b>, além de atuar com{' '}
-              <b>Design Systems, Microfrontends, Web Components, SSR</b> e{' '}
-              <b>modularização inteligente</b>.
-            </p>
-
-            <p className="summary">
-              No <b>Ouribank</b>, atuo como Desenvolvedor Front-end Sênior focado na evolução e
-              manutenção de plataformas financeiras de alta escala, garantindo performance,
-              acessibilidade e modularização por meio de arquitetura de <b>Micro-frontends</b>,
-              ecossistema <b>React</b> (<b>Redux, Zustand</b>), integração de dados de alta
-              performance com <b>GraphQL/REST/BFF</b> e componentização consistente via{' '}
-              <b>Design System</b>.
-            </p>
-
-            <p className="summary">
-              Com formação em <b>Design Gráfico</b> e <b>Programação</b>, combino visão estética e
-              engenharia para criar <b>interfaces consistentes e fluídas</b>, sempre buscando{' '}
-              <b>elevar o nível técnico</b> dos produtos e construir aplicações{' '}
-              <b>rápidas, seguras e bem estruturadas</b>.
-            </p>
-          </div>
-        </header>
-
-        <div className="code-card-wrapper">
-          <div className="code-card glass-card">
-            <div className="window-controls">
-              <span />
-              <span />
-              <span />
-              <div className="filename">about_me.json</div>
-            </div>
-            <pre>
-              <span className="keyword">const</span> <span className="property">profile</span> =
-              &#123;
-              <br />
-              &nbsp;&nbsp;<span className="property">name</span>:{' '}
-              <span className="string">'Rafael'</span>,
-              <br />
-              &nbsp;&nbsp;<span className="property">role</span>:{' '}
-              <span className="string">'Front-end Engineer'</span>,
-              <br />
-              &nbsp;&nbsp;<span className="property">experience</span>:{' '}
-              <span className="number">15</span>,
-              <br />
-              &nbsp;&nbsp;<span className="property">coffee</span>:{' '}
-              <span className="boolean">true</span>,
-              <br />
-              &nbsp;&nbsp;<span className="property">bugs</span>: <span className="number">0</span>,
-              <br />
-              &nbsp;&nbsp;<span className="property">hobbies</span>: [
-              <span className="string">'Design'</span>, <span className="string">'UI/UX'</span>]
-              <br />
-              &#125;;
-            </pre>
-          </div>
-        </div>
+      <section className="section about-story" aria-label="Resumo">
+        <p>
+          Sou <strong>Rafael Gomes</strong>, desenvolvedor front-end. Trabalho com JavaScript há
+          mais de 14 anos, quase sempre com <strong>React, Vue ou Angular</strong>, e gosto de
+          pensar na arquitetura antes de escrever o primeiro componente.
+        </p>
+        <p>
+          Sigo Clean Code e SOLID, quebro a interface em componentes pequenos e já trabalhei com
+          design systems, microfrontends, web components e SSR.
+        </p>
+        <p>
+          Hoje estou no <strong>Ouribank</strong> como desenvolvedor front-end sênior, mantendo e
+          evoluindo plataformas financeiras de alta escala. Cuido de performance, acessibilidade e
+          modularização num front-end de micro-frontends em React, com Redux e Zustand para estado,
+          GraphQL, REST e BFF para dados e um design system para os componentes.
+        </p>
+        <p>
+          Sou formado em design gráfico e em programação. Por isso olho o acabamento visual com o
+          mesmo cuidado que dou à estrutura do código.
+        </p>
       </section>
 
-      {/* Tier 2: Stats Grid Section */}
-      <section className="stats-section">
-        <div className="stats-grid">
-          <div className="stat-card glass-card">
-            <FaClock className="icon" />
-            <span className="label">Anos de Experiência</span>
-            <span className="value">15+</span>
-          </div>
-          <div className="stat-card glass-card">
-            <FaRocket className="icon" />
-            <span className="label">Projetos Entregues</span>
-            <span className="value">50+</span>
-          </div>
-          <div className="stat-card glass-card">
-            <FaCodeBranch className="icon" />
-            <span className="label">Commits (2024)</span>
-            <span className="value">1.8k</span>
-          </div>
-          <div className="stat-card glass-card">
-            <FaCoffee className="icon" />
-            <span className="label">Cafés / Dia</span>
-            <span className="value">∞</span>
-          </div>
-        </div>
+      <section className="section" aria-labelledby="trajetoria-title">
+        <h2 id="trajetoria-title" className="section-title">
+          Trajetória profissional
+        </h2>
+        <ExperienceList items={experiences} showDescription />
       </section>
 
-      {/* Tier 3: Main Content (Timeline + Sidebar) */}
-      <div className="about-main-layout">
-        <section className="experience-section">
-          <h2 className="section-title">
-            <BiCodeBlock /> Trajetória Profissional
-          </h2>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="item-header">
-                <h3>Senior Front-end Developer</h3>
-                <span className="date">2026 - Atual</span>
-              </div>
-              <span className="company">Ouribank</span>
-              <p className="description">
-                Atuação na evolução e manutenção de plataformas financeiras de alta escala.
-                Responsável por garantir a performance, acessibilidade e modularização do
-                ecossistema front-end do banco, utilizando arquitetura de Micro-frontends, React,
-                TypeScript, Redux, Zustand, GraphQL e APIs REST/BFF.
-              </p>
-            </div>
+      <section className="section" aria-labelledby="stack-title">
+        <h2 id="stack-title" className="section-title">
+          Tech stack
+        </h2>
+        <ul className="tech-list">
+          {techStack.map(tech => (
+            <li key={tech}>{tech}</li>
+          ))}
+        </ul>
+      </section>
 
-            <div className="timeline-item">
-              <div className="item-header">
-                <h3>Desenvolvedor Front-end Sênior</h3>
-                <span className="date">2024 - 2026</span>
-              </div>
-              <span className="company">bycoders_ | Mercado Bitcoin</span>
-              <p className="description">
-                Desenvolvimento de módulos em arquitetura Server-Side com BFF (Vue 3), manutenção do
-                Design System e otimização de performance Web Vitals. Atuação em ambiente ágil com
-                foco em escalabilidade e usabilidade.
-              </p>
-            </div>
-
-            <div className="timeline-item">
-              <div className="item-header">
-                <h3>Sênior Front-end Developer</h3>
-                <span className="date">2023 - 2024</span>
-              </div>
-              <span className="company">VML</span>
-              <p className="description">
-                Desenvolvimento Headless com AEM e React.js. Construção de interfaces complexas com
-                Redux/Saga e TypeScript, colaborando em projetos de grande escala para clientes
-                globais.
-              </p>
-            </div>
-
-            <div className="timeline-item">
-              <div className="item-header">
-                <h3>Front-end Developer</h3>
-                <span className="date">2022 - 2022</span>
-              </div>
-              <span className="company">Maitha Tech | Infracommerce</span>
-              <p className="description">
-                Criação de Design System e migração de projetos para React (Vite, Remix).
-                Implementação de arquiteturas de microfrontends e documentação com Storybook.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Sidebar Sections (pinned only to bottom section) */}
-        <aside className="about-sidebar">
-          <section className="sidebar-section">
-            <h2>
-              <HiLightningBolt /> Tech Stack
-            </h2>
-            <div className="tech-tags">
-              <span className="tag">React</span>
-              <span className="tag">Vue.js</span>
-              <span className="tag">TypeScript</span>
-              <span className="tag">Next.js</span>
-              <span className="tag">Vite</span>
-              <span className="tag">Node.js</span>
-              <span className="tag">SASS</span>
-              <span className="tag">Cypress</span>
-              <span className="tag">Docker</span>
-              <span className="tag">System Design</span>
-              <span className="tag">Storybook</span>
-              <span className="tag">Git</span>
-            </div>
-          </section>
-
-          <section className="sidebar-section">
-            <div className="soft-skills-card glass-card">
-              <h2>
-                <HiUserGroup /> Soft Skills
-              </h2>
-              <ul>
-                <li>
-                  <HiCheckCircle /> Comunicação Assertiva
-                </li>
-                <li>
-                  <HiCheckCircle /> Resolução de Problemas
-                </li>
-                <li>
-                  <HiCheckCircle /> Atenção aos Detalhes
-                </li>
-                <li>
-                  <HiCheckCircle /> Trabalho em Equipe
-                </li>
-              </ul>
-
-              <div className="currently-studying">
-                <span className="label">Atualmente Estudando</span>
-                <div className="study-tags">
-                  <span>System Design</span>
-                  <span>Microfrontends</span>
-                </div>
-              </div>
-            </div>
-          </section>
-        </aside>
-      </div>
-    </div>
+      <section className="section" aria-labelledby="soft-title">
+        <h2 id="soft-title" className="section-title">
+          Soft skills
+        </h2>
+        <ul className="skill-list">
+          {softSkills.map(skill => (
+            <li key={skill}>
+              <HiCheckCircle aria-hidden="true" /> {skill}
+            </li>
+          ))}
+        </ul>
+        <p className="studying">
+          Estudando agora: <strong>System Design</strong> e <strong>Microfrontends</strong>.
+        </p>
+      </section>
+    </>
   )
 }

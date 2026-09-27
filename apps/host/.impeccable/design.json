@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T00:00:00Z",
+  "title": "Design System: Rafael Gomes Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "slate-ground": { "role": "neutral", "displayName": "Deep Slate Ground", "canonical": "#0f172a", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#e2e8f0"] },
+      "slate-raised": { "role": "neutral", "displayName": "Raised Slate", "canonical": "rgba(30, 41, 59, 0.5)", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#e2e8f0"] },
+      "slate-overlay": { "role": "neutral", "displayName": "Slate Overlay", "canonical": "rgba(15, 23, 42, 0.97)", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#e2e8f0"] },
+      "slate-body": { "role": "neutral", "displayName": "Slate Body", "canonical": "#94a3b8", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"] },
+      "slate-heading": { "role": "neutral", "displayName": "Slate Heading", "canonical": "#e2e8f0", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#e2e8f0", "#f8fafc"] },
+      "ink-invert": { "role": "neutral", "displayName": "Ink Invert", "canonical": "#0f172a", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#e2e8f0"] },
+      "calm-teal": { "role": "primary", "displayName": "Calm Teal", "canonical": "#5eead4", "tonalRamp": ["#134e4a", "#115e59", "#0f766e", "#0d9488", "#14b8a6", "#2dd4bf", "#5eead4", "#99f6e4"] },
+      "teal-wash": { "role": "primary", "displayName": "Teal Wash", "canonical": "rgba(45, 212, 191, 0.1)", "tonalRamp": ["#134e4a", "#115e59", "#0f766e", "#0d9488", "#14b8a6", "#2dd4bf", "#5eead4", "#99f6e4"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(148, 163, 184, 0.15)", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"] },
+      "hairline-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "rgba(148, 163, 184, 0.35)", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"] },
+      "soft-error": { "role": "neutral", "displayName": "Soft Error", "canonical": "#fca5a5", "tonalRamp": ["#7f1d1d", "#991b1b", "#b91c1c", "#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca"] },
+      "logo-cyan": { "role": "neutral", "displayName": "Logo Cyan (identity asset only)", "canonical": "#00ffeb", "tonalRamp": ["#003d38", "#005c55", "#007a71", "#00a396", "#00ccbc", "#00ffeb", "#66fff3", "#b3fff9"] }
+    },
+    "typographyMeta": {
+      "headline": { "displayName": "Headline", "purpose": "h1 of inner pages (page header, project details); 1.875rem on phones." },
+      "title": { "displayName": "Title", "purpose": "Sidebar role line \"Front-end Developer\"; viewer titles at 600." },
+      "row-title": { "displayName": "Row Title", "purpose": "Project, certificate and experience row headings." },
+      "body": { "displayName": "Body", "purpose": "Intros, story paragraphs, pitch; rich text capped at 68ch." },
+      "body-sm": { "displayName": "Body Small", "purpose": "Row descriptions, row links, buttons, filter chips." },
+      "label": { "displayName": "Section Label", "purpose": "Uppercase tracked h2 that owns its section; Slate Heading." },
+      "nav-label": { "displayName": "Nav Label", "purpose": "Uppercase tracked sidebar nav items." },
+      "pill": { "displayName": "Pill", "purpose": "Tech pills on rows and project details." }
+    },
+    "shadows": [],
+    "surfaces": [
+      { "name": "sticky-heading-scrim", "value": "background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);", "purpose": "Behind section headings when they become sticky bars at 960px and below, so content scrolls under them legibly." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All authored movement: route settle-in, nav rule stretch, arrow nudges, mobile nav open." },
+      { "name": "route-settle", "value": "opacity 0.35 -> 1, translateY 12px -> 0, 0.5s ease-out-expo", "purpose": "The single route-change transition on the content column; respects reduced motion (MotionConfig reducedMotion=\"user\")." },
+      { "name": "nav-rule", "value": "transform 0.25s ease-out-expo", "purpose": "Nav rule scaleX 0.5 -> 1 with the label sliding 2rem right." },
+      { "name": "arrow-nudge", "value": "transform 0.2s ease-out-expo", "purpose": "Row and link arrows: 2px up-right (external), 4px right (forward), 4px left (back)." },
+      { "name": "mobile-nav", "value": "grid-template-rows 0fr -> 1fr, 0.35s ease-out-expo", "purpose": "Opening the collapsed nav at 960px and below." },
+      { "name": "state-color", "value": "color / border-color 0.15s ease; row fill 0.2s ease", "purpose": "Hover and focus color changes." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px", "mixin": "media-sm (max-width)" },
+      { "name": "md", "value": "768px", "mixin": "media-md (max-width)" },
+      { "name": "lg", "value": "960px", "mixin": "media-lg (max-width): columns stack" },
+      { "name": "lg-tablet", "value": "1024px", "mixin": "media-lg-tablet (max-width)" },
+      { "name": "xl", "value": "1280px", "mixin": "media-xl (max-width)" },
+      { "name": "2xl", "value": "1536px", "mixin": "media-2xl (max-width)" },
+      { "name": "short-vertical", "value": "850px", "mixin": "media-short-vertical (max-height)" }
+    ],
+    "focusRing": "outline: 2px solid #5eead4; outline-offset: 3px; border-radius: 4px;"
+  },
+  "components": [
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The only button style: transparent with a slate hairline, accent on hover.",
+      "html": "<button class=\"ds-btn\">Tentar novamente</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid rgba(148,163,184,0.35); border-radius: 8px; background: transparent; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease; } .ds-btn:hover { border-color: #5eead4; color: #5eead4; } .ds-btn:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link with Arrow",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Default call to action: heading-tone text that turns teal while its arrow nudges.",
+      "html": "<a class=\"ds-link\" href=\"#\">Ver todos os projetos <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 8px; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: color 0.15s ease; } .ds-link svg { transition: transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-link:hover, .ds-link:focus-visible { color: #5eead4; } .ds-link:hover svg, .ds-link:focus-visible svg { transform: translateX(4px); } .ds-link:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Tech Pill",
+      "kind": "chip",
+      "refersTo": "tech-pill",
+      "description": "Non-interactive stack tag on rows and project details.",
+      "html": "<ul class=\"ds-pills\"><li class=\"ds-pill\">React</li><li class=\"ds-pill\">TypeScript</li><li class=\"ds-pill\">Vite</li></ul>",
+      "css": ".ds-pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; } .ds-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; background: rgba(45,212,191,0.1); color: #5eead4; font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; line-height: 1.25rem; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Laboratory category filter; active state takes the teal wash.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip ds-chip--active\">Todos</button><button class=\"ds-chip\">React</button><button class=\"ds-chip\">Vue</button></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { padding: 8px 16px; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: #94a3b8; background: transparent; border: 1px solid rgba(148,163,184,0.35); border-radius: 9999px; cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease; } .ds-chip:hover { color: #e2e8f0; border-color: #94a3b8; } .ds-chip:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; } .ds-chip--active, .ds-chip--active:hover { color: #5eead4; background: rgba(45,212,191,0.1); border-color: transparent; }"
+    },
+    {
+      "name": "Content Row",
+      "kind": "card",
+      "refersTo": "content-row",
+      "description": "Signature list item for projects, certificates and experience: no border at rest, lights up on hover, title to teal, arrow nudges.",
+      "html": "<a class=\"ds-row\" href=\"#\"><div class=\"ds-row__thumb\"></div><div class=\"ds-row__body\"><h3 class=\"ds-row__title\">Aiva Commerce <span class=\"ds-row__arrow\">&#8599;</span></h3><p class=\"ds-row__desc\">Loja virtual com categorias, busca, carrinho e favoritos.</p><ul class=\"ds-row__pills\"><li>React</li><li>Zustand</li></ul></div></a>",
+      "css": ".ds-row { display: grid; grid-template-columns: 8rem 1fr; gap: 20px; align-items: start; padding: 16px; border-radius: 8px; color: #94a3b8; font-family: Inter, system-ui, sans-serif; text-decoration: none; background: transparent; transition: background-color 0.2s ease; } .ds-row:hover { background: rgba(30,41,59,0.5); } .ds-row:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; } .ds-row__thumb { aspect-ratio: 16/10; border: 2px solid rgba(148,163,184,0.15); border-radius: 4px; background: rgba(30,41,59,0.5); transition: border-color 0.2s ease; } .ds-row:hover .ds-row__thumb { border-color: rgba(148,163,184,0.35); } .ds-row__body { display: flex; flex-direction: column; gap: 8px; } .ds-row__title { display: flex; align-items: baseline; gap: 4px; margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.375; color: #e2e8f0; transition: color 0.15s ease; } .ds-row:hover .ds-row__title, .ds-row:focus-visible .ds-row__title { color: #5eead4; } .ds-row__arrow { font-size: 0.875rem; transform: translateY(1px); transition: transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row__arrow { transform: translate(2px,-2px); } .ds-row__desc { margin: 0; font-size: 0.875rem; line-height: 1.625; } .ds-row__pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 4px 0 0; padding: 0; } .ds-row__pills li { padding: 4px 12px; border-radius: 9999px; background: rgba(45,212,191,0.1); color: #5eead4; font-size: 0.75rem; font-weight: 500; line-height: 1.25rem; }"
+    },
+    {
+      "name": "Sidebar Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Vertical uppercase nav; each item's rule stretches on hover and turns teal when active.",
+      "html": "<nav class=\"ds-nav\"><ul><li><a class=\"ds-nav__link ds-nav__link--active\" href=\"#\"><span class=\"ds-nav__rule\"></span><span class=\"ds-nav__label\">Início</span></a></li><li><a class=\"ds-nav__link\" href=\"#\"><span class=\"ds-nav__rule\"></span><span class=\"ds-nav__label\">Projetos</span></a></li><li><a class=\"ds-nav__link\" href=\"#\"><span class=\"ds-nav__rule\"></span><span class=\"ds-nav__label\">Sobre mim</span></a></li></ul></nav>",
+      "css": ".ds-nav ul { display: flex; flex-direction: column; gap: 4px; list-style: none; margin: 0; padding: 0; } .ds-nav__link { display: inline-flex; align-items: center; gap: 16px; padding: 12px 0; font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #94a3b8; text-decoration: none; transition: color 0.15s ease; } .ds-nav__rule { display: block; width: 4rem; height: 1px; background: #94a3b8; transform: scaleX(0.5); transform-origin: left; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), background-color 0.15s ease; } .ds-nav__label { transform: translateX(-2rem); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-nav__link:hover, .ds-nav__link:focus-visible, .ds-nav__link--active { color: #e2e8f0; } .ds-nav__link:hover .ds-nav__rule, .ds-nav__link:focus-visible .ds-nav__rule, .ds-nav__link--active .ds-nav__rule { transform: scaleX(1); background: #e2e8f0; } .ds-nav__link:hover .ds-nav__label, .ds-nav__link:focus-visible .ds-nav__label, .ds-nav__link--active .ds-nav__label { transform: none; } .ds-nav__link--active .ds-nav__rule { background: #5eead4; } .ds-nav__link:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Uppercase tracked h2 that owns its section.",
+      "html": "<h2 class=\"ds-section-title\">Projetos em destaque</h2>",
+      "css": ".ds-section-title { margin: 0 0 32px; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #e2e8f0; }"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Menu toggle (44px) and viewer close (40px).",
+      "html": "<button class=\"ds-icon-btn\" aria-label=\"Abrir menu\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M4 7h16M4 12h16M4 17h16\"/></svg></button>",
+      "css": ".ds-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: transparent; border: 1px solid rgba(148,163,184,0.35); border-radius: 8px; color: #e2e8f0; cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease; } .ds-icon-btn:hover { border-color: #5eead4; color: #5eead4; } .ds-icon-btn:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Résumé",
+    "overview": "A senior developer's portfolio in the category-standard form, executed with restraint: a sticky identity column on the left (avatar, signature logo, role, one-line pitch, vertical nav, social icons pinned to the bottom) beside a readable content column on the right. Everything sits on one deep slate ground. Hierarchy comes from two text tones (slate body, near-white headings) and a single calm teal that marks what is live: links on hover, the active nav rule, tech pills.\n\nContent is a list of rows, not a grid of cards. Projects, featured work, experience and certificates are all the same shape: an 8rem left slot (thumbnail or period) and a text body, with no border at rest, lighting up with a faint raised slate fill when hovered. Motion is small and authored: one settle-in per route change, the nav rule stretching, row arrows nudging up-right. The page stays flat; depth is tonal, never shadowed.\n\nThe world refuses hero slogans, icon-card grids, gradient text, glass panels, neon and glow. The logo's own saturated cyan is an identity asset, not a UI color.",
+    "keyCharacteristics": [
+      "Two columns on desktop (identity 44%, content 52%), stacked on tablet and phone.",
+      "One ground, two text tones, one accent.",
+      "Rows that light up on hover instead of bordered cards.",
+      "Short uppercase tracked labels that head each section.",
+      "Inter throughout, weights 400 to 700.",
+      "Flat surfaces; depth only through translucent slate fills."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Calm Teal is the only hue. It marks interaction and state (hover, focus, active, pills); it never fills a large surface, and no second accent is introduced.", "section": "colors" },
+      { "name": "The Logo Is Not A Palette Rule", "body": "Logo Cyan stays inside the signature logo. UI teal is always Calm Teal.", "section": "colors" },
+      { "name": "The Heading Owns Its Section Rule", "body": "Uppercase tracked text is used only as the actual heading of a section or as nav. It never floats above a headline as a decorative kicker.", "section": "typography" },
+      { "name": "The Two Tones Rule", "body": "Emphasis inside prose is Slate Heading at 500, not teal, not italic.", "section": "typography" },
+      { "name": "The Mixin-Only Breakpoint Rule", "body": "Media queries are written only through the mixins in `src/styles/tokens/_breakpoints.scss` (`media-sm`, `media-md`, `media-lg`, `media-xl`, their `-up` variants, `media-lg-tablet`, `media-short-vertical`), and always inside the element's own block, never in a separate responsive section or with a raw `@media (max-width…)`. Feature queries such as `prefers-reduced-motion` are the only raw `@media` allowed.", "section": "layout" },
+      { "name": "The Tonal Lift Rule", "body": "Surfaces are flat at rest. A hover raises a row by filling it with Raised Slate; nothing casts a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** use Calm Teal only for interaction and state: hover, focus, active nav rule, pills, links in rich text.",
+      "**Do** build new lists as content rows: 8rem slot plus text body, no border at rest, Raised Slate fill on hover, title to teal, arrow nudge.",
+      "**Do** head each section with the uppercase tracked Label (0.875rem, 700, 0.1em) as its real heading.",
+      "**Do** keep text in two tones: Slate Body for reading, Slate Heading for headings and emphasis.",
+      "**Do** write media queries only via the `_breakpoints.scss` mixins, inside the element's own block.",
+      "**Do** take every color, size and space from the SCSS tokens; ease state changes with `cubic-bezier(0.16, 1, 0.3, 1)`.",
+      "**Do** keep the signature logo, the illustrated avatar and the LinkedIn, GitHub and Pinterest links in the identity column."
+    ],
+    "donts": [
+      "**Don't** add box-shadows, glass panels, glow, neon or gradient text.",
+      "**Don't** introduce bordered card grids or icon-card grids; content is rows.",
+      "**Don't** use Logo Cyan (or any second hue) in the UI.",
+      "**Don't** put a hero slogan or a decorative uppercase kicker above a headline.",
+      "**Don't** write raw `@media (max-width…)` / `(min-width…)` queries or collect them in a separate responsive block.",
+      "**Don't** add route or scroll animation beyond the single settle-in per route change."
+    ]
+  }
+}
