@@ -9,11 +9,11 @@ export interface Experience {
 // Career timeline shared by Home (summary) and About (full)
 export const experiences: Experience[] = [
   {
-    period: '2026 — Atual',
+    period: '2026',
     role: 'Senior Front-end Developer',
     company: 'Ouribank',
     description:
-      'Manutenção e evolução de plataformas financeiras de alta escala. Cuido de performance, acessibilidade e modularização do front-end do banco, que usa micro-frontends, React, TypeScript, Redux, Zustand, GraphQL e APIs REST/BFF.',
+      'Manutenção e evolução de plataformas financeiras de alta escala. Cuidei de performance, acessibilidade e modularização do front-end do banco, construído com micro-frontends, React, TypeScript, Redux, Zustand, GraphQL e APIs REST/BFF.',
     stack: ['React', 'TypeScript', 'Micro-frontends', 'Redux', 'Zustand', 'GraphQL']
   },
   {

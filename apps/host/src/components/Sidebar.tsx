@@ -34,8 +34,8 @@ export default function Sidebar() {
 
         <p className="role">Front-end Developer</p>
         <p className="pitch">
-          Front-end sênior no Ouribank. Trabalho com micro-frontends e design systems em
-          plataformas de alta escala.
+          Front-end sênior. Trabalho com micro-frontends e design systems em plataformas de alta
+          escala.
         </p>
 
         <button

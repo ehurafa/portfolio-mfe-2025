@@ -45,7 +45,7 @@ Front-end architecture is the differentiator: micro-frontends, design systems an
 
 ## Evidence on Hand
 
-- Career timeline and stack in `src/pages/About.tsx` (Ouribank 2026–present, bycoders_/Mercado Bitcoin 2024–2026, VML 2023–2024, Maitha Tech/Infracommerce 2022).
+- Career timeline and stack in `src/pages/About.tsx` (Ouribank 2026, bycoders_/Mercado Bitcoin 2024–2026, VML 2023–2024, Maitha Tech/Infracommerce 2022).
 - Project registry with screenshots in `public/screenshots/` and `src/pages/projectsData.ts`.
 - Certificates page.
 - No testimonials, client logos or metrics beyond those in About; do not invent them.

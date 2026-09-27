@@ -4,6 +4,8 @@ import ExperienceList from '../components/ExperienceList'
 import { experiences } from '../data/experience'
 import { projects } from './projectsData'
 
+// Featured section is hidden for now; flip to true to show it again
+const SHOW_FEATURED_PROJECTS = false
 const FEATURED_IDS = ['aiva-test', 'blog-angular', 'ovgs']
 
 const featuredProjects = projects.filter(project => FEATURED_IDS.includes(project.id))
@@ -21,8 +23,8 @@ export default function Home() {
           Sobre
         </h2>
         <p>
-          Sou desenvolvedor front-end há mais de 14 anos. Hoje trabalho no <strong>Ouribank</strong>{' '}
-          como sênior, mantendo e evoluindo plataformas financeiras de alta escala com
+          Sou desenvolvedor front-end sênior há mais de 14 anos. Meu trabalho mais recente foi no{' '}
+          <strong>Ouribank</strong>, mantendo e evoluindo plataformas financeiras de alta escala com
           micro-frontends, React e TypeScript.
         </p>
         <p>
@@ -36,48 +38,50 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="section" aria-labelledby="projetos-title">
-        <h2 id="projetos-title" className="section-title">
-          Projetos em destaque
-        </h2>
+      {SHOW_FEATURED_PROJECTS && (
+        <section className="section" aria-labelledby="projetos-title">
+          <h2 id="projetos-title" className="section-title">
+            Projetos em destaque
+          </h2>
 
-        {featuredProjects.map(project => (
-          <article key={project.id} className="featured-project">
-            <div className="featured-project__thumb">
-              <img
-                src={project.screenshot}
-                alt={`Tela do projeto ${project.name}`}
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <h3>{project.name}</h3>
-              <p className="featured-project__description">{project.description}</p>
-              <ul className="tech-list" aria-label="Tecnologias">
-                {project.technologies.map(tech => (
-                  <li key={tech}>{tech}</li>
-                ))}
-              </ul>
-              <div className="featured-project__links">
-                {isPublicUrl(project.projectUrl) && (
-                  <a href={project.projectUrl} target="_blank" rel="noreferrer">
-                    Abrir projeto <FiArrowUpRight aria-hidden="true" />
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                    Código no GitHub <FiArrowUpRight aria-hidden="true" />
-                  </a>
-                )}
+          {featuredProjects.map(project => (
+            <article key={project.id} className="featured-project">
+              <div className="featured-project__thumb">
+                <img
+                  src={project.screenshot}
+                  alt={`Tela do projeto ${project.name}`}
+                  loading="lazy"
+                />
               </div>
-            </div>
-          </article>
-        ))}
+              <div>
+                <h3>{project.name}</h3>
+                <p className="featured-project__description">{project.description}</p>
+                <ul className="tech-list" aria-label="Tecnologias">
+                  {project.technologies.map(tech => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+                <div className="featured-project__links">
+                  {isPublicUrl(project.projectUrl) && (
+                    <a href={project.projectUrl} target="_blank" rel="noreferrer">
+                      Abrir projeto <FiArrowUpRight aria-hidden="true" />
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                      Código no GitHub <FiArrowUpRight aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
 
-        <Link to="/projetos" className="section-link">
-          Ver todos os projetos <FiArrowRight aria-hidden="true" />
-        </Link>
-      </section>
+          <Link to="/projetos" className="section-link">
+            Ver todos os projetos <FiArrowRight aria-hidden="true" />
+          </Link>
+        </section>
+      )}
 
       <section className="section" aria-labelledby="experiencia-title">
         <h2 id="experiencia-title" className="section-title">

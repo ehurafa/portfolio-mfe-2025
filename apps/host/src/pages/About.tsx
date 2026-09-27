@@ -43,10 +43,11 @@ export default function About() {
           design systems, microfrontends, web components e SSR.
         </p>
         <p>
-          Hoje estou no <strong>Ouribank</strong> como desenvolvedor front-end sênior, mantendo e
-          evoluindo plataformas financeiras de alta escala. Cuido de performance, acessibilidade e
-          modularização num front-end de micro-frontends em React, com Redux e Zustand para estado,
-          GraphQL, REST e BFF para dados e um design system para os componentes.
+          Meu trabalho mais recente foi no <strong>Ouribank</strong>, como desenvolvedor front-end
+          sênior, mantendo e evoluindo plataformas financeiras de alta escala. Cuidei de
+          performance, acessibilidade e modularização num front-end de micro-frontends em React, com
+          Redux e Zustand para estado, GraphQL, REST e BFF para dados e um design system para os
+          componentes.
         </p>
         <p>
           Sou formado em design gráfico e em programação. Por isso olho o acabamento visual com o

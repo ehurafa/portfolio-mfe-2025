@@ -10,6 +10,10 @@
 .nav {
   margin-top: $space-16;
 
+  @include media-short-vertical {
+    margin-top: $space-8;
+  }
+
   @include media-lg {
     display: grid;
     grid-template-rows: 0fr;
