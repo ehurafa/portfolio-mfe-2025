@@ -35,12 +35,20 @@
   }
 }
 
-.studying {
-  margin-top: $space-6;
-  font-size: $font-size-sm;
 
-  strong {
-    color: $color-text-strong;
-    font-weight: $font-weight-medium;
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  h3 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-snug;
+  }
+
+  p {
+    margin-top: $space-1;
+    font-size: $font-size-sm;
   }
 }

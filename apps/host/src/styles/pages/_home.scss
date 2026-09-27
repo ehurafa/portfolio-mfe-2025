@@ -170,3 +170,26 @@
     font-size: $font-size-sm;
   }
 }
+
+.experience-list--detailed {
+  gap: $space-10;
+
+  @include media-lg {
+    gap: $space-8;
+  }
+}
+
+.experience-item__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  max-width: 68ch;
+  margin-top: $space-4;
+  padding-left: $space-5;
+  list-style: disc;
+  font-size: $font-size-sm;
+
+  li::marker {
+    color: $color-accent;
+  }
+}

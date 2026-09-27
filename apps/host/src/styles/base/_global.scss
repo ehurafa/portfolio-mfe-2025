@@ -69,6 +69,11 @@ p {
   }
 }
 
+// Keep hyphenated terms (e.g. micro-frontends) on one line
+.nowrap {
+  white-space: nowrap;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

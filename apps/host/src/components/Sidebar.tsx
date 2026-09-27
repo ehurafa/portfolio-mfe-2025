@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { BiLogoPinterestAlt } from 'react-icons/bi'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { IoIosMenu, IoMdClose } from 'react-icons/io'
 import { NavLink } from 'react-router-dom'
 import brandImage from '../assets/brand.png'
 import profileImage from '../assets/vibrant-avatar.png'
@@ -34,19 +33,22 @@ export default function Sidebar() {
 
         <p className="role">Front-end Developer</p>
         <p className="pitch">
-          Front-end sênior. Trabalho com micro-frontends e design systems em plataformas de alta
-          escala.
+          Front-end sênior. Trabalho com <span className="nowrap">micro-frontends</span> e design
+          systems em plataformas de alta escala.
         </p>
 
         <button
-          className="menu-toggle"
+          className={`menu-toggle ${isOpen ? 'is-open' : ''}`.trim()}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Menu"
           aria-expanded={isOpen}
           aria-controls="main-nav"
         >
-          {isOpen ? <IoMdClose size={22} /> : <IoIosMenu size={22} />}
+          {/* Three bars that morph into an X when open */}
+          <span className="menu-toggle__bar" aria-hidden="true" />
+          <span className="menu-toggle__bar" aria-hidden="true" />
+          <span className="menu-toggle__bar" aria-hidden="true" />
         </button>
 
         <nav id="main-nav" className={`nav ${isOpen ? 'open' : ''}`} aria-label="Principal">

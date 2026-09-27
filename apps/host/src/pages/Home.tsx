@@ -23,7 +23,7 @@ export default function Home() {
           Sobre
         </h2>
         <p>
-          Sou desenvolvedor front-end sênior há mais de 14 anos. Meu trabalho mais recente foi no{' '}
+          Sou desenvolvedor front-end sênior há mais de 15 anos. Meu trabalho mais recente foi no{' '}
           <strong>Ouribank</strong>, mantendo e evoluindo plataformas financeiras de alta escala com
           micro-frontends, React e TypeScript.
         </p>
@@ -87,7 +87,7 @@ export default function Home() {
         <h2 id="experiencia-title" className="section-title">
           Experiência
         </h2>
-        <ExperienceList items={experiences} />
+        <ExperienceList items={experiences.slice(0, 4)} />
         <Link to="/sobre-mim" className="section-link">
           Ver trajetória completa <FiArrowRight aria-hidden="true" />
         </Link>

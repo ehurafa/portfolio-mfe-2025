@@ -17,7 +17,7 @@ describe('Home Page', () => {
 
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Rafael Gomes/i)
     expect(
-      screen.getByText(/Sou desenvolvedor front-end sênior há mais de 14 anos/i)
+      screen.getByText(/Sou desenvolvedor front-end sênior há mais de 15 anos/i)
     ).toBeInTheDocument()
   })
 
@@ -31,7 +31,7 @@ describe('Home Page', () => {
     renderHome()
 
     expect(
-      screen.getByText('Ouribank', { selector: '.experience-item__company' })
+      screen.getByText(/Ouribank/, { selector: '.experience-item__company' })
     ).toBeInTheDocument()
     expect(screen.getByText('Ver trajetória completa').closest('a')).toHaveAttribute(
       'href',

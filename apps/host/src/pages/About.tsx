@@ -1,6 +1,6 @@
 import { HiCheckCircle } from 'react-icons/hi'
 import ExperienceList from '../components/ExperienceList'
-import { experiences } from '../data/experience'
+import { education, experiences } from '../data/experience'
 
 const techStack = [
   'React',
@@ -35,7 +35,7 @@ export default function About() {
       <section className="section about-story" aria-label="Resumo">
         <p>
           Sou <strong>Rafael Gomes</strong>, desenvolvedor front-end. Trabalho com JavaScript há
-          mais de 14 anos, quase sempre com <strong>React, Vue ou Angular</strong>, e gosto de
+          mais de 15 anos, quase sempre com <strong>React, Vue ou Angular</strong>, e gosto de
           pensar na arquitetura antes de escrever o primeiro componente.
         </p>
         <p>
@@ -59,7 +59,23 @@ export default function About() {
         <h2 id="trajetoria-title" className="section-title">
           Trajetória profissional
         </h2>
-        <ExperienceList items={experiences} showDescription />
+        <ExperienceList items={experiences} detailed />
+      </section>
+
+      <section className="section" aria-labelledby="formacao-title">
+        <h2 id="formacao-title" className="section-title">
+          Formação
+        </h2>
+        <ul className="education-list">
+          {education.map(item => (
+            <li key={item.course}>
+              <h3>{item.course}</h3>
+              <p>
+                {item.school} · {item.status}
+              </p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="section" aria-labelledby="stack-title">
@@ -84,9 +100,6 @@ export default function About() {
             </li>
           ))}
         </ul>
-        <p className="studying">
-          Estudando agora: <strong>System Design</strong> e <strong>Microfrontends</strong>.
-        </p>
       </section>
     </>
   )

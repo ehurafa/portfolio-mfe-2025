@@ -111,6 +111,7 @@ export default function Certificates() {
     {
       title: 'Javascript',
       description: 'Programando na linguagem da web',
+      hidden: true,
       pdf: '/certificates/js.jpg',
       thumb: '/certificates/javascript.jpg',
       tags: ['alura']
@@ -118,6 +119,7 @@ export default function Certificates() {
     {
       title: 'Javascript',
       description: 'Conhecendo o Browser e Padrões de Projeto',
+      hidden: true,
       pdf: '/certificates/js-3.pdf',
       thumb: '/certificates/javascript.jpg',
       tags: ['alura']
@@ -140,6 +142,7 @@ export default function Certificates() {
       title: 'Javascript',
       pdf: '/certificates/js-6.jpg',
       description: 'Lógica de Programação I: Comece na carreira JS',
+      hidden: true,
       thumb: '/certificates/javascript.jpg',
       tags: ['alura']
     },
@@ -202,6 +205,9 @@ export default function Certificates() {
     'internet innovation': 'Internet Innovation'
   }
 
+  // Certificates flagged hidden stay in the list but are not rendered
+  const visibleCertificates = certificates.filter(cert => !cert.hidden)
+
   return (
     <>
       <header className="page-header">
@@ -210,9 +216,10 @@ export default function Certificates() {
       </header>
 
       <ul className="card-list">
-        {certificates.map(cert => (
+        {visibleCertificates.map(cert => (
           <li key={cert.pdf}>
             <Card
+              thumbnail={cert.thumb}
               title={cert.title}
               description={cert.description}
               tag={schoolNames[cert.tags[0]] ?? cert.tags[0]}

@@ -81,28 +81,60 @@
     line-height: $line-height-normal;
   }
 
+  // Hamburger: bars morph into an X when the menu opens
   .menu-toggle {
     display: none;
     position: absolute;
     top: $space-12;
     right: 0;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 5px;
     background: transparent;
-    border: 1px solid $color-line-strong;
+    border: 0;
     border-radius: 8px;
-    color: $color-text-strong;
-    transition: border-color 0.15s ease, color 0.15s ease;
 
-    &:hover {
-      border-color: $color-accent;
-      color: $color-accent;
+    &:hover .menu-toggle__bar {
+      background: $color-accent;
     }
 
     @include media-lg {
       display: inline-flex;
+    }
+
+    &__bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: $color-text-strong;
+      transition:
+        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.2s ease,
+        background-color 0.15s ease;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+
+    &.is-open {
+      .menu-toggle__bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle__bar:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      .menu-toggle__bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
     }
   }
 
